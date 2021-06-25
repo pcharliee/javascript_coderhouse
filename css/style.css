@@ -43,6 +43,10 @@ body {
   cursor: pointer;
   color: white; }
 
+.producto .boton-comprar.disabled {
+  cursor: not-allowed;
+  background-color: #83563d88; }
+
 .informacion {
   background-color: rgba(245, 245, 245, 0.822);
   margin: 0 0 0 20px;
