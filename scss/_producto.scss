@@ -1,0 +1,52 @@
+// CAJA PRINCIPAL CON PRODUCTO Y DESCRIPCION //
+
+.producto {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 280px;
+  height: 50vh;
+  max-height: 390px;
+  background-color: rgba(245, 245, 245, 0.822);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.producto .titulo {
+  margin: 0;
+  font-family: 'Tangerine', cursive;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.producto .varita-de-sauco {
+  background-image: url('../media/sauco.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 172px;
+  width: 300px;
+  border-radius: 10px;
+  display: block;
+  background-color: rgba(99, 145, 95, 0.575)
+}
+
+.producto .boton-comprar {
+  height: 30px;
+  width: 80px;
+  border-radius: 10px;
+  background-color:#83553d;
+  border: none;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  color: white
+}
+
+.informacion {
+  background-color: rgba(245, 245, 245, 0.822);
+  margin: 0 0 0 20px;
+  width: 300px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
