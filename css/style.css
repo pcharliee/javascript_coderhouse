@@ -1,17 +1,19 @@
 body {
-  background: rgba(94, 93, 93, 0.877);
+  background-image: url("../media/Ollivanders.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; }
 
 .producto {
-  margin: 20px 0 0 0;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: space-around;
   width: 280px;
-  height: 60vh;
+  height: 50vh;
   max-height: 390px;
-  background-color: rgba(235, 235, 235, 0.822);
+  background-color: rgba(245, 245, 245, 0.822);
   padding: 20px;
   border-radius: 10px; }
 
@@ -29,32 +31,64 @@ body {
   width: 300px;
   border-radius: 10px;
   display: block;
-  background-color: rgba(124, 189, 141, 0.5); }
+  background-color: rgba(99, 145, 95, 0.575); }
 
 .producto .boton-comprar {
-  height: 60px;
+  height: 30px;
   width: 80px;
-  border-radius: 15px;
-  background-color: #6ead23;
-  border: none; }
+  border-radius: 10px;
+  background-color: #83553d;
+  border: none;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  color: white; }
+
+.informacion {
+  background-color: rgba(245, 245, 245, 0.822);
+  margin: 0 0 0 20px;
+  width: 300px;
+  border-radius: 10px;
+  padding: 20px; }
+
+.ollivanders {
+  background-image: url("../media/ollivanders.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 210px;
+  width: 400px;
+  display: block; }
+
+.center-block {
+  border-radius: 10px;
+  padding: 20px;
+  background-color: rgba(245, 245, 245, 0.822);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 700px; }
+  .center-block h1, .center-block h3 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    margin: o; }
+
+.center-block .box-producto {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between; }
 
 .content {
+  height: 100vh;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
   text-align: center; }
-
-.info {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  margin: 0 25px;
-  height: 100vh; }
-
-h1, h3 {
-  margin: 10px 0; }
+  .content ul {
+    padding: 0; }
+  .content li {
+    list-style: none; }
 
 .resultado {
   margin: 30px 0 0 0;

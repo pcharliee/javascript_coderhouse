@@ -1,13 +1,14 @@
+// CAJA PRINCIPAL CON PRODUCTO Y DESCRIPCION //
+
 .producto {
-  margin: 20px 0 0 0;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: space-around;
   width: 280px;
-  height: 60vh;
+  height: 50vh;
   max-height: 390px;
-  background-color: rgba(235, 235, 235, 0.822);
+  background-color: rgba(245, 245, 245, 0.822);
   padding: 20px;
   border-radius: 10px;
 }
@@ -27,14 +28,25 @@
   width: 300px;
   border-radius: 10px;
   display: block;
-  background-color: rgba(124, 189, 141, 0.5)
+  background-color: rgba(99, 145, 95, 0.575)
 }
 
 .producto .boton-comprar {
-  height: 60px;
+  height: 30px;
   width: 80px;
-  border-radius: 15px;
-  background-color:#6ead23;
+  border-radius: 10px;
+  background-color:#83553d;
   border: none;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  color: white
+}
+
+.informacion {
+  background-color: rgba(245, 245, 245, 0.822);
+  margin: 0 0 0 20px;
+  width: 300px;
+  border-radius: 10px;
+  padding: 20px;
 }
 

@@ -2,21 +2,28 @@
 /////FUNCIONES/////
 ///////////////////
 
-// let input = prompt("Asi que quieres ser un Mortífago... ¿Cómo te llamas?").toLowerCase();
-// let primeraLetra = input.substr(0, 1).toUpperCase();
-// let nombre = `${input.substr(0, 1).toUpperCase()}${input.substr(1)}`
+let boton = document.getElementById('comprar');
+let informacion = document.getElementById('informacion');
+let precio = 1000;
+let descuento;
+let esDescuento;
 
-// let nombre = prompt('')
-let comprar = document.getElementById('comprar').value
-console.log(comprar)
-
-let boton = document.getElementById('comprar')
-
-boton.innerHTML = 'pera'
 boton.addEventListener("click", comprarVarita);
 
-function comprarVarita () {
-  boton.value = "ES MIA"
-  boton.setAttribute("disabled", true)
-  alert("Compraste la varita maldita")
-}
+function updateButton () {
+  boton.value = "Comprada";
+  boton.setAttribute("disabled", true);
+};
+
+function aplicarDescuento () {
+  esDescuento = confirm('Quieres descuento?')
+  esDescuento ? descuento = (precio * 20) / 100 : descuento = 0
+  let precioTotal = precio - descuento;
+  informacion.innerHTML = `Felicidades, has comprado la Varita de Sauco por ${precioTotal} galeones de oro`;
+};
+
+function comprarVarita (e) {
+  e.preventDefault();
+  updateButton();
+  aplicarDescuento();
+};

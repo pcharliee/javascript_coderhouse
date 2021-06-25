@@ -1,29 +1,26 @@
 body {
-  background: rgba(94, 93, 93, 0.877);
+  background-image: url('../media/Ollivanders.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+  // background: rgba(190, 190, 190, 0.877);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-@import '_producto';
+@import 'producto';
+@import 'index';
 
 .content {
+  height: 100vh;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-.info{
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  margin: 0 25px;
-  height: 100vh
-}
-
-h1, h3 {
-  margin: 10px 0
+  ul { padding: 0}
+  li {
+    list-style: none;
+  }
 }
 
 .resultado {
