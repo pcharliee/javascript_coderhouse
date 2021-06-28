@@ -1,0 +1,19 @@
+// *{
+//   border: 1px red dotted
+// }
+
+.boton-seleccion {
+  height: 50px;
+  width: 100px;
+  border-radius: 10px;
+  border: none;
+  background-color:rgb(68, 68, 68);
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  overflow:auto;
+}
+
+.boton-seleccion:hover{
+  background: blue;
+}

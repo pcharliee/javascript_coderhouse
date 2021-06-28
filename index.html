@@ -11,36 +11,52 @@
   <title>Desafios Javascript</title>
 </head>
 <body>
-  <div class="content">
-    <div>
-      <i class="ollivanders"></i>
-    </div>
+  <main class="content">
+    <section class="selection-area">
+      <h3 class='titulo'>Personaliza tu personaje</h3>
+      <p class='subtitulo'>Usa los botones para escoger las carácteristicas y no olvides seleccionar <strong>tu casa</strong> al final</p>
+      <div class="botones">
+        <div class="opciones">
+          <label id="nombre-label" for="nombre">¿Cómo te llamas?</label>
+          <input class="boton-seleccion" type="button" id="nombre" value="Nombre">
+        </div>
+        <div class="opciones">
+          <label id='edad-label' for="edad">¿Cuántos años tienes?</label>
+          <input class="boton-seleccion" type="button" id="edad" value="Edad">
+        </div>
+        <div class="opciones">
+          <label id='hechizo-label' for="hechizo">¿Cúal es tu hechizo favorito?</label>
+          <input class="boton-seleccion" type="button" id="hechizo" value="Hechizo">
+        </div>
+        <div class="opciones">
+          <label id='animal-label' for="animal">¿Cúal es tu animal favorito?</label>
+          <input class="boton-seleccion" type="button" id="animal" value="Animal">
+        </div>
+      </div>
+      <div class="casas">
+        <i id='gryffindor' class="gryffindor" value='gryffindor'></i>
+        <i id='ravenclaw' class="ravenclaw"></i>
+        <i id='slytherin' class="slytherin"></i>
+        <i id='hufflepuff' class="hufflepuff"></i>
+      </div>
+    </section>
     <section class="center-block">
       <div>
         <h1>Alumno: Carlos Delgado</h1>
         <h3>Javascript. Camada 16785</h3>
-        <h3>Desafio: Clase 4 (Comp) - Funciones</h3>
+        <h3>Desafio: Clase 5 - Objetos</h3>
       </div>
       <div class="box-producto">
-        <div class='producto'>
-          <p class='titulo'>
-            Varita de Sauco
-          </p>
-          <i class="varita-de-sauco"></i>
-          <input class="boton-comprar" type="button" id="comprar" value="Comprar">
-        </div>
+        <p id='casa-seleccionada' class="casa-seleccionada">Completa la información para conocer la verdadera magia</p>
         <article id="informacion" class='informacion'>
           <p>
-            Antigua y fabricada de Saúco.<br>Además de ser más potente que otras varitas, es notablemente distinguible de otras varitas en su aspecto, en particular porque tiene tallas que se asemejan a racimos de bayas de saúco corriendo por su longitud.
+            A tu izquierda encontrarás un formulario que debes completar para crear tu personaje.
+            ¿Qué estás esperando?
           </p>
-          <ul>
-            <li>Longitud: 34.5 cm</li>
-            <li>Núcleo: Pelo de cola de <em>Thestral</em></li>
-          </ul>
         </article> 
       </div>
     </section>
-  </div>
+  </main>
   <script src='./app.js'></script>
 </body>
 </html>

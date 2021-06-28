@@ -1,23 +1,73 @@
 // ESTILOS Y DISTRUBICION DEL INDEX //
+@import 'utils';
 
-.ollivanders {
-  background-image: url('../media/ollivanders.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 210px;
-  width: 400px;
-  display: block;
+.content {
+  height: 100vh;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  ul { padding: 0}
+  li {
+    list-style: none;
+  }
+}
+
+.selection-area {
+  @include fl-col;
+  align-items: center;
+  height: 480px;
+  width: 500px;
+  background-color: rgba(245, 245, 245, 0.7);
+  padding: 20px;
+  margin: 0 20px 0 0;
+  border-radius: 10px;
+  .titulo{
+    margin: 0;
+    font-family: 'Tangerine', cursive;
+    font-size: 50px;
+    font-weight: 700;
+  }
+  p {
+    font-size: 1rem;
+    margin: 3px 0 20px 0
+    
+  }
+  strong {
+    font-size: 16px;
+    color: rgb(56, 131, 60)
+  }
+  .botones {
+    @include fl-col;
+    height: 80%;
+    width: 70%;
+    align-items: flex-start;
+    justify-content: space-between;
+    .opciones {
+      display:flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+  .casas {
+    @include fl-row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 20px 0 0 0;
+  }
 }
 
 .center-block {
+  @include fl-col;
   border-radius: 10px;
   padding: 20px;
   background-color: rgba(245, 245, 245, 0.822);
-  display: flex;
-  flex-flow: column nowrap;
   align-items: center;
   justify-content: space-between;
-  width: 700px;
+  width: 500px;
   h1, h3 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 18px;
@@ -26,10 +76,18 @@
 }
 
 .center-block .box-producto {
-  display: flex;
-  flex-flow: row nowrap;
+  @include fl-row;
   align-items: center;
   justify-content: space-between
 }
+
+.resultado {
+  margin: 30px 0 0 0;
+  font-size: 18px;
+}
+
+
+
+
 
 
