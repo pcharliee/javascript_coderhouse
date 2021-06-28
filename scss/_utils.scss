@@ -1,0 +1,21 @@
+@mixin bg-img-cover {
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+}
+
+@mixin bg-img-contain {
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: block;
+}
+
+@mixin fl-col {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+@mixin fl-row {
+  display: flex;
+  flex-flow: row nowrap;
+}

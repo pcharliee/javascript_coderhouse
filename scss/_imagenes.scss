@@ -1,0 +1,54 @@
+@import 'utils';
+
+// *{
+//   border: 1px red dotted;
+// }
+
+body {
+  background-image: url('../media/great-hall.jpg');
+  @include bg-img-cover;
+  background-position: center left;
+  margin: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.ollivanders {
+  @include bg-img-cover;
+  background-image: url('../media/ollivanders.png');
+  height: 210px;
+  width: 400px;
+}
+
+.marca_tenebrosa {
+  height: 90vh;
+  max-width: 30vw;
+  display: inline;
+}
+
+.slytherin {
+  @include bg-img-contain;
+  background-image: url('../media/slytherin.png');
+  width: 112px;
+  height: 122px;
+}
+
+.gryffindor {
+  @include bg-img-contain;
+  background-image: url('../media/gryffindor.png');
+  width: 112px;
+  height: 122px;
+}
+
+.ravenclaw {
+  @include bg-img-contain;
+  background-image: url('../media/ravenclaw.png');
+  width: 112px;
+  height: 122px;
+}
+
+.hufflepuff {
+  @include bg-img-contain;
+  background-image: url('../media/hufflepuff.png');
+  width: 112px;
+  height: 122px;
+}
