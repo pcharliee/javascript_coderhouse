@@ -1,0 +1,23 @@
+@import 'utils';
+
+.sidebar {
+  background-color: rgba(238, 203, 161, 0.753);
+  width: 110px;
+  height: 100vh;
+  position: sticky;
+  top: 0px;
+  border-radius: 0 125px 125px 0;
+  @include fl-col;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-lista {
+  li { 
+    list-style: none;
+    margin: 10px 0;
+    text-align: center
+  }
+  margin: 0;
+  padding: 0;
+}
