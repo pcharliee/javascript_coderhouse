@@ -1,119 +1,69 @@
-///////////////////
-//////OBJETOS//////
-///////////////////
+/* INFORMACION INICIAL PARA FUNCIONAR */
+const spells = [];
+const characters = [];
+const books = [];
+let isPageLoaded = false;
 
-let nombre = document.getElementById('nombre');
-nombre.addEventListener('click', obtenerNombre);
+const API_URL = "https://fedeperin-harry-potter-api.herokuapp.com/db";
+fetch(API_URL)
+.then((res) => res.json())
+.then((data) => { 
+  data.hechizos.map(el => spells.push(el));
+  data.personajes.map(el => characters.push(el));
+})
+.then(function () {
+  localStorage.setItem('spells', JSON.stringify(spells))
+  localStorage.setItem('characters', JSON.stringify(characters))
+  isPageLoaded = true;
+});
 
-let edad = document.getElementById('edad');
-edad.addEventListener('click', obtenerEdad);
+const Hechizos = JSON.parse(localStorage.getItem('spells'));
+const Personajes = JSON.parse(localStorage.getItem('characters'));
+const Usuario = JSON.parse(localStorage.getItem('usuario'));
 
-let hechizo = document.getElementById('hechizo');
-hechizo.addEventListener('click', obtenerHechizo);
+/*  VARIABLES    */
 
-let animal = document.getElementById('animal');
-animal.addEventListener('click', obtenerAnimal);
+const PersonajesBoton = document.getElementById('Personajes');
+const HechizosBoton = document.getElementById('Hechizos');
+const Lista = document.getElementById('Lista');
 
-let gryffindor = document.getElementById('gryffindor');
-gryffindor.addEventListener('click', seleccionarCasa);
+/* ADICION DE FUNCIONALIDADES AL HTML */
 
-let ravenclaw = document.getElementById('ravenclaw');
-ravenclaw.addEventListener('click', seleccionarCasa);
-
-let slytherin = document.getElementById('slytherin');
-slytherin.addEventListener('click', seleccionarCasa);
-
-let hufflepuff = document.getElementById('hufflepuff');
-hufflepuff.addEventListener('click', seleccionarCasa);
-
-let casaSeleccionada = document.getElementById('casa-seleccionada')
-let informacion = document.getElementById('informacion')
+PersonajesBoton.addEventListener('click', imprimirInformacion);
+HechizosBoton.addEventListener('click', imprimirInformacion);
 
 
-let usuarioCompletado = 0;
-let character;
+/* FUNCIONES*/
+function imprimirInformacion(e) {
+  if (!Hechizos || !Personajes) return alert('Hubo un error. Refresca la página')
+  Lista.innerHTML = '';
+  
+  switch (e.target.id) {
+    case 'Personajes':
+    let personajesOrdenados = Personajes.sort(function (a,b) {
+      if(a.personaje < b.personaje) { return -1; }
+      if(a.personaje > b.personaje) { return 1; }
+      return 0
+    });
+    personajesOrdenados.forEach(el => {
+      Lista.innerHTML += `<li class='item-informacion'>${el.personaje}</li>`
+    });
+    break;
+    case 'Hechizos':
+    let hechizosOrdenados = Hechizos.sort(function (a,b) {
+      if(a.hechizo < b.hechizo) { return -1; }
+      if(a.hechizo > b.hechizo) { return 1; }
+      return 0
+    });
+    hechizosOrdenados.forEach(el => {
+      Lista.innerHTML += `<li class='item-informacion'>${el.hechizo}</li>`
+    });
+    break;
+    default:
+    alert('Hubo un error, intenta de nuevo');
+    break;
+  };
+};
 
-class Personaje {
-  constructor (nombre, edad, hechizo, animal, casa) {
-    this.nombre = nombre;
-    this.edad = edad;
-    this.hechizo = hechizo;
-    this.animal = animal;
-    this.casa = casa;
-  }
-  hechizar() {
-    this.hechizo = this.hechizo.toUpperCase()
-    alert(this.hechizo)
-  }
-  patronus() {
-    alert(`EXPECTO PATRONUM ==> *un ${this.animal} fue disparado por tu varita*`)
-  }
-  calcularTiempo() {
-    let graduacion = Number(this.edad) + 7;
-    alert(`Si eres buen estudiante, te graduarás cuando tengas ${graduacion} años`)
-  }
-}
-
-function obtenerNombre() {
-  let input = prompt('Ingresa tu nombre');
-  if(!input || !isNaN(input)) return alert('Ingresa un nombre válido');
-  let primeraLetra = input.substr(0, 1).toUpperCase();
-  let nombreArreglado = `${input.substr(0, 1).toUpperCase()}${input.substr(1)}`;
-  nombre.value = nombreArreglado;
-  nombre.setAttribute('disabled', true);
-  document.getElementById('nombre-label').style.textDecoration = 'line-through';
-  usuarioCompletado++;
-}
-
-function obtenerEdad() {
-  let input = prompt('Ingresa tu edad');
-  if(isNaN(input) || !input) return alert("Pon tu edad con números");
-  edad.value = input;
-  edad.setAttribute('disabled', true);
-  document.getElementById('edad-label').style.textDecoration = 'line-through';
-  usuarioCompletado++;
-}
-
-function obtenerHechizo() {
-  let input = prompt('Ingresa tu hechizo favorito');
-  if(!input || !isNaN(input)) return alert('Ingresa un hechizo válido');
-  let primeraLetra = input.substr(0, 1).toUpperCase();
-  let nombreArreglado = `${input.substr(0, 1).toUpperCase()}${input.substr(1)}`;
-  hechizo.value = nombreArreglado;
-  hechizo.setAttribute('disabled', true);
-  document.getElementById('hechizo-label').style.textDecoration = 'line-through';
-  usuarioCompletado++;
-}
-
-function obtenerAnimal() {
-  let input = prompt('Ingresa tu animal favorito');
-  if(!input || !isNaN(input)) return alert('Ingresa un animal válido');
-  let primeraLetra = input.substr(0, 1).toUpperCase();
-  let nombreArreglado = `${input.substr(0, 1).toUpperCase()}${input.substr(1)}`;
-  animal.value = nombreArreglado;
-  animal.setAttribute('disabled', true);
-  document.getElementById('animal-label').style.textDecoration = 'line-through';
-  usuarioCompletado++;
-}
-
-function seleccionarCasa(e) {
-  let casa = e.target.className
-  if(usuarioCompletado < 4) return alert('Te faltan algunos datos');
-  character = new Personaje(nombre.value, edad.value, hechizo.value, animal.value, casa);
-  gryffindor.style.cursor = 'not-allowed'
-  slytherin.style.cursor = 'not-allowed'
-  ravenclaw.style.cursor = 'not-allowed'
-  hufflepuff.style.cursor = 'not-allowed'
-  creacionExitosa(character)
-}
-
-function creacionExitosa(character) {
-  casaSeleccionada.classList.add(character.casa);
-  let casa = character.casa.toUpperCase();
-  casaSeleccionada.innerHTML = '';
-  informacion.innerHTML 
-  = `Bienvenido ${character.nombre} a tu nueva casa ${casa}, aunque tengas ${character.edad}, nunca es demasiado tarde para la magia`;
-  character.hechizar();
-  character.patronus();
-  character.calcularTiempo();
-}
+console.log(Hechizos[0])
+console.log(Personajes)

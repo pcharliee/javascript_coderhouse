@@ -1,6 +1,4 @@
-// *{
-//   border: 1px red dotted
-// }
+@import 'utils';
 
 .boton-seleccion {
   height: 50px;
@@ -11,9 +9,17 @@
   color: white;
   font-weight: 700;
   font-size: 1rem;
-  overflow:auto;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
 }
 
 .boton-seleccion:hover{
-  background: blue;
+  background: #1A472A;
+}
+
+.botones-seleccionar-informacion {
+  @include fl-col;
+  justify-content: space-around;
+  height: 150px;
 }

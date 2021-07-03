@@ -52,3 +52,10 @@ body {
   width: 112px;
   height: 122px;
 }
+
+.sidebar-logo {
+  @include bg-img-contain;
+  background-image: url('../media/hogwarts-logo.png');
+  width: 90px;
+  height: 100px;
+}
