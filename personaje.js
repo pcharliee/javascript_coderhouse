@@ -6,29 +6,29 @@ let informacion = document.getElementById('Lista');
 let usuarioCompletado = 0;
 let character;
 
-let gryffindor = document.getElementById('Gryffindor');
-gryffindor.addEventListener('click', seleccionarCasa);
+// let gryffindor = document.getElementById('Gryffindor');
+// gryffindor.addEventListener('click', seleccionarCasa);
 
-let ravenclaw = document.getElementById('Ravenclaw');
-ravenclaw.addEventListener('click', seleccionarCasa);
+// let ravenclaw = document.getElementById('Ravenclaw');
+// ravenclaw.addEventListener('click', seleccionarCasa);
 
-let slytherin = document.getElementById('Slytherin');
-slytherin.addEventListener('click', seleccionarCasa);
+// let slytherin = document.getElementById('Slytherin');
+// slytherin.addEventListener('click', seleccionarCasa);
 
-let hufflepuff = document.getElementById('Hufflepuff');
-hufflepuff.addEventListener('click', seleccionarCasa);
+// let hufflepuff = document.getElementById('Hufflepuff');
+// hufflepuff.addEventListener('click', seleccionarCasa);
 
-let nombre = document.getElementById('nombre');
-nombre.addEventListener('click', obtenerNombre);
+// let nombre = document.getElementById('nombre');
+// nombre.addEventListener('click', obtenerNombre);
 
-let edad = document.getElementById('edad');
-edad.addEventListener('click', obtenerEdad);
+// let edad = document.getElementById('edad');
+// edad.addEventListener('click', obtenerEdad);
 
-let hechizo = document.getElementById('hechizo');
-hechizo.addEventListener('click', obtenerHechizo);
+// let hechizo = document.getElementById('hechizo');
+// hechizo.addEventListener('click', obtenerHechizo);
 
-let animal = document.getElementById('animal');
-animal.addEventListener('click', obtenerAnimal);
+// let animal = document.getElementById('animal');
+// animal.addEventListener('click', obtenerAnimal);
 
 
 class Personaje {
@@ -64,6 +64,8 @@ function obtenerNombre() {
   usuarioCompletado++;
 }
 
+
+
 function obtenerEdad() {
   let input = prompt('Ingresa tu edad');
   if(isNaN(input) || !input) return alert("Pon tu edad con números");
@@ -96,7 +98,6 @@ function obtenerAnimal() {
 }
 
 function seleccionarCasa(e) {
-  console.log('e papa', e.target)
   let casa = e.target.id
   if(usuarioCompletado < 4) return alert('Te faltan algunos datos');
   character = new Personaje(nombre.value, edad.value, hechizo.value, animal.value, casa);
@@ -109,7 +110,6 @@ function seleccionarCasa(e) {
 
 function creacionExitosa(character) {
   localStorage.setItem('usuario', JSON.stringify(character))
-  console.log('character', character)
   let casa = character.casa.toUpperCase();
   
   let companerosCasa = personajes.filter(el => el.casaDeHogwarts == character.casa)

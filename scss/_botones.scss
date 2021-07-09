@@ -1,5 +1,13 @@
 @import 'utils';
 
+.botones {
+  @include fl-col;
+  height: 80%;
+  width: 70%;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .boton-seleccion {
   height: 50px;
   width: 100px;
@@ -22,4 +30,19 @@
   @include fl-col;
   justify-content: space-around;
   height: 150px;
+}
+
+.busqueda {
+  border-radius: 5px;
+  border:none;
+}
+
+.busqueda-box {
+  @include fl-row;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.title {
+  height: 20px;
 }

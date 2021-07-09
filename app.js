@@ -2,7 +2,6 @@
 const spells = [];
 const characters = [];
 const books = [];
-let isPageLoaded = false;
 
 const API_URL = "https://fedeperin-harry-potter-api.herokuapp.com/db";
 fetch(API_URL)
@@ -14,7 +13,6 @@ fetch(API_URL)
 .then(function () {
   localStorage.setItem('spells', JSON.stringify(spells))
   localStorage.setItem('characters', JSON.stringify(characters))
-  isPageLoaded = true;
 });
 
 const Hechizos = JSON.parse(localStorage.getItem('spells'));
@@ -29,41 +27,21 @@ const Lista = document.getElementById('Lista');
 
 /* ADICION DE FUNCIONALIDADES AL HTML */
 
-PersonajesBoton.addEventListener('click', imprimirInformacion);
 HechizosBoton.addEventListener('click', imprimirInformacion);
-
 
 /* FUNCIONES*/
 function imprimirInformacion(e) {
-  if (!Hechizos || !Personajes) return alert('Hubo un error. Refresca la página')
-  Lista.innerHTML = '';
-  
-  switch (e.target.id) {
-    case 'Personajes':
-    let personajesOrdenados = Personajes.sort(function (a,b) {
-      if(a.personaje < b.personaje) { return -1; }
-      if(a.personaje > b.personaje) { return 1; }
-      return 0
-    });
-    personajesOrdenados.forEach(el => {
-      Lista.innerHTML += `<li class='item-informacion'>${el.personaje}</li>`
-    });
-    break;
-    case 'Hechizos':
-    let hechizosOrdenados = Hechizos.sort(function (a,b) {
-      if(a.hechizo < b.hechizo) { return -1; }
-      if(a.hechizo > b.hechizo) { return 1; }
-      return 0
-    });
-    hechizosOrdenados.forEach(el => {
-      Lista.innerHTML += `<li class='item-informacion'>${el.hechizo}</li>`
-    });
-    break;
-    default:
-    alert('Hubo un error, intenta de nuevo');
-    break;
-  };
+  if (!Hechizos) return alert('Hubo un error. Refresca la página')
+  let hechizosOrdenados = Hechizos.sort(function (a,b) {
+    if(a.hechizo < b.hechizo) { return -1; }
+    if(a.hechizo > b.hechizo) { return 1; }
+    return 0
+  });
+  hechizosOrdenados.forEach(el => {
+    let li = document.createElement('li')
+    li.classList.add('item-information')
+    li.textContent = el.hechizo
+    HechizosBoton.setAttribute('disabled', true)
+    Lista.appendChild(li)
+  });
 };
-
-console.log(Hechizos[0])
-console.log(Personajes)
