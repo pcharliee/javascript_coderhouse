@@ -1,0 +1,4 @@
+[] - cambiar prompts para que sean inputs
+[] - generar HTML con js
+[] - rediseno del sitio
+[] - limpiar archivos scss (botones sobre todo)

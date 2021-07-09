@@ -20,13 +20,13 @@ body {
 
 .selection-area {
   @include fl-col;
+  @include glass;
   align-items: center;
-  height: 90%;
+  height: 80%;
   width: 500px;
-  background-color: rgba(245, 245, 245, 0.7);
+  background: rgba(197, 192, 192, 0.521);
   padding: 20px;
   margin: 0 20px 0 0;
-  border-radius: 10px;
   .titulo{
     margin: 0;
     font-family: 'Tangerine', cursive;
@@ -42,19 +42,7 @@ body {
     font-size: 16px;
     color: rgb(56, 131, 60)
   }
-  .botones {
-    @include fl-col;
-    height: 80%;
-    width: 70%;
-    align-items: flex-start;
-    justify-content: space-between;
-    .opciones {
-      display:flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-    }
-  }
+
   .casas {
     @include fl-row;
     align-items: center;
@@ -66,12 +54,11 @@ body {
 
 .center-block {
   @include fl-col;
+  @include glass;
   border-radius: 10px;
   padding: 20px;
-  background-color: rgba(245, 245, 245, 0.822);
   align-items: center;
   justify-content: space-between;
-  width: 500px;
 }
 
 .center-block .box {
