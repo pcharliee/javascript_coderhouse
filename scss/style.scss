@@ -1,7 +1,17 @@
-@import 'producto';
-@import 'index';
-@import 'imagenes';
+$gr: #740002;
+$gr-g: #740002b4;
+$sl: #1a472a;
+$ra: #0e1a40;
+$hu: #ffdb00;
+$dark-gray: #5d5d5d;
+$light-gray: #c0c0c0;
+
 @import 'utils';
-@import 'botones';
-@import 'sidebar';
-@import 'information';
+@import 'login';
+@import 'landing';
+// @import 'producto';
+// @import 'index';
+// @import 'imagenes';
+// @import 'botones';
+// @import 'sidebar';
+// @import 'information';
