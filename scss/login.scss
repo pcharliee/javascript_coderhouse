@@ -37,8 +37,9 @@
   width: 300px;
   border-radius: 5px;
   p {
+    @include hp;
     color: $hu;
-    font-size: 1.1rem;
+    font-size: 2rem;
     padding: 0;
     margin: 0;
   }
@@ -53,7 +54,7 @@
   align-items: center;
   justify-content: center;
   width: 270px;
-  transform: translate(50px, 13px);
+  transform: translate(50px, 10px);
   font-size: 14px;
   border-radius: 5px;
 }
@@ -75,7 +76,7 @@
 }
 
 .btn-login {
-  transform: translate(95px, 20px);
+  transform: translate(95px, 15px);
   background: none;
   border: none;
   color: $light-gray;

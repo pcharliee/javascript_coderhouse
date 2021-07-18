@@ -1,3 +1,11 @@
+html {
+  scroll-behavior: smooth; }
+
+@font-face {
+  font-family: 'HarryPotter';
+  src: url("../fonts/HARRYP__.TTF") format("truetype");
+  font-size: 34px; }
+
 .index-bg {
   background-size: cover;
   background-repeat: no-repeat;
@@ -35,8 +43,9 @@
   width: 300px;
   border-radius: 5px; }
   .form-container p {
+    font-family: 'HarryPotter';
     color: #ffdb00;
-    font-size: 1.1rem;
+    font-size: 2rem;
     padding: 0;
     margin: 0; }
 
@@ -49,7 +58,7 @@
   align-items: center;
   justify-content: center;
   width: 270px;
-  transform: translate(50px, 13px);
+  transform: translate(50px, 10px);
   font-size: 14px;
   border-radius: 5px; }
 
@@ -67,10 +76,10 @@
     outline: none; }
 
 .btn-login {
-  transform: translate(95px, 20px);
+  transform: translate(95px, 15px);
   background: none;
   border: none;
-  color: #c0c0c0; }
+  color: #e7e7e7; }
 
 .bio-login {
   height: 50px; }
@@ -86,4 +95,81 @@
 .navbar-bg {
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
   backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px); }
+  -webkit-backdrop-filter: blur(4px);
+  position: fixed;
+  width: 100%;
+  top: 0; }
+
+.welcome-information {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100vh; }
+
+.welcome-information-titulo {
+  font-family: 'HarryPotter';
+  font-size: 6rem;
+  color: #e7e7e7; }
+
+.welcome-information-cta {
+  color: #e7e7e7; }
+
+.sections-bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+  background-image: url("../media/diagon.jpg");
+  background-position: center bottom;
+  height: 100vh;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center; }
+
+.card-body {
+  box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  flex-flow: column nowrap;
+  height: 400px;
+  width: 300px;
+  margin: 0 20px;
+  background-color: #0e1a407c;
+  padding: 0;
+  border-radius: 5px; }
+
+.card-img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+  background-image: url("../media/Ollivanders.jpg");
+  height: 200px;
+  width: auto;
+  border-radius: 5px; }
+
+.card-title {
+  font-family: 'HarryPotter';
+  color: #e7e7e7;
+  text-align: center;
+  font-size: 2rem; }
+  .card-title p {
+    padding: 0;
+    margin: 0; }
+
+.card-description {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #ffdb00;
+  padding: 0 20px; }
+  .card-description p {
+    padding: 0;
+    margin: 0; }
+
+.boton-card {
+  background: none;
+  border: none;
+  color: #e7e7e7;
+  padding: 20px 0;
+  text-align: center; }

@@ -25,3 +25,7 @@
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 4px );
 }
+
+@mixin hp {
+  font-family: 'HarryPotter';
+}
