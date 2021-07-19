@@ -1,0 +1,88 @@
+@import 'utils';
+
+*{
+  // border: 1px red dotted;
+}
+
+// IMAGENES //
+.index-bg {
+  @include bg-img-cover;
+  background-image: url('../media/mist.jpg');
+  background-position: center left;
+  height: 100vh;
+}
+
+.index-cta {
+  @include bg-img-contain;
+  @include glass;
+  background-image: url('../media/logo-hogwarts.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(1, 9, 14, 0.692);
+  height: 75vh;
+  width: 50vw;
+  border-radius: 0 5px 5px 0;
+}
+
+// FORMULARIO //
+
+.form-container {
+  @include fl-col;
+  @include glass;
+  background-color: $gr-g;
+  margin: 0 30px 0 0;
+  align-items: center;
+  justify-content: center;
+  height: 380px;
+  width: 300px;
+  border-radius: 5px;
+  p {
+    @include hp;
+    color: $hu;
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.form {
+  @include fl-col;
+  padding: 10px;
+  background-color: rgb(240, 240, 240);
+  box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+  // height: 70%;
+  align-items: center;
+  justify-content: center;
+  width: 270px;
+  transform: translate(50px, 10px);
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.form label {
+  @include fl-col;
+  color: $dark-gray;
+  width: 100%;
+  margin: 0 0 10px 0;
+  
+  input {
+    border: none;
+    background-color: rgb(240, 240, 240);
+    border-bottom: 1px $gr-g solid;
+  }
+  input:focus, input:visited {
+    outline:  none;
+  }
+}
+
+.btn-login {
+  transform: translate(95px, 15px);
+  background: none;
+  border: none;
+  color: $light-gray;
+}
+
+.bio-login {
+  height: 50px;
+}
+

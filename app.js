@@ -2,46 +2,95 @@
 const spells = [];
 const characters = [];
 const books = [];
+const sectionCards = [
+  {
+    nombre: 'Varitas',
+    descripcion: 'Todo mago necesita una varita mágica. Visita la tienda de Ollivander´s y consigue la tuya.',
+    img: `./media/ollivanders.png`,
+  },
+  {
+    nombre: 'Escobas',
+    descripcion: 'Ya sea que juegues al Quidditch o la uses para hacer las compras, en Articulos de Calidad para Quidditch tenemos la escoba que se adapta a tus necesidades ',
+    img: `./media/Ollivanders.jpg`,
+  },
+  {
+    nombre: 'Libros',
+    descripcion: 'Seleccion de lib',
+    img: `./media/Ollivanders.jpg`,
+  },
+]
 
-const API_URL = "https://fedeperin-harry-potter-api.herokuapp.com/db";
-fetch(API_URL)
-.then((res) => res.json())
-.then((data) => { 
-  data.hechizos.map(el => spells.push(el));
-  data.personajes.map(el => characters.push(el));
-})
-.then(function () {
-  localStorage.setItem('spells', JSON.stringify(spells))
-  localStorage.setItem('characters', JSON.stringify(characters))
+$('document').ready(() => {
+  const API_URL = "https://fedeperin-harry-potter-api.herokuapp.com/db";
+  fetch(API_URL)
+  .then((res) => res.json())
+  .then((data) => { 
+    data.hechizos.map(el => spells.push(el));
+    data.personajes.map(el => characters.push(el));
+  })
+  .then(function () {
+    localStorage.setItem('spells', JSON.stringify(spells))
+    localStorage.setItem('characters', JSON.stringify(characters))
+    console.log('se cargo todo')
+  })
 });
 
 const Hechizos = JSON.parse(localStorage.getItem('spells'));
 const Personajes = JSON.parse(localStorage.getItem('characters'));
-const Usuario = JSON.parse(localStorage.getItem('usuario'));
 
-/*  VARIABLES    */
+/* INFORMACION INICIAL PARA FUNCIONAR */
 
-const PersonajesBoton = document.getElementById('Personajes');
-const HechizosBoton = document.getElementById('Hechizos');
-const Lista = document.getElementById('Lista');
+class Usuario {
+  constructor(username, nombre, email, bio) {
+    this.username = username;
+    this.nombre = nombre;
+    this.email = email;
+    this.bio = bio;
+  };
+};
 
-/* ADICION DE FUNCIONALIDADES AL HTML */
+let button = $('#button');
+let welcome = $('#welcome');
+let sections = $('#sections')
 
-HechizosBoton.addEventListener('click', imprimirInformacion);
 
-/* FUNCIONES*/
-function imprimirInformacion(e) {
-  if (!Hechizos) return alert('Hubo un error. Refresca la página')
-  let hechizosOrdenados = Hechizos.sort(function (a,b) {
-    if(a.hechizo < b.hechizo) { return -1; }
-    if(a.hechizo > b.hechizo) { return 1; }
-    return 0
-  });
-  hechizosOrdenados.forEach(el => {
-    let li = document.createElement('li')
-    li.classList.add('item-information')
-    li.textContent = el.hechizo
-    HechizosBoton.setAttribute('disabled', true)
-    Lista.appendChild(li)
+function ingresarUsuario() {
+  let username = $('#username-login').val();
+  let nombre = $('#nombre-login').val();
+  let email = $('#email-login').val();
+  let bio = $('#bio-login').val();
+  let nuevoUsuario = new Usuario (username, nombre, email, bio);
+  
+  localStorage.setItem('usuario', JSON.stringify(nuevoUsuario));
+  location.href = './landing.html'
+};
+const user = JSON.parse(localStorage.getItem('usuario'));
+
+button.on('click', ingresarUsuario);
+$('.form-container > p').addClass('prueba');
+welcome.append(`<h2 class='welcome-information-titulo'>Bienvenida, ${user.nombre}<h2>`);
+welcome.append(`<p class='welcome-information-cta'>
+Da un paseo por nuestro sitio y no te olvides de visitar la tienda exclusiva para magos
+</p>`);
+
+function crearTarjetas (sectionCards) {
+  sectionCards.map(card => {
+    sections.append(`<div class="card-body">
+    <div class="card-img"></div>
+    <div class="card-title"><p>Prueba de texto</p></div>
+    <div class="card-description"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore officiis mollitia obcaecati quae accusamus nihil!</p></div>
+    <input type="button" class='boton-card' id='' value='Ir a Ollivanders'>
+  </div>`)
   });
 };
+
+crearTarjetas(sectionCards);
+
+
+
+
+
+
+
+
+
