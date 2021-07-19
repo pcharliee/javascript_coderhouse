@@ -7,25 +7,29 @@
   height: 100vh;
   @include fl-row;
   align-items: center;
-  justify-content: center
+  justify-content: center;
 }
 
 .card-body {
   @include glass;
   @include fl-col;
-  height: 400px;
-  width: 300px;
+  height: auto;
+  max-height: 500px;
+  width: 200px;
   margin: 0 20px;
   background-color: #0e1a407c;
   padding: 0;
   border-radius: 5px;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-img {
-  @include bg-img-cover;
+  @include bg-img-contain;
   background-image: url('../media/Ollivanders.jpg');
+  background-position: center;
   height: 200px;
-  width: auto;
+  width: 200px;
   border-radius: 5px;
 }
 
@@ -34,6 +38,7 @@
   color: $light-gray;
   text-align: center;
   font-size: 2rem;
+  margin-top: 10px;
   p {
     padding: 0;
     margin: 0;
@@ -43,6 +48,8 @@
 .card-description {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: $hu;
+  height: 150px;
+  max-height: 200px;
   padding: 0 20px;
   p {
     padding: 0;
@@ -52,9 +59,16 @@
 
 .boton-card {
   background: none;
+  width: 100px;
   border: none;
   color: $light-gray;
   padding: 20px 0;
   text-align: center;
+}
+
+.boton-card:hover {
+  background-color: $sl;
+  border-radius: 10px;
+  opacity: 0.9
 }
 

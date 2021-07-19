@@ -4,19 +4,22 @@ const characters = [];
 const books = [];
 const sectionCards = [
   {
-    nombre: 'Varitas',
+    id: 'ollivanders',
+    nombre: 'Ollivanders',
     descripcion: 'Todo mago necesita una varita mágica. Visita la tienda de Ollivander´s y consigue la tuya.',
     img: `./media/ollivanders.png`,
   },
   {
-    nombre: 'Escobas',
+    id: 'quidditch-supplies',
+    nombre: 'Quality Quidditch Supplies',
     descripcion: 'Ya sea que juegues al Quidditch o la uses para hacer las compras, en Articulos de Calidad para Quidditch tenemos la escoba que se adapta a tus necesidades ',
-    img: `./media/Ollivanders.jpg`,
+    img: `./media/qqs.png`,
   },
   {
-    nombre: 'Libros',
-    descripcion: 'Seleccion de lib',
-    img: `./media/Ollivanders.jpg`,
+    id: 'florish-blotss',
+    nombre: 'Florish and Blotts ',
+    descripcion: 'Encuentra todos los libros que necesitas para iniciar tu nuevo año escolar.',
+    img: `./media/flourishblotts.png`,
   },
 ]
 
@@ -52,7 +55,7 @@ class Usuario {
 let button = $('#button');
 let welcome = $('#welcome');
 let sections = $('#sections')
-
+let counter = 0;
 
 function ingresarUsuario() {
   let username = $('#username-login').val();
@@ -68,25 +71,31 @@ const user = JSON.parse(localStorage.getItem('usuario'));
 
 button.on('click', ingresarUsuario);
 $('.form-container > p').addClass('prueba');
-welcome.append(`<h2 class='welcome-information-titulo'>Bienvenida, ${user.nombre}<h2>`);
+welcome.append(`<h2 class='welcome-information-titulo'>Hola, ${user.nombre}!<h2>`);
 welcome.append(`<p class='welcome-information-cta'>
-Da un paseo por nuestro sitio y no te olvides de visitar la tienda exclusiva para magos
+Da un paseo por nuestro sitio y no te olvides de visitar las tienda exclusiva para magos
 </p>`);
 
 function crearTarjetas (sectionCards) {
+
   sectionCards.map(card => {
+    counter++
+    imgUrl = card.img;
     sections.append(`<div class="card-body">
-    <div class="card-img"></div>
-    <div class="card-title"><p>Prueba de texto</p></div>
-    <div class="card-description"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore officiis mollitia obcaecati quae accusamus nihil!</p></div>
-    <input type="button" class='boton-card' id='' value='Ir a Ollivanders'>
+    <div class="card-img" id=${card.id}></div>
+    <div class="card-title" id=${card.nombre.toLowerCase()}><p>${card.nombre}</p></div>
+    <div class="card-description"><p>${card.descripcion}</p></div>
+    <input type="button" class='boton-card' id='' value='Ir a la tienda'>
   </div>`)
+  $(`#${card.id}`).css('background-image', 'url("' + imgUrl + '")');
   });
 };
 
-crearTarjetas(sectionCards);
 
-
+$('.sections-bg').hover(function() {
+  if(counter >= 1) return;
+  crearTarjetas(sectionCards);
+})
 
 
 

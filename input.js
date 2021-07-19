@@ -1,4 +1,4 @@
-// /* DATA */
+// DATA 
 // const label = [
 //   { id: 'nombre-label', for: 'nombre', text: `¿Cómo te llamas?` },
 //   { id: 'hechizo-label', for: 'hechizo', text: `¿Cúal es tu hechizo favorito?` },
@@ -14,51 +14,51 @@
 //   { placeholder: 'Edad', type: inputStyle[0], class: inputStyle[1] },
 // ];
 
-// const casas = [ `Gryffindor`, `Slytherin`, `Ravenclaw`, `Hufflepuff`];
+const casas = [ `Gryffindor`, `Slytherin`, `Ravenclaw`, `Hufflepuff`];
 
-// /* DOM ELEMENTS */
-// const casasContainer = document.getElementById('Casas');
-// const form = document.getElementById('formulario');
-// const infoTitle = document.getElementById('information-title');
-// let busquedaBox = createDomElement(`div`, `Busqueda-box`, `busqueda-box`);
-// let busqueda = createDomElement(`input`, `Busqueda`,'busqueda text-center', `input`);
-// busqueda.setAttribute('placeholder', 'Hechizo')
-// busqueda.addEventListener('keypress', (e) => {
-//   if (e.key === 'Enter') buscarHechizo();
-// })
+/* DOM ELEMENTS */
+const casasContainer = document.getElementById('Casas');
+const form = document.getElementById('formulario');
+const infoTitle = document.getElementById('information-title');
+let busquedaBox = createDomElement(`div`, `Busqueda-box`, `busqueda-box`);
+let busqueda = createDomElement(`input`, `Busqueda`,'busqueda text-center', `input`);
+busqueda.setAttribute('placeholder', 'Hechizo')
+busqueda.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') buscarHechizo();
+})
 
-// let button = createDomElement(`input`,'busqueda-boton', 'boton-seleccion', `button`);
-// button.setAttribute('value', 'Buscar');
+let searchButton = createDomElement(`input`,'busqueda-boton', 'boton-seleccion', `button`);
+searchButton.setAttribute('value', 'Buscar');
 
-// /* DOM EVENT HANDLERS */
-// button.addEventListener('click', buscarHechizo);
+/* DOM EVENT HANDLERS */
+searchButton.addEventListener('click', buscarHechizo);
 
-// /* DOM INSERTIONS */
-// form.prepend(busquedaBox);
-// busquedaBox.prepend(busqueda);
-// busquedaBox.append(button);
+/* DOM INSERTIONS */
+form.prepend(busquedaBox);
+busquedaBox.prepend(busqueda);
+busquedaBox.append(searchButton);
 
-// /* FUNCTIONS */
-// function buscarHechizo(Spells) {
-//   let hechizoEncontrado = spells.find(spell => spell.hechizo.toLowerCase() == busqueda.value.toLowerCase());
-//   hechizoEncontrado ? infoTitle.textContent = hechizoEncontrado.uso : infoTitle.textContent = `No pudimos encontrar ese hechizo...`
-// };
+/* FUNCTIONS */
+function buscarHechizo(Spells) {
+  let hechizoEncontrado = spells.find(spell => spell.hechizo.toLowerCase() == busqueda.value.toLowerCase());
+  hechizoEncontrado ? infoTitle.textContent = hechizoEncontrado.uso : infoTitle.textContent = `No pudimos encontrar ese hechizo...`
+};
 
-// function crearCasas(casas) {
-//   casas.map(c => {
-//     let i = document.createElement('i');
-//     i.setAttribute('id', `${c}`);
-//     i.setAttribute('class', `${c.toLowerCase()}`);
-//     casasContainer.appendChild(i);
-//   });
-// };
+function crearCasas(casas) {
+  casas.map(c => {
+    let i = document.createElement('i');
+    i.setAttribute('id', `${c}`);
+    i.setAttribute('class', `${c.toLowerCase()}`);
+    casasContainer.appendChild(i);
+  });
+};
 
-// function createDomElement(type, id, className, inputType) {
-//   let element = document.createElement(type);
-//   element.setAttribute('id', id);
-//   if(className) element.setAttribute('class', className);
-//   if(inputType) element.setAttribute('type', inputType);
-//   return element;
-// };
+function createDomElement(type, id, className, inputType) {
+  let element = document.createElement(type);
+  element.setAttribute('id', id);
+  if(className) element.setAttribute('class', className);
+  if(inputType) element.setAttribute('type', inputType);
+  return element;
+};
 
-// crearCasas(casas);
+crearCasas(casas);
