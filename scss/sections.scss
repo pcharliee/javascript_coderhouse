@@ -1,74 +1,108 @@
 @import 'utils';
 
+*{
+  // border: 1px red dotted;
+}
+
 .sections-bg {
   @include bg-img-cover;
   background-image: url('../media/diagon.jpg');
   background-position: center bottom;
   height: 100vh;
   @include fl-row;
-  align-items: center;
-  justify-content: center;
+  @include fl-center;
 }
 
-.card-body {
+.cards-section {
+  @include fl-row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
   @include glass;
-  @include fl-col;
-  height: auto;
-  max-height: 500px;
-  width: 200px;
-  margin: 0 20px;
-  background-color: #0e1a407c;
-  padding: 0;
-  border-radius: 5px;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-img {
-  @include bg-img-contain;
-  background-image: url('../media/Ollivanders.jpg');
-  background-position: center;
-  height: 200px;
-  width: 200px;
-  border-radius: 5px;
-}
-
-.card-title {
-  font-family: 'HarryPotter';
-  color: $light-gray;
-  text-align: center;
-  font-size: 2rem;
-  margin-top: 10px;
-  p {
-    padding: 0;
-    margin: 0;
-  }
-}
-
-.card-description {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: $hu;
-  height: 150px;
-  max-height: 200px;
-  padding: 0 20px;
-  p {
-    padding: 0;
-    margin: 0;
-  }
-}
-
-.boton-card {
-  background: none;
-  width: 100px;
-  border: none;
-  color: $light-gray;
-  padding: 20px 0;
-  text-align: center;
-}
-
-.boton-card:hover {
-  background-color: $sl;
+  width: 280px;
+  height: 360px;
   border-radius: 10px;
-  opacity: 0.9
+  padding: 1.5rem;
+  background:#0e1a409c;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  transition: 0.4s ease-out;
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+  img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
+.card:hover {
+  transform: translateY(-20px);
+}
+.card:hover:before {
+  opacity: 1;
+}
+.card:hover .info {
+  opacity: 1;
+  transform: translateY(0px);
+}
+.card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.card {
+  .info {
+    @include fl-col;
+    @include fl-center;
+    position: relative;
+    z-index: 3;
+    color: white;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.5s;
+    text-align: center;
+    margin: auto;
+    h3 {
+      font-family: 'HarryPotter';
+      font-size: 2.5rem;
+
+    }
+    p {
+      letter-spacing: 1px;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+    input {
+      padding: 0.6rem;
+      outline: none;
+      border: none;
+      border-radius: 3px;
+      background: white;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.4s ease;
+    }
+  }
+}
+
+
+
+
 

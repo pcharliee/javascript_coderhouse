@@ -10,12 +10,15 @@
   background-image: url('../media/mist.jpg');
   background-position: center left;
   height: 100vh;
+  img {
+    filter: invert(0.9)
+  }
 }
 
 .index-cta {
   @include bg-img-contain;
   @include glass;
-  background-image: url('../media/logo-hogwarts.png');
+  background-image: url('../media/marca_tenebrosa.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(1, 9, 14, 0.692);
@@ -28,12 +31,11 @@
 
 .form-container {
   @include fl-col;
+  @include fl-center;
   @include glass;
   background-color: $gr-g;
   margin: 0 30px 0 0;
-  align-items: center;
-  justify-content: center;
-  height: 380px;
+  height: 400px;
   width: 300px;
   border-radius: 5px;
   p {
@@ -47,14 +49,13 @@
 
 .form {
   @include fl-col;
+  @include fl-center;
   padding: 10px;
   background-color: rgb(240, 240, 240);
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
   // height: 70%;
-  align-items: center;
-  justify-content: center;
   width: 270px;
-  transform: translate(50px, 10px);
+  transform: translate(50px, 5px);
   font-size: 14px;
   border-radius: 5px;
 }
@@ -76,10 +77,10 @@
 }
 
 .btn-login {
-  transform: translate(95px, 15px);
+  transform: translate(95px, 10px);
   background: none;
   border: none;
-  color: $light-gray;
+  padding: 10px
 }
 
 .bio-login {

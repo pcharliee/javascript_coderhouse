@@ -1,0 +1,61 @@
+@import 'utils';
+
+*{
+  // border: 1px red dotted;
+}
+
+.ollivanders-section {
+  @include bg-img-cover;
+  background-image: url('../media/Ollivanders-bg.png');
+  height: 100vh;
+  background-position: center bottom;
+}
+
+.ollivander-cards {
+  @include fl-col;
+  @include fl-center;
+  background-color: rgb(2, 21, 32)
+
+}
+
+.option-stage {
+  border: 1px white dotted;
+  height: 150px;
+  width: 400px;
+  // border-radius: 50px 0 50px 0px;
+  background-color: none;
+}
+
+.option:before {
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  content: 'hola';
+  display: inline;
+  margin: 20px;
+  border-radius: 100%
+}
+.option-showcase{
+  @include fl-col; 
+  @include fl-center;
+  margin-top: 10px;
+  border: 1px red dotted;
+  height: 200px;
+  width: 500px;
+  padding: 20px;
+  &:before {
+    content: 'previous';
+    transform: translate(-300px, 100px)
+  }
+  &::after{
+    content: 'next';
+    transform: translate(285px, -90px)
+  }
+  h3 {
+    text-align: center;
+    margin: 10px 0;
+  }
+  p {
+    font-size: 1rem;
+  }
+}

@@ -8,8 +8,7 @@
   top: 0px;
   border-radius: 0 125px 125px 0;
   @include fl-col;
-  align-items: center;
-  justify-content: center;
+  @include fl-center;
 }
 
 .sidebar-lista {

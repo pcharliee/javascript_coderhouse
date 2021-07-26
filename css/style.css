@@ -13,6 +13,8 @@ html {
   background-image: url("../media/mist.jpg");
   background-position: center left;
   height: 100vh; }
+  .index-bg img {
+    filter: invert(0.9); }
 
 .index-cta {
   background-size: contain;
@@ -21,7 +23,7 @@ html {
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  background-image: url("../media/logo-hogwarts.png");
+  background-image: url("../media/marca_tenebrosa.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(1, 9, 14, 0.692);
@@ -32,14 +34,14 @@ html {
 .form-container {
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   background-color: #740002b4;
   margin: 0 30px 0 0;
-  align-items: center;
-  justify-content: center;
-  height: 380px;
+  height: 400px;
   width: 300px;
   border-radius: 5px; }
   .form-container p {
@@ -52,13 +54,13 @@ html {
 .form {
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
   padding: 10px;
   background-color: #f0f0f0;
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
-  align-items: center;
-  justify-content: center;
   width: 270px;
-  transform: translate(50px, 10px);
+  transform: translate(50px, 5px);
   font-size: 14px;
   border-radius: 5px; }
 
@@ -76,10 +78,10 @@ html {
     outline: none; }
 
 .btn-login {
-  transform: translate(95px, 15px);
+  transform: translate(95px, 10px);
   background: none;
   border: none;
-  color: #e7e7e7; }
+  padding: 10px; }
 
 .bio-login {
   height: 50px; }
@@ -103,9 +105,9 @@ html {
 .welcome-information {
   display: flex;
   flex-flow: column nowrap;
-  padding: 20px;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  padding: 20px;
   height: 100vh; }
 
 .welcome-information-titulo {
@@ -114,7 +116,24 @@ html {
   color: #e7e7e7; }
 
 .welcome-information-cta {
-  color: #e7e7e7; }
+  color: #e7e7e7;
+  display: none; }
+
+.scroll-to {
+  box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background-color: #f8f4f4a1;
+  border-radius: 50px;
+  height: 70px;
+  width: 70px;
+  position: fixed;
+  text-align: center;
+  top: 87vh;
+  left: 47vw;
+  z-index: 4;
+  padding: 10px;
+  cursor: pointer; }
 
 .sections-bg {
   background-size: cover;
@@ -128,289 +147,138 @@ html {
   align-items: center;
   justify-content: center; }
 
-.card-body {
-  box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  display: flex;
-  flex-flow: column nowrap;
-  height: auto;
-  max-height: 500px;
-  width: 200px;
-  margin: 0 20px;
-  background-color: #0e1a407c;
-  padding: 0;
-  border-radius: 5px;
-  align-items: center;
-  justify-content: center; }
-
-.card-img {
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: block;
-  background-image: url("../media/Ollivanders.jpg");
-  background-position: center;
-  height: 200px;
-  width: 200px;
-  border-radius: 5px; }
-
-.card-title {
-  font-family: 'HarryPotter';
-  color: #e7e7e7;
-  text-align: center;
-  font-size: 2rem;
-  margin-top: 10px; }
-  .card-title p {
-    padding: 0;
-    margin: 0; }
-
-.card-description {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: #ffdb00;
-  height: 150px;
-  max-height: 200px;
-  padding: 0 20px; }
-  .card-description p {
-    padding: 0;
-    margin: 0; }
-
-.boton-card {
-  background: none;
-  width: 100px;
-  border: none;
-  color: #e7e7e7;
-  padding: 20px 0;
-  text-align: center; }
-
-.boton-card:hover {
-  background-color: #1a472a;
-  border-radius: 10px;
-  opacity: 0.9; }
-
-.producto {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: space-around;
-  width: 280px;
-  height: 50vh;
-  max-height: 390px;
-  background-color: rgba(245, 245, 245, 0.822);
-  padding: 20px;
-  border-radius: 10px; }
-  .producto .titulo {
-    margin: 0;
-    font-family: 'Tangerine', cursive;
-    font-size: 42px;
-    font-weight: 700; }
-
-.producto .varita-de-sauco {
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: block;
-  background-image: url("../media/sauco.png");
-  height: 172px;
-  width: 300px;
-  border-radius: 10px;
-  background-color: rgba(99, 145, 95, 0.575); }
-
-.producto .boton-comprar {
-  height: 30px;
-  width: 80px;
-  border-radius: 10px;
-  background-color: #83553d;
-  border: none;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  cursor: pointer;
-  color: white; }
-
-.producto .boton-comprar.disabled {
-  cursor: not-allowed;
-  background-color: #83563d88; }
-
-body {
-  padding: 0;
-  margin: 0; }
-
-.content {
+.cards-section {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  text-align: center; }
-  .content ul {
-    padding: 0; }
-  .content li {
-    list-style: none; }
-
-.selection-area {
-  display: flex;
-  flex-flow: column nowrap;
-  box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  align-items: center;
-  height: 80%;
-  width: 500px;
-  background: rgba(197, 192, 192, 0.521);
-  padding: 20px;
-  margin: 0 20px 0 0; }
-  .selection-area .titulo {
-    margin: 0;
-    font-family: 'Tangerine', cursive;
-    font-size: 50px;
-    font-weight: 700; }
-  .selection-area p {
-    font-size: 1rem;
-    margin: 3px 0 20px 0; }
-  .selection-area strong {
-    font-size: 16px;
-    color: #38833c; }
-  .selection-area .casas {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin: 20px 0 0 0; }
-
-.center-block {
-  display: flex;
-  flex-flow: column nowrap;
-  box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
-  padding: 20px;
-  align-items: center;
-  justify-content: space-between; }
-
-.center-block .box {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between; }
-
-body {
-  background-image: url("../media/great-hall.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: block;
-  background-position: center left;
-  margin: 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; }
-
-.ollivanders {
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: block;
-  background-image: url("../media/ollivanders.png");
-  height: 210px;
-  width: 400px; }
-
-.marca_tenebrosa {
-  height: 90vh;
-  max-width: 30vw;
-  display: inline; }
-
-.slytherin {
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: block;
-  background-image: url("../media/slytherin.png");
-  width: 112px;
-  height: 122px; }
-
-.gryffindor {
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: block;
-  background-image: url("../media/gryffindor.png");
-  width: 112px;
-  height: 122px; }
-
-.ravenclaw {
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: block;
-  background-image: url("../media/ravenclaw.png");
-  width: 112px;
-  height: 122px; }
-
-.hufflepuff {
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: block;
-  background-image: url("../media/hufflepuff.png");
-  width: 112px;
-  height: 122px; }
-
-.sidebar-logo {
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: block;
-  background-image: url("../media/hogwarts-logo.png");
-  width: 90px;
-  height: 100px; }
-
-.botones {
-  display: flex;
-  flex-flow: column nowrap;
-  height: 80%;
-  width: 70%;
-  align-items: center;
-  justify-content: space-between; }
-
-.boton-seleccion {
-  height: 50px;
-  width: 100px;
-  border-radius: 10px;
-  border: none;
-  background-color: #444444;
-  color: white;
-  font-weight: 700;
-  font-size: 1rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; }
-
-.boton-seleccion:hover {
-  background: #1A472A; }
-
-.botones-seleccionar-informacion {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-around;
-  height: 150px; }
-
-.busqueda {
-  border-radius: 5px;
-  border: none; }
-
-.busqueda-box {
-  display: flex;
-  flex-flow: row nowrap;
-  width: 100%;
+  flex-wrap: wrap;
   justify-content: space-around; }
 
-.title {
-  height: 20px; }
-
-.informacion {
-  background-color: rgba(245, 245, 245, 0.822);
-  margin: 0 0 0 20px;
-  width: 300px;
+.card {
+  box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  width: 280px;
+  height: 360px;
   border-radius: 10px;
+  padding: 1.5rem;
+  background: #0e1a409c;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  transition: 0.4s ease-out;
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5); }
+  .card img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0; }
+
+.card:hover {
+  transform: translateY(-20px); }
+
+.card:hover:before {
+  opacity: 1; }
+
+.card:hover .info {
+  opacity: 1;
+  transform: translateY(0px); }
+
+.card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+  transition: 0.5s;
+  opacity: 0; }
+
+.card .info {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+  color: white;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.5s;
+  text-align: center;
+  margin: auto; }
+  .card .info h3 {
+    font-family: 'HarryPotter';
+    font-size: 2.5rem; }
+  .card .info p {
+    letter-spacing: 1px;
+    font-size: 15px;
+    margin-top: 8px; }
+  .card .info input {
+    padding: 0.6rem;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s ease; }
+
+.ollivanders-section {
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+  background-image: url("../media/Ollivanders-bg.png");
+  height: 100vh;
+  background-position: center bottom; }
+
+.ollivander-cards {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #021520; }
+
+.option-stage {
+  border: 1px white dotted;
+  height: 150px;
+  width: 400px;
+  background-color: none; }
+
+.option:before {
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  content: 'hola';
+  display: inline;
+  margin: 20px;
+  border-radius: 100%; }
+
+.option-showcase {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  border: 1px red dotted;
+  height: 200px;
+  width: 500px;
   padding: 20px; }
-
-.lista-dinamica {
-  max-height: 300px;
-  overflow: auto; }
-
-.item-informacion {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 14px;
-  font-weight: 800;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; }
+  .option-showcase:before {
+    content: 'previous';
+    transform: translate(-300px, 100px); }
+  .option-showcase::after {
+    content: 'next';
+    transform: translate(285px, -90px); }
+  .option-showcase h3 {
+    text-align: center;
+    margin: 10px 0; }
+  .option-showcase p {
+    font-size: 1rem; }

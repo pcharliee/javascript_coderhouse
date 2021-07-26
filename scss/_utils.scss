@@ -20,6 +20,11 @@
   flex-flow: row nowrap;
 }
 
+@mixin fl-center {
+  align-items: center;
+  justify-content: center;
+}
+
 @mixin glass {
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
   backdrop-filter: blur( 4px );

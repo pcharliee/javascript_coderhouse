@@ -9,8 +9,7 @@ body {
 .content {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
+  @include fl-center;
   text-align: center;
   ul { padding: 0}
   li {

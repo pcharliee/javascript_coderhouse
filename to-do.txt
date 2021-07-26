@@ -1,4 +1,23 @@
-[] - cambiar prompts para que sean inputs
-[] - generar HTML con js
-[] - rediseno del sitio
-[] - limpiar archivos scss (botones sobre todo)
+// INDEX //
+
+[] == arreglar imagen de Hogwarts
+[] == hacer que sea necesario escribir sino no deja ingresar
+[] == hide scroll down button
+
+// LANDING //
+
+[x] == crear boton que te lleve a la seccion de abajo 
+[x] == cartas del landing que on hover cambien y digan ir a la tienda
+[] == crear un carrito de compra vacio upon landing
+[] == flying broom ? mas decoracion en el landing
+[] == que cuando refresque la pagina aparezca arriba
+
+// TIENDA //
+
+[] == crear archivo donde va a estar la informacion de cada seccion
+[] == agregarle las funcionalidades para que agregue a un carrito de compra
+
+// EXTRAS // 
+
+[] == lograr que el carrito de compra aparezca desde la derecha y muestre los items
+      que deje manipularlos (sacar, agregar)
