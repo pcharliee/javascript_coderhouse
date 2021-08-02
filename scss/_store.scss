@@ -1,0 +1,74 @@
+@import 'utils';
+
+.ollivanders-section {
+  @include bg-img-cover;
+  background-image: url('../media/fondos/Ollivanders-bg.png');
+  height: 100vh;
+  background-position: center bottom;
+}
+
+.ollivander-cards {
+  @include fl-col;
+  @include fl-center;
+  background-color: rgb(2, 21, 32)
+}
+
+.wand-option {
+  @include fl-col;
+  @include fl-center;
+  .add-to-cart {
+    // display: none;
+    width: 50%;
+  }
+}
+
+.option-stage {
+  opacity: 0;
+  display: flex;
+  justify-content: flex-end;
+  border: 1px white dotted;
+  height: 300px;
+  width: 550px;
+  background-color: $light-gray;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 10px;
+  .option-information{
+    @include fl-col;
+    width: 100%;
+    .option-title{
+      @include hp;
+      font-size: 3rem;
+      margin: auto;
+    }
+    .option-description {
+      padding: 10px;
+    }
+    .option-details {
+      p { margin: 0 }
+      @include fl-row;
+      text-align: center;
+      width: 100%;
+      .options-details-item {
+        width: 33.3%;
+        .option-details-title {
+          margin: 10px 0;
+          font-weight: bold;
+        }
+        .option-details-info {
+          padding: 0 10px 10px 10px;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+  img.varita {
+    height: 100%;
+    width:auto;
+    filter: drop-shadow(2px 4px 6px black)
+  }
+}
+
+.selected {
+  opacity: 1;
+}

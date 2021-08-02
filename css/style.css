@@ -10,9 +10,11 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
-  background-image: url("../media/mist.jpg");
+  background-image: url("../media/fondos/mist.jpg");
   background-position: center left;
   height: 100vh; }
+  .index-bg img {
+    filter: invert(0.9); }
 
 .index-cta {
   background-size: contain;
@@ -21,7 +23,7 @@ html {
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  background-image: url("../media/logo-hogwarts.png");
+  background-image: url("../media/marca_tenebrosa.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(1, 9, 14, 0.692);
@@ -32,14 +34,14 @@ html {
 .form-container {
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   background-color: #740002b4;
   margin: 0 30px 0 0;
-  align-items: center;
-  justify-content: center;
-  height: 380px;
+  height: 400px;
   width: 300px;
   border-radius: 5px; }
   .form-container p {
@@ -52,13 +54,13 @@ html {
 .form {
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
   padding: 10px;
   background-color: #f0f0f0;
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
-  align-items: center;
-  justify-content: center;
   width: 270px;
-  transform: translate(50px, 10px);
+  transform: translate(50px, 5px);
   font-size: 14px;
   border-radius: 5px; }
 
@@ -76,10 +78,10 @@ html {
     outline: none; }
 
 .btn-login {
-  transform: translate(95px, 15px);
+  transform: translate(95px, 10px);
   background: none;
   border: none;
-  color: #e7e7e7; }
+  padding: 10px; }
 
 .bio-login {
   height: 50px; }
@@ -88,7 +90,7 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
-  background-image: url("../media/hg-bg.jpg");
+  background-image: url("../media/fondos/hg-bg.jpg");
   background-position: left center;
   height: 100vh; }
 
@@ -103,9 +105,9 @@ html {
 .welcome-information {
   display: flex;
   flex-flow: column nowrap;
-  padding: 20px;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  padding: 20px;
   height: 100vh; }
 
 .welcome-information-titulo {
@@ -114,13 +116,30 @@ html {
   color: #e7e7e7; }
 
 .welcome-information-cta {
-  color: #e7e7e7; }
+  color: #e7e7e7;
+  display: none; }
+
+.scroll-to {
+  box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background-color: #f8f4f4a1;
+  border-radius: 50px;
+  height: 70px;
+  width: 70px;
+  position: fixed;
+  text-align: center;
+  top: 87vh;
+  left: 47vw;
+  z-index: 4;
+  padding: 10px;
+  cursor: pointer; }
 
 .sections-bg {
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
-  background-image: url("../media/diagon.jpg");
+  background-image: url("../media/fondos/diagon.jpg");
   background-position: center bottom;
   height: 100vh;
   display: flex;
@@ -128,48 +147,153 @@ html {
   align-items: center;
   justify-content: center; }
 
-.card-body {
+.cards-section {
+  display: flex;
+  flex-flow: row nowrap;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+
+.card {
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  width: 280px;
+  height: 360px;
+  border-radius: 10px;
+  padding: 1.5rem;
+  background: #0e1a409c;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  transition: 0.4s ease-out;
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5); }
+  .card img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0; }
+
+.card:hover {
+  transform: translateY(-20px); }
+
+.card:hover:before {
+  opacity: 1; }
+
+.card:hover .info {
+  opacity: 1;
+  transform: translateY(0px); }
+
+.card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+  transition: 0.5s;
+  opacity: 0; }
+
+.card .info {
   display: flex;
   flex-flow: column nowrap;
-  height: 400px;
-  width: 300px;
-  margin: 0 20px;
-  background-color: #0e1a407c;
-  padding: 0;
-  border-radius: 5px; }
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+  color: white;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.5s;
+  text-align: center;
+  margin: auto; }
+  .card .info h3 {
+    font-family: 'HarryPotter';
+    font-size: 2.5rem; }
+  .card .info p {
+    letter-spacing: 1px;
+    font-size: 15px;
+    margin-top: 8px; }
+  .card .info input {
+    padding: 0.6rem;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s ease; }
 
-.card-img {
+.ollivanders-section {
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
-  background-image: url("../media/Ollivanders.jpg");
-  height: 200px;
-  width: auto;
-  border-radius: 5px; }
+  background-image: url("../media/fondos/Ollivanders-bg.png");
+  height: 100vh;
+  background-position: center bottom; }
 
-.card-title {
-  font-family: 'HarryPotter';
-  color: #e7e7e7;
-  text-align: center;
-  font-size: 2rem; }
-  .card-title p {
-    padding: 0;
-    margin: 0; }
+.ollivander-cards {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #021520; }
 
-.card-description {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: #ffdb00;
-  padding: 0 20px; }
-  .card-description p {
-    padding: 0;
-    margin: 0; }
+.wand-option {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center; }
+  .wand-option .add-to-cart {
+    width: 50%; }
 
-.boton-card {
-  background: none;
-  border: none;
-  color: #e7e7e7;
-  padding: 20px 0;
-  text-align: center; }
+.option-stage {
+  opacity: 0;
+  display: flex;
+  justify-content: flex-end;
+  border: 1px white dotted;
+  height: 300px;
+  width: 550px;
+  background-color: #e7e7e7;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 10px; }
+  .option-stage .option-information {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%; }
+    .option-stage .option-information .option-title {
+      font-family: 'HarryPotter';
+      font-size: 3rem;
+      margin: auto; }
+    .option-stage .option-information .option-description {
+      padding: 10px; }
+    .option-stage .option-information .option-details {
+      display: flex;
+      flex-flow: row nowrap;
+      text-align: center;
+      width: 100%; }
+      .option-stage .option-information .option-details p {
+        margin: 0; }
+      .option-stage .option-information .option-details .options-details-item {
+        width: 33.3%; }
+        .option-stage .option-information .option-details .options-details-item .option-details-title {
+          margin: 10px 0;
+          font-weight: bold; }
+        .option-stage .option-information .option-details .options-details-item .option-details-info {
+          padding: 0 10px 10px 10px;
+          font-size: 0.9rem; }
+  .option-stage img.varita {
+    height: 100%;
+    width: auto;
+    filter: drop-shadow(2px 4px 6px black); }
+
+.selected {
+  opacity: 1; }
