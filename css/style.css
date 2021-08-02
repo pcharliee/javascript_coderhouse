@@ -10,7 +10,7 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
-  background-image: url("../media/mist.jpg");
+  background-image: url("../media/fondos/mist.jpg");
   background-position: center left;
   height: 100vh; }
   .index-bg img {
@@ -90,7 +90,7 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
-  background-image: url("../media/hg-bg.jpg");
+  background-image: url("../media/fondos/hg-bg.jpg");
   background-position: left center;
   height: 100vh; }
 
@@ -139,7 +139,7 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
-  background-image: url("../media/diagon.jpg");
+  background-image: url("../media/fondos/diagon.jpg");
   background-position: center bottom;
   height: 100vh;
   display: flex;
@@ -235,7 +235,7 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
-  background-image: url("../media/Ollivanders-bg.png");
+  background-image: url("../media/fondos/Ollivanders-bg.png");
   height: 100vh;
   background-position: center bottom; }
 
@@ -246,39 +246,54 @@ html {
   justify-content: center;
   background-color: #021520; }
 
-.option-stage {
-  border: 1px white dotted;
-  height: 150px;
-  width: 400px;
-  background-color: none; }
-
-.option:before {
-  height: 20px;
-  width: 20px;
-  background-color: white;
-  content: 'hola';
-  display: inline;
-  margin: 20px;
-  border-radius: 100%; }
-
-.option-showcase {
+.wand-option {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  border: 1px red dotted;
-  height: 200px;
-  width: 500px;
-  padding: 20px; }
-  .option-showcase:before {
-    content: 'previous';
-    transform: translate(-300px, 100px); }
-  .option-showcase::after {
-    content: 'next';
-    transform: translate(285px, -90px); }
-  .option-showcase h3 {
-    text-align: center;
-    margin: 10px 0; }
-  .option-showcase p {
-    font-size: 1rem; }
+  justify-content: center; }
+  .wand-option .add-to-cart {
+    width: 50%; }
+
+.option-stage {
+  opacity: 0;
+  display: flex;
+  justify-content: flex-end;
+  border: 1px white dotted;
+  height: 300px;
+  width: 550px;
+  background-color: #e7e7e7;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 10px; }
+  .option-stage .option-information {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%; }
+    .option-stage .option-information .option-title {
+      font-family: 'HarryPotter';
+      font-size: 3rem;
+      margin: auto; }
+    .option-stage .option-information .option-description {
+      padding: 10px; }
+    .option-stage .option-information .option-details {
+      display: flex;
+      flex-flow: row nowrap;
+      text-align: center;
+      width: 100%; }
+      .option-stage .option-information .option-details p {
+        margin: 0; }
+      .option-stage .option-information .option-details .options-details-item {
+        width: 33.3%; }
+        .option-stage .option-information .option-details .options-details-item .option-details-title {
+          margin: 10px 0;
+          font-weight: bold; }
+        .option-stage .option-information .option-details .options-details-item .option-details-info {
+          padding: 0 10px 10px 10px;
+          font-size: 0.9rem; }
+  .option-stage img.varita {
+    height: 100%;
+    width: auto;
+    filter: drop-shadow(2px 4px 6px black); }
+
+.selected {
+  opacity: 1; }

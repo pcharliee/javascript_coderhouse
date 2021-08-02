@@ -1,12 +1,8 @@
 @import 'utils';
 
-*{
-  // border: 1px red dotted;
-}
-
 .ollivanders-section {
   @include bg-img-cover;
-  background-image: url('../media/Ollivanders-bg.png');
+  background-image: url('../media/fondos/Ollivanders-bg.png');
   height: 100vh;
   background-position: center bottom;
 }
@@ -15,47 +11,64 @@
   @include fl-col;
   @include fl-center;
   background-color: rgb(2, 21, 32)
+}
 
+.wand-option {
+  @include fl-col;
+  @include fl-center;
+  .add-to-cart {
+    // display: none;
+    width: 50%;
+  }
 }
 
 .option-stage {
+  opacity: 0;
+  display: flex;
+  justify-content: flex-end;
   border: 1px white dotted;
-  height: 150px;
-  width: 400px;
-  // border-radius: 50px 0 50px 0px;
-  background-color: none;
+  height: 300px;
+  width: 550px;
+  background-color: $light-gray;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 10px;
+  .option-information{
+    @include fl-col;
+    width: 100%;
+    .option-title{
+      @include hp;
+      font-size: 3rem;
+      margin: auto;
+    }
+    .option-description {
+      padding: 10px;
+    }
+    .option-details {
+      p { margin: 0 }
+      @include fl-row;
+      text-align: center;
+      width: 100%;
+      .options-details-item {
+        width: 33.3%;
+        .option-details-title {
+          margin: 10px 0;
+          font-weight: bold;
+        }
+        .option-details-info {
+          padding: 0 10px 10px 10px;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+  img.varita {
+    height: 100%;
+    width:auto;
+    filter: drop-shadow(2px 4px 6px black)
+  }
 }
 
-.option:before {
-  height: 20px;
-  width: 20px;
-  background-color: white;
-  content: 'hola';
-  display: inline;
-  margin: 20px;
-  border-radius: 100%
-}
-.option-showcase{
-  @include fl-col; 
-  @include fl-center;
-  margin-top: 10px;
-  border: 1px red dotted;
-  height: 200px;
-  width: 500px;
-  padding: 20px;
-  &:before {
-    content: 'previous';
-    transform: translate(-300px, 100px)
-  }
-  &::after{
-    content: 'next';
-    transform: translate(285px, -90px)
-  }
-  h3 {
-    text-align: center;
-    margin: 10px 0;
-  }
-  p {
-    font-size: 1rem;
-  }
+.selected {
+  opacity: 1;
 }
