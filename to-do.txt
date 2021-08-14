@@ -15,12 +15,18 @@
 
 // TIENDA //
 
-[] == crear archivo donde va a estar la informacion de cada seccion
-[] == agregarle las funcionalidades para que agregue a un carrito de compra
-
+[x] == crear archivo donde va a estar la informacion de cada seccion
+[-] == agregarle las funcionalidades para que agregue a un carrito de compra
+    [] == add item
+    [x] == si agrego, borro y trato de agregar, no carga el item
+    [x] == arreglar cuando se agrega un articulo nuevo
+    [x] == remove item
+    [] == basura
 // EXTRAS // 
 
-[] == lograr que el carrito de compra aparezca desde la derecha y muestre los items
+[] == habilitar funcionalidad para cambiar tarjetas con las flechas
+[] == cambiar tab title
+[x] == lograr que el carrito de compra aparezca desde la derecha y muestre los items
       que deje manipularlos (sacar, agregar)
 
 

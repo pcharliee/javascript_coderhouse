@@ -6,7 +6,7 @@
     "madera": "Saúco",
     "longitud": "38,1 cm",
     "description":"También conocida como el Palo de la Muerte y la Varita del Destino. Tiene la reputación de ser la varita más poderosa de todas.",
-    "precio": "10.000 galeones",
+    "precio": "100 galeones",
     "img": "../media/varitas/elder-wand.png"
   },
   {
@@ -28,5 +28,15 @@
     "description":"Hermana de la varita de Voldemort: las plumas de fénix en el núcleo son ambas de Fawkes",
     "precio": "6 galeones",
     "img": "../media/varitas/hp-wand.png"
+  },
+  {
+    "id": 3,
+    "nombre": "Varita de Voldemort",
+    "nucleo": "Pluma de fénix",
+    "madera": "Tejo",
+    "longitud": "34 cm",
+    "description":"Hermana de la varita de Harry: las plumas de fénix en el núcleo son ambas de Fawkes",
+    "precio": "120 galeones",
+    "img": "../media/varitas/voldemort-wand.png"
   }
 ]

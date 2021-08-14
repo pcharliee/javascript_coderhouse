@@ -53,7 +53,7 @@ cards.addClass('cards-section');
 function crearTarjetas (sectionCards) {
   sectionCards.map((card, index) => {
     counter++;
-    imgUrl = card.img;
+    // imgUrl = card.img;
     cards.append(`
     <div class="card" id=${index}>
       <img src=${card.img} id=${card.id}>
@@ -71,7 +71,6 @@ function crearTarjetas (sectionCards) {
     'filter': 'invert(0.9)'
   });
 };
-
 
 // DOM INTERACTIONS
 
@@ -95,7 +94,6 @@ $('.sections-bg').on('mouseenter', function () {
     $(`#${index}`).fadeIn(800)
   });
 });
-
 
 $('#scroll-to').on('click', function (e) {
   e.preventDefault;
@@ -129,14 +127,3 @@ anime.timeline({loop: false})
   duration: 1500,
   delay: (el, i) => 150 * (i+1)
 });
-
-
-
-
-
-
-
-
-
-
-

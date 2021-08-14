@@ -48,7 +48,6 @@ class Personaje {
   }
   calcularTiempo() {
     let graduacion = Number(this.edad) + 7;
-    
     alert(`Si eres buen estudiante, te graduarás cuando tengas ${graduacion} años`)
   }
 }
@@ -63,8 +62,6 @@ function obtenerNombre() {
   document.getElementById('nombre-label').style.textDecoration = 'line-through';
   usuarioCompletado++;
 }
-
-
 
 function obtenerEdad() {
   let input = prompt('Ingresa tu edad');

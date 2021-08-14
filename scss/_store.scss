@@ -1,34 +1,56 @@
 @import 'utils';
 
-.ollivanders-section {
+#ollivanders-section {
   @include bg-img-cover;
   background-image: url('../media/fondos/Ollivanders-bg.png');
   height: 100vh;
   background-position: center bottom;
+  opacity: 0.85
 }
 
 .ollivander-cards {
   @include fl-col;
   @include fl-center;
-  background-color: rgb(2, 21, 32)
-}
-
-.wand-option {
-  @include fl-col;
-  @include fl-center;
-  .add-to-cart {
-    // display: none;
-    width: 50%;
+  height: 100vh;
+  background-color: rgb(2, 21, 32);
+  .card-nav-buttons {
+    width: 35%;
+    @include fl-row;
+    justify-content: space-around;
+    transform: translate(0px, -15px);
+    input {
+      @include glass;
+      border-radius: 50%;
+      width: 30px;
+      border: none;
+      height: 30px;
+      color: $light-gray;
+    }
+    #next {
+      background-color:rgb(30, 119, 30)
+    }
+    #previous {
+      background-color:rgb(30, 119, 30)
+    }
+    .add-to-cart {
+      @include glass;
+      border: none;
+      border-radius: 10px;
+      background-color: #19b33ac7;
+      min-width: 150px;
+      height: 30px;
+      color: #ffff;
+      width: 50%;
+    }
   }
 }
 
 .option-stage {
-  opacity: 0;
   display: flex;
   justify-content: flex-end;
   border: 1px white dotted;
   height: 300px;
-  width: 550px;
+  width: 580px;
   background-color: $light-gray;
   box-sizing: border-box;
   border-radius: 5px;
@@ -38,10 +60,14 @@
     width: 100%;
     .option-title{
       @include hp;
+      width: 100%;
       font-size: 3rem;
       margin: auto;
     }
     .option-description {
+      @include fl-col;
+      justify-content: center;
+      min-height: 110px;
       padding: 10px;
     }
     .option-details {
@@ -51,6 +77,7 @@
       width: 100%;
       .options-details-item {
         width: 33.3%;
+        min-height: 118px;
         .option-details-title {
           margin: 10px 0;
           font-weight: bold;
@@ -64,11 +91,143 @@
   }
   img.varita {
     height: 100%;
-    width:auto;
-    filter: drop-shadow(2px 4px 6px black)
+    min-width: 130px;
+    max-width: 150px;
+    filter: drop-shadow(1px 0px 15px black)
   }
 }
 
-.selected {
-  opacity: 1;
+.trolley-cart {
+  @include bg-img-contain;
+  background-image: url('../media/misc/trolley.png');
+  position: fixed;
+  bottom: 5vh;
+  right: 5vw;
+  height: 60px;
+  width: 54px;
+  border-radius: 35%;
 }
+
+.cart-details {
+  @include glass;
+  @include fl-col;
+  @include fl-center;
+  background-color: rgba(255, 255, 255, 0.76);
+  padding: 10px;
+  max-height: 500px;
+  width: 330px;
+  position: absolute;
+  // background-color: whitesmoke;
+  bottom: 15vh;
+  right: 2vw;
+  border-radius: 5px;
+}
+
+.cart-container {
+  @include fl-col;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  
+  .cart-items-container{
+    width: 95%;
+    max-height: 320px;
+    // max-height: 345px;
+    overflow: auto;
+    border-radius: 5px;
+    
+    .cart-item {
+      @include fl-row;
+      justify-content: space-between;
+      @include glass;
+      background-color: rgba(2, 21, 32, 0.74);
+      font-size: 0.9rem;
+      border-radius: 5px;
+      margin: 20px 10px;
+      height: auto;
+      
+      .cart-item-info {
+        margin: 10px 0 0 10px;
+        width: 70%;
+        .cart-item-name {
+          color: #FFF;
+          font-size: 15px;
+          font-weight: 600;
+        }
+        .cart-item-price {
+          color: $light-gray;
+          font-weight: 300;
+        }
+        .cart-item-modifier {
+          @include fl-row;
+          justify-content: space-between;
+          align-items: center;
+          width: 80px;
+          background-color: whitesmoke;
+          border-radius: 5px;
+          transform: translate(-3px, 10px);
+          button {
+            width: 30%;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+          }
+          #cart-minus-btn {
+            border-radius: 5px 0 0 5px;
+            border-right: 1px $dark-gray solid
+          }
+          #cart-plus-btn {
+            border-radius: 0px 5px 5px 0;
+            border-left: 1px $dark-gray solid
+          }
+        }
+      }
+      .cart-item-img-container{
+        background-color: $light-gray;
+        border-radius: 0 5px 5px 0;
+        box-sizing: border-box;
+        width: 30%;
+        .cart-item-img {
+          margin-left: 15px;
+          width: auto;
+          height: 80px;
+          transform: rotate(355deg)
+        }
+      }
+    }
+  }
+  
+  .cart-summary {
+    @include fl-row;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+    margin-top: 10px;
+    p {
+      font-size: 30px;
+      font-family: 'HarryPotter', sans-serif;
+    }
+    span {
+      font-size: 16px;
+      color: $sl;
+    }
+  }
+  
+  .comprar-btn {
+    @include glass;
+    border: none;
+    border-radius: 40px;
+    width: 100px;
+    height: 40px;
+    background: rgba(4, 102, 4, 0.6);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 8.0px );
+    -webkit-backdrop-filter: blur( 8.0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    color: $light-gray;
+    margin: 10px;
+  }
+}
+
+// *{ border: 1px red dotted;}

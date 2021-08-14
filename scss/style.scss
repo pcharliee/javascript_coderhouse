@@ -10,6 +10,10 @@ html {
   scroll-behavior: smooth;
 }
 
+p {
+  margin: 0;
+}
+
 @import 'fonts';
 @import 'utils';
 @import 'login';
