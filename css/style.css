@@ -48,7 +48,7 @@ p {
   width: 300px;
   border-radius: 5px; }
   .form-container p {
-    font-family: 'HarryPotter';
+    font-family: 'HarryPotter', '';
     color: #ffdb00;
     font-size: 2rem;
     padding: 0;
@@ -114,7 +114,7 @@ p {
   height: 100vh; }
 
 .welcome-information-titulo {
-  font-family: 'HarryPotter';
+  font-family: 'HarryPotter', '';
   font-size: 6rem;
   color: #e7e7e7; }
 
@@ -234,29 +234,20 @@ p {
     cursor: pointer;
     transition: 0.4s ease; }
 
-#ollivanders-section {
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: block;
-  background-image: url("../media/fondos/Ollivanders-bg.png");
-  height: 100vh;
-  background-position: center bottom;
-  opacity: 0.85; }
-
-.ollivander-cards {
+.store-items-cards {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
   height: 100vh;
   background-color: #021520; }
-  .ollivander-cards .card-nav-buttons {
-    width: 35%;
+  .store-items-cards .card-nav-buttons {
     display: flex;
     flex-flow: row nowrap;
+    width: 20%;
     justify-content: space-around;
     transform: translate(0px, -15px); }
-    .ollivander-cards .card-nav-buttons input {
+    .store-items-cards .card-nav-buttons input {
       box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
@@ -264,12 +255,9 @@ p {
       width: 30px;
       border: none;
       height: 30px;
-      color: #e7e7e7; }
-    .ollivander-cards .card-nav-buttons #next {
+      color: #e7e7e7;
       background-color: #1e771e; }
-    .ollivander-cards .card-nav-buttons #previous {
-      background-color: #1e771e; }
-    .ollivander-cards .card-nav-buttons .add-to-cart {
+    .store-items-cards .card-nav-buttons .add-to-cart {
       box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
@@ -281,48 +269,87 @@ p {
       color: #ffff;
       width: 50%; }
 
-.option-stage {
+.broom-option .option-stage {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  width: 400px;
+  min-height: 610px;
+  max-height: 610px;
+  background-color: #e7e7e7; }
+  .broom-option .option-stage .option-information {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center; }
+    .broom-option .option-stage .option-information .option-title {
+      font-family: 'HarryPotter', '';
+      width: 100%;
+      font-size: 3rem;
+      margin: auto; }
+    .broom-option .option-stage .option-information .option-description {
+      font-size: 15px;
+      padding: 20px; }
+    .broom-option .option-stage .option-information span {
+      color: #5d5d5d;
+      font-weight: 500;
+      margin: 0px; }
+
+.broom-option img.item-img {
+  height: 300px;
+  width: auto; }
+
+.wand-option .option-stage {
   display: flex;
   justify-content: flex-end;
-  border: 1px white dotted;
   height: 300px;
   width: 580px;
   background-color: #e7e7e7;
   box-sizing: border-box;
   border-radius: 5px;
   padding: 10px; }
-  .option-stage .option-information {
+  .wand-option .option-stage .option-information {
     display: flex;
     flex-flow: column nowrap;
     width: 100%; }
-    .option-stage .option-information .option-title {
-      font-family: 'HarryPotter';
-      width: 100%;
-      font-size: 3rem;
-      margin: auto; }
-    .option-stage .option-information .option-description {
+    .wand-option .option-stage .option-information .option-title-container {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: center; }
+      .wand-option .option-stage .option-information .option-title-container .option-title {
+        font-family: 'HarryPotter', '';
+        width: 100%;
+        font-size: 3rem;
+        margin: auto; }
+      .wand-option .option-stage .option-information .option-title-container span {
+        color: #5d5d5d;
+        font-weight: 500;
+        margin: 0px; }
+    .wand-option .option-stage .option-information .option-description {
       display: flex;
       flex-flow: column nowrap;
       justify-content: center;
       min-height: 110px;
       padding: 10px; }
-    .option-stage .option-information .option-details {
+    .wand-option .option-stage .option-information .option-details {
       display: flex;
       flex-flow: row nowrap;
       text-align: center;
       width: 100%; }
-      .option-stage .option-information .option-details p {
+      .wand-option .option-stage .option-information .option-details p {
         margin: 0; }
-      .option-stage .option-information .option-details .options-details-item {
+      .wand-option .option-stage .option-information .option-details .options-details-item {
         width: 33.3%;
         min-height: 118px; }
-        .option-stage .option-information .option-details .options-details-item .option-details-title {
+        .wand-option .option-stage .option-information .option-details .options-details-item .option-details-title {
           margin: 10px 0;
           font-weight: bold; }
-        .option-stage .option-information .option-details .options-details-item .option-details-info {
+        .wand-option .option-stage .option-information .option-details .options-details-item .option-details-info {
           padding: 0 10px 10px 10px;
           font-size: 0.9rem; }
-  .option-stage img.varita {
+  .wand-option .option-stage img.item-img {
     height: 100%;
     min-width: 130px;
     max-width: 150px;
@@ -363,6 +390,11 @@ p {
   align-items: center;
   width: 100%;
   height: 100%; }
+  .cart-container .cart-title {
+    font-family: 'HarryPotter', '';
+    margin-top: 10px;
+    font-size: 2rem;
+    color: #0e1a40; }
   .cart-container .cart-items-container {
     width: 95%;
     max-height: 320px;
@@ -420,6 +452,21 @@ p {
           width: auto;
           height: 80px;
           transform: rotate(355deg); }
+      .cart-container .cart-items-container .cart-item .cart-remove-btn {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        border: 2px #740002 solid;
+        background: #fc5a3dd7;
+        text-align: center;
+        color: #e7e7e7;
+        font-size: 13px;
+        font-weight: 600;
+        right: -5px;
+        top: -5px;
+        border-radius: 50%; }
+        .cart-container .cart-items-container .cart-item .cart-remove-btn::before {
+          content: 'x'; }
   .cart-container .cart-summary {
     display: flex;
     flex-flow: row nowrap;
@@ -433,19 +480,22 @@ p {
     .cart-container .cart-summary span {
       font-size: 16px;
       color: #1a472a; }
-  .cart-container .comprar-btn {
-    box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border: none;
-    border-radius: 40px;
-    width: 100px;
-    height: 40px;
-    background: rgba(4, 102, 4, 0.6);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    color: #e7e7e7;
-    margin: 10px; }
+  .cart-container .cart-action-btn-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center; }
+    .cart-container .cart-action-btn-container .eliminar-btn {
+      border: none;
+      color: #740002;
+      background-color: transparent; }
+    .cart-container .cart-action-btn-container .comprar-btn {
+      box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      width: 100px;
+      background: rgba(4, 102, 4, 0.65);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #e7e7e7;
+      margin: 10px; }

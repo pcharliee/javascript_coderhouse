@@ -10,13 +10,9 @@ class Usuario {
   };
 };
 
-let button = $('#button');
-
 function loginSuccess() {
   let user = localStorage.getItem('usuario');
-  if(!user.nombre)
-  // localStorage.setItem('usuario', JSON.stringify({ nombre: 'Muggle sin nombre'}));
-  
+  // if(!user.nombre)
   location.href = '../landing.html';
 }
 
@@ -32,4 +28,4 @@ function ingresarUsuario(e) {
   loginSuccess();
 };
 
-button.on('click', ingresarUsuario);
+$('#button').on('click', ingresarUsuario);

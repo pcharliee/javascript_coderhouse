@@ -2,6 +2,7 @@
 const spells = [];
 const characters = [];
 const sectionCards = [];
+const usuario = localStorage.getItem('usuario');
 
 $('document').ready(() => {
   // HECHIZOS //

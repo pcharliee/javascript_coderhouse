@@ -1,3 +1,4 @@
+let user = JSON.parse(localStorage.getItem('usuario'))
 // DOM MANIPULATION
 
 $('#cart-display').append(`
@@ -94,8 +95,10 @@ function cartSummary() {
         <p>Precio total</p>
         <span id='precio-total'>${precioTotal} galeones</span>
       </div>
-      <button type='button' id='cart-eliminar' class=''>Eliminar items</button>
-      <button type='button' id='cart-comprar' class='comprar-btn'>Comprar</button>
+      <div class='cart-action-btn-container'>
+        <button type='button' id='cart-eliminar' class='eliminar-btn'>Eliminar items</button>
+        <button type='button' id='cart-comprar' class='comprar-btn'>Comprar</button>
+      </div>
     </div>
   `);
 
@@ -111,6 +114,7 @@ function deleteCartItems() {
     currentCart.forEach(item => {
       removeFromCartSuccess(item.id);
     });
+    location.reload();
   };
 };
 
@@ -138,6 +142,7 @@ function getItemsFromCart() {
         <div class='cart-item-img-container'>
           <img src=${item.thumbnail} class='cart-item-img'>
         </div>
+        <span id='cart-remove-btn-${item.id}' class="cart-remove-btn"></span>
       </div>
     `);
 
@@ -149,6 +154,10 @@ function getItemsFromCart() {
     $(`#cart-minus-btn-${item.id}`).on('click', function () {
       let currentQty = parseInt($(`#cart-item-counter-${item.id}`).text());
       decreaseCount(currentQty, item);
+    });
+
+    $(`#cart-remove-btn-${item.id}`).on('click', function () {
+      removeFromCartConfirm(item.id);
     });
 
     // Google Chrome render
@@ -170,9 +179,3 @@ $('#trolley').on('click', function () {
   cartOpened = !cartOpened;
   cartOpened ? cartOpenedSuccess() : $('#cart-display').toggle(400);
 });
-
-$('#cart-item-id-0.cart-item').on('click', function (e) {
-  console.log('eeee', e.target.value)
-});
-
-

@@ -17,7 +17,7 @@
 
 [x] == crear archivo donde va a estar la informacion de cada seccion
 [-] == agregarle las funcionalidades para que agregue a un carrito de compra
-    [] == add item
+    [x] == add item
     [x] == si agrego, borro y trato de agregar, no carga el item
     [x] == arreglar cuando se agrega un articulo nuevo
     [x] == remove item

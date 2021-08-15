@@ -1,15 +1,16 @@
 /* INFORMACION INICIAL PARA FUNCIONAR */
 const cart = [];
-const varitas = [];
+const storeItems = [];
 let cartOpened = false;
 
+
 $('document').ready(() => {
-  const VARITAS_JSON = "data/varitas.json";
-  $.getJSON(VARITAS_JSON, (req, res) => {
+  const ITEMS_JSON = "data/items.json";
+  $.getJSON(ITEMS_JSON, (req, res) => {
     if(res == 'success') {
-      req.map(el => varitas.push(el));
-      localStorage.setItem('varitas', JSON.stringify(varitas));
-      crearTarjetaVaritas(0);
+      req.map(el => storeItems.push(el));
+      localStorage.setItem('storeItems', JSON.stringify(storeItems));
+      crearTarjetaItem(Math.floor(Math.random() * storeItems.length));
     };
   });
 });
@@ -26,25 +27,25 @@ $('#cart-display').css({ 'display': 'none' });
 // FUNCTIONS 
 
 function previousCard() {
-  let limit = varitas.length -1;
+  let limit = storeItems.length -1;
   let currentSelection = $(':input.add-to-cart')[0].id;
-  if (currentSelection == 0) crearTarjetaVaritas(limit);
-  $("#wand-card").remove();
+  if (currentSelection == 0) crearTarjetaItem(limit);
+  $("#item-card").remove();
   let prevSelection = Number(currentSelection)-1;
-  crearTarjetaVaritas(prevSelection);
+  crearTarjetaItem(prevSelection);
 };
 
 function nextCard() {
   let currentSelection = $(':input.add-to-cart')[0].id;
-  if (currentSelection == varitas.length -1) crearTarjetaVaritas(0);
-  $("#wand-card").remove();
+  if (currentSelection == storeItems.length -1) crearTarjetaItem(0);
+  $("#item-card").remove();
   let nextSelection = Number(currentSelection)+1;
-  crearTarjetaVaritas(nextSelection);
+  crearTarjetaItem(nextSelection);
 };
 
 function createCardButtons (item) {
   $('.card-nav-buttons').remove()
-  $('#ollivander-section').append(`
+  $('#store-items-section').append(`
     <div class='card-nav-buttons'>
       <input type="button" id="previous" value="<">
       <input 
@@ -58,7 +59,7 @@ function createCardButtons (item) {
   
   $(`#${item.id}`).on('click', function (e) {
     let itemId = e.target.id
-    const newItem = varitas.find(el => el.id == itemId);
+    const newItem = storeItems.find(el => el.id == itemId);
     inCartValidation(newItem);
   });
   $('#previous').on('click', previousCard)
@@ -88,6 +89,10 @@ function inCartValidation(item) {
 };
 
 function addToCartSuccess(newItem) {
+  /* 
+  Si el carro tiene items, aplicamos getUpdatedCart para 
+  actualizarlo 
+  */
   let currentCart = !cart.length ? cart : getUpdatedCart();
   let objeto = { 
     id: newItem.id,
@@ -103,35 +108,82 @@ function addToCartSuccess(newItem) {
   getItemsFromCart();
 };
 
-function crearTarjetaVaritas(id) {
-  if(id == varitas.length || id == -1) return;
-  const selected = varitas.filter(el => el.id === id)
-  $('#ollivander-section').append(`
-    <main id="wand-card" class="wand-option">
+function crearTarjetaItem(id) {
+  if(id == storeItems.length || id == -1) return;
+  const selected = storeItems.filter(el => el.id === id)
+  selected[0].categoria == 'escobas' 
+    ? crearTarjetaEscobas(selected[0])
+    : crearTarjetaVaritas(selected[0])
+
+  /* Funcion para crear botones especificos de la carta */
+  createCardButtons(selected[0])
+};
+
+function crearTarjetaEscobas(item) {
+  $('#store-items-section').append(`
+    <main id="item-card" class="broom-option">
       <article id="option-article" class="option-stage">
+      <img class="item-img" src=${item.img}>
         <div class="option-information">
-          <h4 class="option-title text-center">${selected[0].nombre}</h4>
-          <p class="option-description">${selected[0].description}</p>
-          <section class="option-details">
-            <div class="options-details-item">
-              <p class="option-details-title">Nucleo</p>
-              <p class="option-details-info">${selected[0].nucleo}</p>
-            </div>
-            <div class="options-details-item">
-              <p class="option-details-title">Longitud</p>
-              <p class="option-details-info">${selected[0].longitud}</p>
-            </div>
-            <div class="options-details-item">
-              <p class="option-details-title">Madera</p>
-              <p class="option-details-info">${selected[0].madera}</p>
-            </div>
-          </section>
+          <h4 class="option-title text-center">${item.nombre}</h4>
+          <span>${item.precio}</span>
+          <p class="option-description">${item.description}</p>
         </div>
-        <img class="varita" src=${selected[0].img}>
       </article>
     </main>
   `);
-
-  // FUNCIONALIDAD PARA AGREGAR AL CARRITO
-  createCardButtons(selected[0])
 };
+
+function crearTarjetaVaritas(item) {
+  $('#store-items-section').append(`
+    <main id="item-card" class="wand-option">
+      <article id="option-article" class="option-stage">
+        <div class="option-information">
+          <div class='option-title-container'>
+            <h4 class="option-title text-center">${item.nombre}</h4>
+            <span>${item.precio}</span>
+          </div>
+          <p class="option-description">${item.description}</p>
+          <section class="option-details">
+            <div class="options-details-item">
+              <p class="option-details-title">Nucleo</p>
+              <p class="option-details-info">${item.nucleo}</p>
+            </div>
+            <div class="options-details-item">
+              <p class="option-details-title">Longitud</p>
+              <p class="option-details-info">${item.longitud}</p>
+            </div>
+            <div class="options-details-item">
+              <p class="option-details-title">Madera</p>
+              <p class="option-details-info">${item.madera}</p>
+            </div>
+          </section>
+        </div>
+        <img class="item-img" src=${item.img}>
+      </article>
+    </main>
+  `);
+};
+
+$('body').keydown(function (e) {
+  /* carta actual siendo mostrada */
+  let current = $(':input.add-to-cart')[0].id;
+
+  switch (e.which) {
+    case 32:
+      $(`#${current}`).trigger('click');
+      break;
+    case 37:
+      $('#previous').trigger('click')
+      break; 
+    case 39:
+      $('#next').trigger('click')
+      break;
+    case 38:  
+    case 40:
+      $('#trolley').trigger('click')
+      break;
+    default:
+      break;
+  };
+});
