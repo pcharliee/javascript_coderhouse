@@ -28,20 +28,22 @@ function increaseCount(value, item) {
   cartSummary();
 };
 
-function removeFromCart(id) {
-  let eliminarItem = confirm('Quieres eliminar el item del carrito?');
-  if (eliminarItem) {
-    $(`#cart-item-id-${id}`).remove();
+function removeFromCartSuccess(id) {
+  $(`#cart-item-id-${id}`).remove();
     let currentCart = getUpdatedCart();
     let newCart = currentCart.filter(item => item.id != id);
     localStorage.setItem('carrito', JSON.stringify(newCart));
     localStorage.setItem('carritoModificado', JSON.stringify(newCart));
     cartSummary();
-  };
+};
+
+function removeFromCartConfirm(id) {
+  let eliminarItem = confirm('Quieres eliminar el item del carrito?');
+  if (eliminarItem) removeFromCartSuccess(id);
 };
 
 function decreaseCount(value, item) {
-  if(value == 1) return removeFromCart(item.id);
+  if(value == 1) return removeFromCartConfirm(item.id);
   let newQty = value-1;
   let newPrice = parsePrice(item.precio) * newQty;
 
@@ -61,8 +63,8 @@ function getUpdatedCart() {
   let modifiedCart = JSON.parse(localStorage.getItem('carritoModificado'));
   if(!!modifiedCart) {
     carrito.map(element => {
-      let checkIfItemExists = modifiedCart.findIndex(item => item.id == element.id)
-      if(checkIfItemExists === -1) modifiedCart.push(element)
+      let checkIfItemExists = modifiedCart.findIndex(item => item.id == element.id);
+      if(checkIfItemExists === -1) modifiedCart.push(element);
     });
     localStorage.setItem('carritoModificado', JSON.stringify(modifiedCart));
     return modifiedCart;
@@ -92,10 +94,24 @@ function cartSummary() {
         <p>Precio total</p>
         <span id='precio-total'>${precioTotal} galeones</span>
       </div>
-      <button type='button' id='cart-guardar' class='comprar-btn'>Guardar</button>
+      <button type='button' id='cart-eliminar' class=''>Eliminar items</button>
       <button type='button' id='cart-comprar' class='comprar-btn'>Comprar</button>
     </div>
   `);
+
+  $('#cart-eliminar').on('click', deleteCartItems);
+};
+
+function deleteCartItems() {
+  let currentCart = getUpdatedCart();
+  if (!currentCart.length) return;
+  let confirmDelete = confirm('Se van a eliminar todos los items del carrito. Esto no se puede revertir');
+
+  if(confirmDelete) {
+    currentCart.forEach(item => {
+      removeFromCartSuccess(item.id);
+    });
+  };
 };
 
 function getItemsFromCart() {
@@ -153,6 +169,10 @@ function cartOpenedSuccess() {
 $('#trolley').on('click', function () {
   cartOpened = !cartOpened;
   cartOpened ? cartOpenedSuccess() : $('#cart-display').toggle(400);
+});
+
+$('#cart-item-id-0.cart-item').on('click', function (e) {
+  console.log('eeee', e.target.value)
 });
 
 

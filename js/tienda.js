@@ -98,8 +98,9 @@ function addToCartSuccess(newItem) {
   };
   currentCart.push(objeto);
   localStorage.setItem('carrito', JSON.stringify(currentCart));
-  alreadyInCart(newItem)
+  alreadyInCart(newItem);
   getUpdatedCart();
+  getItemsFromCart();
 };
 
 function crearTarjetaVaritas(id) {
