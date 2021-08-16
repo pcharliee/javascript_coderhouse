@@ -129,7 +129,7 @@ $(window).on('scroll', function (e) {
 var textWrapper = document.querySelector('.welcome-information-titulo');
 textWrapper.innerHTML = textWrapper.textContent
 .replace(/\S/g, "<span class='letter'>$&</span>");
-anime.timeline({loop: false})
+anime.timeline({loop: true})
 .add({
   targets: '.welcome-information-titulo .letter',
   opacity: [0,1],
@@ -137,9 +137,3 @@ anime.timeline({loop: false})
   duration: 1500,
   delay: (el, i) => 150 * (i+1)
 });
-
-anime.timeline({loop: true})
-  .add({
-    targets: '.scroll-to'
-    
-  })

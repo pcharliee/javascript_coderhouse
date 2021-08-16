@@ -55,6 +55,10 @@
   }
 }
 
+#item-card {
+  transform: translateY(15px);
+}
+
 .store-items-cards {
   @include fl-col;
   @include fl-center;
@@ -63,7 +67,7 @@
     @include fl-row;
     width: 30%;
     justify-content: space-around;
-    transform: translate(0px, -15px);
+    // transform: translate(0px, -15px);
     input {
       @include glass;
       border-radius: 50%;

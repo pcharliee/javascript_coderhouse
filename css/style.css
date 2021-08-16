@@ -302,6 +302,9 @@ p {
     margin: 20px 10px;
     color: #ffdb00; }
 
+#item-card {
+  transform: translateY(15px); }
+
 .store-items-cards {
   display: flex;
   flex-flow: column nowrap;
@@ -312,8 +315,7 @@ p {
     display: flex;
     flex-flow: row nowrap;
     width: 30%;
-    justify-content: space-around;
-    transform: translate(0px, -15px); }
+    justify-content: space-around; }
     .store-items-cards .card-nav-buttons input {
       box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
       backdrop-filter: blur(4px);
