@@ -54,7 +54,6 @@ cards.addClass('cards-section');
 function crearTarjetas (sectionCards) {
   sectionCards.map((card, index) => {
     counter++;
-    // imgUrl = card.img;
     cards.append(`
     <div class="card" id=${index}>
       <img src=${card.img} id=${card.id}>

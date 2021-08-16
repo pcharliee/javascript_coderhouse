@@ -1,11 +1,20 @@
-let user = JSON.parse(localStorage.getItem('usuario'))
+let user = JSON.parse(localStorage.getItem('usuario'));
 // DOM MANIPULATION
 
 $('#cart-display').append(`
   <div class='cart-container'>
-    <h6 class='cart-title'>Tu tienda</h6>
+    <h6 class='cart-title'>Carrito de ${user.nombre}</h6>
   </div>
-`)
+`);
+
+$('body').append(`
+<div id='confirmar-compra-modal' class='confirmar-compra'>
+  <h6>¿Ya tienes todo lo que necesitas?</h6>
+</div>
+`);
+
+$('#confirmar-compra-modal').css({ 'display': 'none' });
+
 
 // FUNCTIONS
 
@@ -103,6 +112,9 @@ function cartSummary() {
   `);
 
   $('#cart-eliminar').on('click', deleteCartItems);
+  $('#cart-comprar').on('click', confirmarCompraModal);
+  
+  return precioTotal;
 };
 
 function deleteCartItems() {
@@ -118,14 +130,7 @@ function deleteCartItems() {
   };
 };
 
-function getItemsFromCart() {
-  let currentCart = getUpdatedCart();
-
-  $('.cart-items-container').remove();
-  $('#cart-display .cart-title').after(`
-    <div class='cart-items-container'></div>
-  `);
-
+function getItemsFromCartSuccess(currentCart) {
   for (const item of currentCart) {
     let currentPrice = parsePrice(item.precio) * item.cantidad;
     $('.cart-items-container').append(`
@@ -146,6 +151,8 @@ function getItemsFromCart() {
       </div>
     `);
 
+    cartSummary();
+
     // MODIFIERS FUNCTIONALITY
     $(`#cart-plus-btn-${item.id}`).on('click', function () {
       let currentQty = parseInt($(`#cart-item-counter-${item.id}`).text());
@@ -159,12 +166,30 @@ function getItemsFromCart() {
     $(`#cart-remove-btn-${item.id}`).on('click', function () {
       removeFromCartConfirm(item.id);
     });
-
+    
     // Google Chrome render
     $('.cart-items-container').on('scroll', function () {
       cartSummary();
     });
   };
+}
+
+function getItemsFromCart() {
+  let currentCart = getUpdatedCart();
+  if (!currentCart.length) {
+    $('.cart-items-container').remove();
+    $('#cart-display .cart-title').after(`
+    <div class='cart-items-container'>hoasooal</div>
+   `);
+    return;
+  }
+
+  $('.cart-items-container').remove();
+  $('#cart-display .cart-title').after(`
+    <div class='cart-items-container'></div>
+  `);
+
+  getItemsFromCartSuccess(currentCart)
 };
 
 function cartOpenedSuccess() {
@@ -179,3 +204,39 @@ $('#trolley').on('click', function () {
   cartOpened = !cartOpened;
   cartOpened ? cartOpenedSuccess() : $('#cart-display').toggle(400);
 });
+
+function confirmarCompraModal() {
+  $('.store').css({
+    'opacity': '0.6',
+    'background-color': 'rgba(0, 0, 0, 0.3)'
+  })
+  $('.confirmar-compra-container').remove();
+  $('#confirmar-compra-modal').show(200);
+  $('#confirmar-compra-modal').append(`
+  <section class='confirmar-compra-container'>
+  <div class='confirmar-compra-converter'>
+  <p>El total de tu compra es: ${cartSummary()} galeones</p>
+    <div class='coin-converter'>
+      <img class='coin' src='../media/misc/Galleon_coin.png'>
+      <p>USD$ ${(cartSummary() * 25).toLocaleString('en-US')} dolares</p>
+    </div>
+    <div class='coin-converter'>
+      <img class='coin' src='../media/misc/Sickle_coin.png'>
+      <p>${(cartSummary() * 17).toLocaleString('en-US')} Sickles</p>
+    </div>
+    <div class='coin-converter'>
+      <img class='coin-knut' src='../media/misc/Knut_coin.png'>
+      <p>${(cartSummary() * 493).toLocaleString('en-US')} Sickles</p>
+    </div>
+    <input id='confirmar-compra-btn' type='button' value='Confirmar compra'>
+  </div>
+  </section>
+  `);
+
+  $('#confirmar-compra-btn').on('click', compraSuccess)
+};
+
+function compraSuccess() {
+  alert('GRACIAS')
+  deleteCartItems(true);
+}

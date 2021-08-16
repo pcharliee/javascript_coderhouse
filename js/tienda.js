@@ -56,7 +56,7 @@ function createCardButtons (item) {
     </div>
   `);
   alreadyInCart(item);
-  
+
   $(`#${item.id}`).on('click', function (e) {
     let itemId = e.target.id
     const newItem = storeItems.find(el => el.id == itemId);
@@ -116,20 +116,22 @@ function crearTarjetaItem(id) {
     : crearTarjetaVaritas(selected[0])
 
   /* Funcion para crear botones especificos de la carta */
-  createCardButtons(selected[0])
+  createCardButtons(selected[0]);
 };
 
 function crearTarjetaEscobas(item) {
   $('#store-items-section').append(`
     <main id="item-card" class="broom-option">
-      <article id="option-article" class="option-stage">
-      <img class="item-img" src=${item.img}>
-        <div class="option-information">
-          <h4 class="option-title text-center">${item.nombre}</h4>
-          <span>${item.precio}</span>
-          <p class="option-description">${item.description}</p>
-        </div>
-      </article>
+    <img class='card-bg' src='../media/qqs.png'>
+    <article id="option-article" class="option-stage">
+    <img class="item-img" src=${item.img}>
+      <div class="option-information">
+        <h4 class="option-title text-center">${item.nombre}</h4>
+        <span>${item.precio}</span>
+        <p class="option-description">${item.description}</p>
+      </div>
+    </article>
+    </img>
     </main>
   `);
 };
@@ -137,12 +139,12 @@ function crearTarjetaEscobas(item) {
 function crearTarjetaVaritas(item) {
   $('#store-items-section').append(`
     <main id="item-card" class="wand-option">
+    <img class='card-bg' src='../media/ollivanders-t.png'>
       <article id="option-article" class="option-stage">
+      <img class="item-img" src=${item.img}>
         <div class="option-information">
-          <div class='option-title-container'>
-            <h4 class="option-title text-center">${item.nombre}</h4>
-            <span>${item.precio}</span>
-          </div>
+          <h4 class="option-title text-center">${item.nombre}</h4>
+          <span>${item.precio}</span>
           <p class="option-description">${item.description}</p>
           <section class="option-details">
             <div class="options-details-item">
@@ -159,7 +161,6 @@ function crearTarjetaVaritas(item) {
             </div>
           </section>
         </div>
-        <img class="item-img" src=${item.img}>
       </article>
     </main>
   `);
