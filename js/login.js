@@ -12,9 +12,8 @@ class Usuario {
 
 function loginSuccess() {
   let user = localStorage.getItem('usuario');
-  // if(!user.nombre)
   location.href = '../landing.html';
-}
+};
 
 function ingresarUsuario(e) {
   e.preventDefault();

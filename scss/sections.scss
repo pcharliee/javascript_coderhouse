@@ -7,7 +7,7 @@
 .sections-bg {
   @include bg-img-cover;
   background-image: url('../media/fondos/diagon.jpg');
-  background-position: center bottom;
+  background-position-y: -110px;
   height: 100vh;
   @include fl-row;
   @include fl-center;
@@ -16,7 +16,7 @@
 .cards-section {
   @include fl-row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .card {
@@ -98,6 +98,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: 0.4s ease;
+      margin-top: 10px;
     }
   }
 }

@@ -45,11 +45,15 @@ let userName = !user.nombre ? 'Muggle sin nombre' : user.nombre
 // DOM MANIPULATION
 
 $('body').prepend(`
-<div id='scroll-to' class='scroll-to'>Scroll down</div>
+<div id='scroll-to' class='scroll-to'></div>
 `);
 cards.addClass('cards-section');
 
 // FUNCTIONS
+
+function goToStore() {
+  location.href = '../store.html';
+};
 
 function crearTarjetas (sectionCards) {
   sectionCards.map((card, index) => {
@@ -60,7 +64,7 @@ function crearTarjetas (sectionCards) {
       <div class="info">
         <div class="card-title-section"><h3>${card.nombre}</h3></div>
         <p>${card.descripcion}</p>
-        <input type=button value='Ir a la tienda'>
+        <input type='button' class='card-btn' value='Ir a la tienda'>
       </div>
     </div>`)
   });
@@ -70,6 +74,8 @@ function crearTarjetas (sectionCards) {
   $('#flourish-blotts').css({
     'filter': 'invert(0.9)'
   });
+
+  $(`.card-btn`).on('click', goToStore)
 };
 
 // DOM INTERACTIONS
@@ -91,7 +97,7 @@ $('.landing-bg').hover(function () {
 $('.sections-bg').on('mouseenter', function () {
   if(scrolled) return;
   sectionCards.map((card, index) => {
-    $(`#${index}`).fadeIn(800)
+    $(`#${index}`).fadeIn(600)
   });
 });
 
@@ -105,6 +111,10 @@ $('#scroll-to').on('click', function (e) {
 
 $(window).on('scroll', function (e) {
   scrolled = true;
+  /* Condicion para ocular o mostrar el boton */
+  if(this.scrollY < 570) $('#scroll-to').fadeIn()
+  if(this.scrollY > 570) $('#scroll-to').fadeOut()
+  
   // Validating user is scrolling down
   let scrollingUp = this.oldScroll > this.scrollY
   this.oldScroll = this.scrollY
@@ -127,3 +137,9 @@ anime.timeline({loop: false})
   duration: 1500,
   delay: (el, i) => 150 * (i+1)
 });
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.scroll-to'
+    
+  })

@@ -8,7 +8,7 @@
 
 [x] == crear boton que te lleve a la seccion de abajo 
 [x] == cartas del landing que on hover cambien y digan ir a la tienda
-[] == check pulsating effect for cards
+[x] == check pulsating effect for cards
 [x] == crear un carrito de compra vacio upon landing
 [] == flying broom ? mas decoracion en el landing
 [] == que cuando refresque la pagina aparezca arriba
@@ -22,7 +22,8 @@
     [x] == arreglar cuando se agrega un articulo nuevo
     [x] == remove item
     [x] == basura
-    [] == que cuando termine la compra se borren los items seamlessly
+    [] == que cuando termine la compra se borren los items seamlessly 
+    [] == condicional o disabled el boton cuando no hay items (comprar)
 // EXTRAS // 
 
 [] == habilitar funcionalidad para cambiar tarjetas con las flechas

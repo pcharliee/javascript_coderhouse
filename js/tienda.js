@@ -77,7 +77,6 @@ function alreadyInCart(item) {
       { 
         'cursor': 'not-allowed',
         'background-color': '#b33019c7',
-        'cursor': 'not-allowed'
       }
     );
   };

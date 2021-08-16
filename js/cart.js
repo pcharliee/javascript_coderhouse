@@ -3,7 +3,7 @@ let user = JSON.parse(localStorage.getItem('usuario'));
 
 $('#cart-display').append(`
   <div class='cart-container'>
-    <h6 class='cart-title'>Carrito de ${user.nombre}</h6>
+    <h6 class='cart-title'>Tus items</h6>
   </div>
 `);
 
@@ -14,7 +14,6 @@ $('body').append(`
 `);
 
 $('#confirmar-compra-modal').css({ 'display': 'none' });
-
 
 // FUNCTIONS
 
@@ -179,10 +178,13 @@ function getItemsFromCart() {
   if (!currentCart.length) {
     $('.cart-items-container').remove();
     $('#cart-display .cart-title').after(`
-    <div class='cart-items-container'>hoasooal</div>
-   `);
+      <div class='cart-items-container text-center m-3'>No tienes nada en el carrito =(</div>
+    `);
+    setTimeout(() => {
+      $('.cart-summary-container').remove();
+    }, 0);
     return;
-  }
+  };
 
   $('.cart-items-container').remove();
   $('#cart-display .cart-title').after(`
@@ -198,17 +200,14 @@ function cartOpenedSuccess() {
   cartSummary();
 };
 
-// DOM FUNCTIONALITIES
-
-$('#trolley').on('click', function () {
-  cartOpened = !cartOpened;
-  cartOpened ? cartOpenedSuccess() : $('#cart-display').toggle(400);
-});
-
 function confirmarCompraModal() {
+  /* Previa validacion por si el carrito esta vacio */
+  let currentCart = getUpdatedCart();
+  if (!currentCart.length) return;
+
   $('.store').css({
-    'opacity': '0.6',
-    'background-color': 'rgba(0, 0, 0, 0.3)'
+    'background-color': '#000000c5',
+    'opacity': '0.5',
   })
   $('.confirmar-compra-container').remove();
   $('#confirmar-compra-modal').show(200);
@@ -216,6 +215,7 @@ function confirmarCompraModal() {
   <section class='confirmar-compra-container'>
   <div class='confirmar-compra-converter'>
   <p>El total de tu compra es: ${cartSummary()} galeones</p>
+ 
     <div class='coin-converter'>
       <img class='coin' src='../media/misc/Galleon_coin.png'>
       <p>USD$ ${(cartSummary() * 25).toLocaleString('en-US')} dolares</p>
@@ -228,15 +228,28 @@ function confirmarCompraModal() {
       <img class='coin-knut' src='../media/misc/Knut_coin.png'>
       <p>${(cartSummary() * 493).toLocaleString('en-US')} Sickles</p>
     </div>
+    <input id='volver-compra-btn' type='button' value='Volver'>
     <input id='confirmar-compra-btn' type='button' value='Confirmar compra'>
   </div>
   </section>
   `);
 
-  $('#confirmar-compra-btn').on('click', compraSuccess)
+  $('#volver-compra-btn').on('click', cerrarCompraModal);
+  $('#confirmar-compra-btn').on('click', compraSuccess);
 };
 
-function compraSuccess() {
-  alert('GRACIAS')
-  deleteCartItems(true);
+function cerrarCompraModal() {
+  $('#confirmar-compra-modal').fadeOut(150);
+  $('.store').css({ 'opacity': '1' })
 }
+function compraSuccess() {
+  alert('Tu compra será enviada con una de nuestras lechuzas a tu casillero de Hogwarts.');
+  deleteCartItems();
+};
+
+// DOM FUNCTIONALITIES
+
+$('#trolley').on('click', function () {
+  cartOpened = !cartOpened;
+  cartOpened ? cartOpenedSuccess() : $('#cart-display').toggle(400);
+});

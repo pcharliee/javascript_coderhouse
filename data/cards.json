@@ -10,11 +10,5 @@
     "nombre": "Quality Quidditch Supplies",
     "descripcion": "Ya sea que juegues al Quidditch o la uses para hacer las compras, en Articulos de Calidad para Quidditch tenemos la escoba que se adapta a tus necesidades" ,
     "img": "../media/qqs.png"
-  },
-  {
-    "id": "flourish-blotts",
-    "nombre": "Flourish and Blotts" ,
-    "descripcion": "Encuentra todos los libros que necesitas para iniciar tu nuevo año escolar.",
-    "img": "../media/flourish.png"
   }
 ]
