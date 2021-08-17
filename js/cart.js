@@ -1,9 +1,9 @@
-let user = JSON.parse(localStorage.getItem('usuario'));
+let cartOwner = JSON.parse(localStorage.getItem('usuario')) || 'Muggle';
 // DOM MANIPULATION
 
 $('#cart-display').append(`
   <div class='cart-container'>
-    <h6 class='cart-title'>Tus items</h6>
+    <h6 class='cart-title'>Tienda de ${cartOwner.nombre}!</h6>
   </div>
 `);
 
@@ -218,15 +218,15 @@ function confirmarCompraModal() {
  
     <div class='coin-converter'>
       <img class='coin' src='../media/misc/Galleon_coin.png'>
-      <p>USD$ ${(cartSummary() * 25).toLocaleString('en-US')} dolares</p>
+      <p>USD$ ${(cartSummary() * 25).toLocaleString('es-ES')} dolares</p>
     </div>
     <div class='coin-converter'>
       <img class='coin' src='../media/misc/Sickle_coin.png'>
-      <p>${(cartSummary() * 17).toLocaleString('en-US')} Sickles</p>
+      <p>${(cartSummary() * 17).toLocaleString('es-ES')} Sickles</p>
     </div>
     <div class='coin-converter'>
       <img class='coin-knut' src='../media/misc/Knut_coin.png'>
-      <p>${(cartSummary() * 493).toLocaleString('en-US')} Sickles</p>
+      <p>${(cartSummary() * 493).toLocaleString('es-ES')} Knuts</p>
     </div>
     <input id='volver-compra-btn' type='button' value='Volver'>
     <input id='confirmar-compra-btn' type='button' value='Confirmar compra'>

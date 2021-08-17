@@ -10,8 +10,20 @@ class Usuario {
   };
 };
 
-function loginSuccess() {
-  let user = localStorage.getItem('usuario');
+function loginValidation() {
+  let user = JSON.parse(localStorage.getItem('usuario'));
+  let loginValidation = 0;
+  Object.keys(user).map((keyValue) => {
+    if(!user[keyValue]) loginValidation++;
+  })
+  loginSuccess(loginValidation);
+}
+
+function loginSuccess(completion) {
+  if(completion > 0) {
+    console.log($('input').map(e => e))
+  }
+  console.log('com', completion)
   location.href = '../landing.html';
 };
 
@@ -24,7 +36,7 @@ function ingresarUsuario(e) {
   let nuevoUsuario = new Usuario (username, nombre, email, bio);
   
   localStorage.setItem('usuario', JSON.stringify(nuevoUsuario));
-  loginSuccess();
+  loginValidation();
 };
 
 $('#button').on('click', ingresarUsuario);

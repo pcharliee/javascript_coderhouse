@@ -24,12 +24,15 @@
 .welcome-information-titulo {
   @include hp;
   font-size: 6rem;
-  color: $light-gray
+  color: $light-gray;
 }
 
 .welcome-information-cta {
   color: $light-gray;
   display: none;
+  font-size: 21px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  filter: drop-shadow(0.5px 4px 2px black);
 }
 
 .scroll-to {
@@ -45,16 +48,16 @@
   cursor: pointer;
   animation: pulsate 2s ease-in-out infinite;
   &::before, &::after {
-    content: '\005C';
+    content: '\007C';
     display: inline-block;
     font-size: 26px;
     font-weight: 700;
     color: white;
-    transform:rotate(330deg)
+    transform:rotate(317deg)
   }
   &::after {
-    transform:rotate(50deg);
-    margin-left: 9px;
+    transform:rotate(43deg);
+    margin-left: 10px;
   }
 }
 
@@ -63,8 +66,3 @@
   50% { transform: scale(0.8) }
   100% { transform: scale(1.1) }
 }
-
-
-
-
-
