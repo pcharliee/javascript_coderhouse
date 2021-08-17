@@ -3,16 +3,19 @@
 .store {
   @include fl-row;
   @include fl-center;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: rgb(2, 21, 32);
   background-size: cover;
   background-image: url('../media/fondos/d-alley.jpg');
   background-position:  bottom;
   aside {
-    width: 30vw;
+    width: 400px;
+    max-height: 530px;
+    overflow: auto;
+    margin-right: 10px;
   }
   section {
-    width: 70vw;
+    width: 60vw;
   }
 }
 
@@ -21,8 +24,8 @@
   background-color:#0e1a40c2;
   color: $light-gray;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 20px 30px 20px 60px;
-  border-radius: 0 10px 10px 0;
+  padding: 20px;
+  border-radius: 5px;
   h5 {
     margin: 20px;
     text-align: center;
@@ -67,7 +70,6 @@
     @include fl-row;
     width: 30%;
     justify-content: space-around;
-    // transform: translate(0px, -15px);
     input {
       @include glass;
       border-radius: 50%;
@@ -299,7 +301,7 @@
         box-sizing: border-box;
         width: 30%;
         .cart-item-img {
-          width: auto;
+          max-width: 72px;
           height: 80px;
         }
       }

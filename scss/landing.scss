@@ -7,6 +7,18 @@
   height: 100vh;
 }
 
+.navbar-hp {
+  @include fl-row;
+  @include fl-center;
+  width: 100%;
+  .navbar-nav {
+    @include fl-row;
+    li {
+      margin: 0 5px;
+    }
+  }
+}
+
 .navbar-bg {
  @include glass;
  position: fixed;

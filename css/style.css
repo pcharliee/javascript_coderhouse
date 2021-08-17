@@ -100,6 +100,18 @@ p {
   background-position: left center;
   height: 100vh; }
 
+.navbar-hp {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%; }
+  .navbar-hp .navbar-nav {
+    display: flex;
+    flex-flow: row nowrap; }
+    .navbar-hp .navbar-nav li {
+      margin: 0 5px; }
+
 .navbar-bg {
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
   backdrop-filter: blur(4px);
@@ -261,15 +273,18 @@ p {
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: #021520;
   background-size: cover;
   background-image: url("../media/fondos/d-alley.jpg");
   background-position: bottom; }
   .store aside {
-    width: 30vw; }
+    width: 400px;
+    max-height: 530px;
+    overflow: auto;
+    margin-right: 10px; }
   .store section {
-    width: 70vw; }
+    width: 60vw; }
 
 .store-information {
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
@@ -278,8 +293,8 @@ p {
   background-color: #0e1a40c2;
   color: #e7e7e7;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 20px 30px 20px 60px;
-  border-radius: 0 10px 10px 0; }
+  padding: 20px;
+  border-radius: 5px; }
   .store-information h5 {
     margin: 20px;
     text-align: center; }
@@ -541,7 +556,7 @@ p {
         box-sizing: border-box;
         width: 30%; }
         .cart-container .cart-items-container .cart-item .cart-item-img-container .cart-item-img {
-          width: auto;
+          max-width: 72px;
           height: 80px; }
       .cart-container .cart-items-container .cart-item .cart-remove-btn {
         width: 25px;
