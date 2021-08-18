@@ -3,6 +3,7 @@ const spells = [];
 const characters = [];
 const sectionCards = [];
 const usuario = localStorage.getItem('usuario');
+let pageSections = false;
 
 $('document').ready(() => {
   // HECHIZOS //
@@ -64,7 +65,7 @@ function crearTarjetas (sectionCards) {
       <div class="info">
         <div class="card-title-section"><h3>${card.nombre}</h3></div>
         <p>${card.descripcion}</p>
-        <input type='button' class='card-btn' value='Ir a la tienda'>
+        <input type='button' class='card-btn' value='Ver'>
       </div>
     </div>`)
   });
@@ -80,40 +81,40 @@ function crearTarjetas (sectionCards) {
 
 // DOM INTERACTIONS
 
-welcome.append(`<h2 class='welcome-information-titulo'>Hola, ${userName}!<h2>`);
+welcome.append(`<h2 class='welcome-information-titulo'>Bienvenido, ${userName}!<h2>`);
 welcome.append(`<p class='welcome-information-cta'>
-Da un paseo por nuestro sitio y no te olvides de visitar las tienda exclusiva para magos
+Da un paseo por nuestro sitio y no olvides visitar la tienda exclusiva para magos
 </p>`);
 $('.welcome-information-cta').delay(3000).slideDown(1000);
 
 $('.landing-bg').hover(function () {
   scrolled = false;
   onSections = false;
-  sectionCards.map((card, index) => {
-    $(`#${index}`).fadeOut(500);
-  });
-});
-
-$('.sections-bg').on('mouseenter', function () {
-  if(scrolled) return;
-  sectionCards.map((card, index) => {
-    $(`#${index}`).fadeIn(600)
-  });
+  $('#store-home-btn').text('Tienda');
 });
 
 $('#scroll-to').on('click', function (e) {
   e.preventDefault;
-  $('html, body').animate({
-    scrollTop: $('.sections-bg').offset().top
-  }, 50);
-  $('.sections-bg').trigger('mouseenter')
+  // $('html, body').animate({
+  //   scrollTop: $('.sections-bg').offset().top
+  // }, 50);
+  location.href = '#section'
+  $('#store-home-btn').text('Home');
+  pageSections = true;
 });
 
 $(window).on('scroll', function (e) {
   scrolled = true;
   /* Condicion para ocular o mostrar el boton */
-  if(this.scrollY < 570) $('#scroll-to').fadeIn()
-  if(this.scrollY > 570) $('#scroll-to').fadeOut()
+  if(this.scrollY < 570) {
+    $('#scroll-to').fadeIn()
+    pageSections = false;
+  } else if(this.scrollY > 570) {
+    $('#scroll-to').fadeOut()
+    $('#store-home-btn').text('Home');
+    pageSections = true;
+  }
+  
   
   // Validating user is scrolling down
   let scrollingUp = this.oldScroll > this.scrollY
@@ -137,3 +138,16 @@ anime.timeline({loop: true})
   duration: 1500,
   delay: (el, i) => 150 * (i+1)
 });
+
+$('#store-home-btn').on('click', function (e) {
+  e.preventDefault()
+  pageSections = !pageSections;
+  if (pageSections) {
+    $('#store-home-btn').text('Home')
+    location.href = '#section';
+    $('#scroll-to').trigger('click');
+  } else {
+    $('#store-home-btn').text('Tienda')
+    location.href = '#landing'
+  }
+})

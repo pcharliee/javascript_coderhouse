@@ -84,11 +84,13 @@
 
     }
     p {
+      @include regular-font;
       letter-spacing: 1px;
       font-size: 15px;
       margin-top: 8px;
     }
     input {
+      @include regular-font;
       padding: 0.6rem;
       outline: none;
       border: none;

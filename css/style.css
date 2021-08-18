@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;400;500;600&display=swap");
 html {
   scroll-behavior: smooth; }
 
@@ -126,11 +126,35 @@ p {
   align-items: center;
   justify-content: center;
   width: 100%; }
-  .navbar-hp .navbar-nav {
+  .navbar-hp .navbar-title {
+    font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    color: #e7e7e7;
+    margin: 0 20px; }
+  .navbar-hp .navbar-navig {
     display: flex;
-    flex-flow: row nowrap; }
-    .navbar-hp .navbar-nav li {
+    flex-flow: row nowrap;
+    list-style: none;
+    margin: 0; }
+    .navbar-hp .navbar-navig li {
+      font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+      text-decoration: none;
       margin: 0 5px; }
+    .navbar-hp .navbar-navig li:nth-child(odd) {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px; }
+      .navbar-hp .navbar-navig li:nth-child(odd) a {
+        padding: 0 10px;
+        text-decoration: none;
+        color: #e7e7e7; }
+    .navbar-hp .navbar-navig li:nth-child(odd):hover {
+      border-radius: 5px;
+      background-color: white; }
+      .navbar-hp .navbar-navig li:nth-child(odd):hover a {
+        color: #1b2e6e; }
 
 .navbar-bg {
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
@@ -154,10 +178,11 @@ p {
   color: #e7e7e7; }
 
 .welcome-information-cta {
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
   color: #e7e7e7;
   display: none;
-  font-size: 21px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 300;
+  font-size: 18px;
   filter: drop-shadow(0.5px 4px 2px black); }
 
 .scroll-to {
@@ -273,10 +298,12 @@ p {
     font-family: 'HarryPotter';
     font-size: 2.5rem; }
   .card .info p {
+    font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
     letter-spacing: 1px;
     font-size: 15px;
     margin-top: 8px; }
   .card .info input {
+    font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
     padding: 0.6rem;
     outline: none;
     border: none;
