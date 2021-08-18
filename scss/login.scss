@@ -7,7 +7,7 @@
 // IMAGENES //
 .index-bg {
   @include bg-img-cover;
-  background-image: url('../media/fondos/mist.jpg');
+  background-image: url('../media/fondos/sky-bg.jpeg');
   background-position: center left;
   height: 100vh;
   img {
@@ -16,15 +16,32 @@
 }
 
 .index-cta {
-  @include bg-img-contain;
   @include glass;
-  // background-image: url('../media/marca_tenebrosa.svg');
+  @include fl-col;
+  @include fl-center;
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(1, 9, 14, 0.692);
   height: 75vh;
   width: 50vw;
   border-radius: 0 5px 5px 0;
+  .welcome-title-container {
+    @include hp;
+    @include fl-col;
+    @include fl-center;
+    color:rgb(240, 240, 240);
+  }
+  .welcome-title {
+    font-size: 6rem;
+  }
+  .welcome-title-span {
+    font-size: 3rem;
+  }
+  p { 
+    transform: translateY(130px);
+    color: $dark-gray;
+    font-size: 12px;
+  }
 }
 
 // FORMULARIO //
@@ -33,7 +50,7 @@
   @include fl-col;
   @include fl-center;
   @include glass;
-  background-color: #0e1a40d6;
+  background-color: rgba(1, 9, 14, 0.692);
   margin: 0 30px 0 0;
   height: 400px;
   width: 300px;
@@ -41,7 +58,7 @@
   p {
     @include hp;
     color: $light-gray;
-    font-size: 2rem;
+    font-size: 2.4rem;
     padding: 0;
     margin: 0;
   }
@@ -53,7 +70,6 @@
   padding: 10px;
   background-color: rgb(240, 240, 240);
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
-  // height: 70%;
   width: 270px;
   transform: translate(50px, 5px);
   font-size: 14px;
@@ -62,28 +78,33 @@
 
 .form label {
   @include fl-col;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  @include regular-font;
   font-size: 15px;
   color: $dark-gray;
   width: 100%;
   margin: 0 0 10px 0;
   
   input {
+    @include regular-font;
     border: none;
     background-color: rgb(240, 240, 240);
-    border-bottom: 1px $gr-g solid;
+    border-bottom: 1px #1b2e6e solid;
   }
   input:focus, input:visited {
     outline:  none;
   }
 }
 
+
+
 .btn-login {
-  transform: translate(95px, 10px);
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  background: none;
+  transform: translate(80px, 2px);
+  @include regular-font;
+  background: #1b2e6e;
+  color: $light-gray;
   border: none;
-  padding: 10px
+  border-radius: 5px;
+  padding: 5px 10px
 }
 
 .bio-login {

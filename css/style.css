@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600&display=swap");
 html {
   scroll-behavior: smooth; }
 
@@ -14,25 +15,41 @@ p {
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
-  background-image: url("../media/fondos/mist.jpg");
+  background-image: url("../media/fondos/sky-bg.jpeg");
   background-position: center left;
   height: 100vh; }
   .index-bg img {
     filter: invert(0.9); }
 
 .index-cta {
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: block;
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(1, 9, 14, 0.692);
   height: 75vh;
   width: 50vw;
   border-radius: 0 5px 5px 0; }
+  .index-cta .welcome-title-container {
+    font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    color: #f0f0f0; }
+  .index-cta .welcome-title {
+    font-size: 6rem; }
+  .index-cta .welcome-title-span {
+    font-size: 3rem; }
+  .index-cta p {
+    transform: translateY(130px);
+    color: #5d5d5d;
+    font-size: 12px; }
 
 .form-container {
   display: flex;
@@ -42,15 +59,15 @@ p {
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  background-color: #0e1a40d6;
+  background-color: rgba(1, 9, 14, 0.692);
   margin: 0 30px 0 0;
   height: 400px;
   width: 300px;
   border-radius: 5px; }
   .form-container p {
-    font-family: 'HarryPotter', Georgia, 'Times New Roman', Times, serif;
+    font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
     color: #e7e7e7;
-    font-size: 2rem;
+    font-size: 2.4rem;
     padding: 0;
     margin: 0; }
 
@@ -70,24 +87,27 @@ p {
 .form label {
   display: flex;
   flex-flow: column nowrap;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
   font-size: 15px;
   color: #5d5d5d;
   width: 100%;
   margin: 0 0 10px 0; }
   .form label input {
+    font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
     border: none;
     background-color: #f0f0f0;
-    border-bottom: 1px #740002b4 solid; }
+    border-bottom: 1px #1b2e6e solid; }
   .form label input:focus, .form label input:visited {
     outline: none; }
 
 .btn-login {
-  transform: translate(95px, 10px);
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  background: none;
+  transform: translate(80px, 2px);
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+  background: #1b2e6e;
+  color: #e7e7e7;
   border: none;
-  padding: 10px; }
+  border-radius: 5px;
+  padding: 5px 10px; }
 
 .bio-login {
   height: 50px; }
@@ -129,7 +149,7 @@ p {
   height: 100vh; }
 
 .welcome-information-titulo {
-  font-family: 'HarryPotter', Georgia, 'Times New Roman', Times, serif;
+  font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
   font-size: 6rem;
   color: #e7e7e7; }
 
@@ -290,9 +310,9 @@ p {
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
   background-color: #0e1a40c2;
   color: #e7e7e7;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 20px;
   border-radius: 5px; }
   .store-information h5 {
@@ -379,7 +399,7 @@ p {
     align-items: center;
     justify-content: center; }
     .broom-option .option-stage .option-information .option-title {
-      font-family: 'HarryPotter', Georgia, 'Times New Roman', Times, serif;
+      font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
       width: 100%;
       font-size: 3rem;
       margin: auto; }
@@ -417,7 +437,7 @@ p {
     align-items: center;
     justify-content: center; }
     .wand-option .option-stage .option-information .option-title {
-      font-family: 'HarryPotter', Georgia, 'Times New Roman', Times, serif;
+      font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
       width: 100%;
       font-size: 3rem;
       margin: auto; }
@@ -496,7 +516,7 @@ p {
   width: 100%;
   height: 100%; }
   .cart-container .cart-title {
-    font-family: 'HarryPotter', Georgia, 'Times New Roman', Times, serif;
+    font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
     margin-top: 10px;
     font-size: 2rem;
     color: #0e1a40; }
@@ -619,7 +639,7 @@ p {
   color: #e7e7e7;
   border-radius: 5px; }
   .confirmar-compra h6 {
-    font-family: 'HarryPotter', Georgia, 'Times New Roman', Times, serif;
+    font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
     font-size: 2rem;
     margin: 20px 20px 0;
     text-align: center; }

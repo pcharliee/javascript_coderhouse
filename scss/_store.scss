@@ -21,9 +21,9 @@
 
 .store-information {
   @include glass;
+  @include regular-font;
   background-color:#0e1a40c2;
   color: $light-gray;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 20px;
   border-radius: 5px;
   h5 {
