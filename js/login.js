@@ -17,7 +17,7 @@ function loginSuccess() {
   if(!user.nombre)
   // localStorage.setItem('usuario', JSON.stringify({ nombre: 'Muggle sin nombre'}));
   
-  location.href = '../landing.html';
+  location.href = './landing.html';
 }
 
 function ingresarUsuario(e) {
