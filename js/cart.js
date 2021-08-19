@@ -17,62 +17,71 @@ $('#confirmar-compra-modal').css({ 'display': 'none' });
 
 // FUNCTIONS
 
-function parsePrice(item) {
-  let parsedItem = item.split(' ');
-  let price = parseFloat(parsedItem[0]);
-  return price;
+function parsePrice(itemPrice) {
+  return parseFloat(itemPrice.split( )[0]);
+};
+
+function decreaseCount(value, item) {
+  if(value == 1) return removeFromCartConfirm(item);
+  let newQty = value-1;
+  let newPrice = parsePrice(item.precio) * newQty;
+
+  $(`#item-price-${item.id}-${item.categoria}`).replaceWith(`
+    <p id='item-price-${item.id}-${item.categoria}' class='cart-item-price'>
+      ${newPrice} galeones
+    </p>
+  `);
+
+  $(`#cart-item-counter-${item.id}-${item.categoria}`)
+      .replaceWith(`<p id='cart-item-counter-${item.id}-${item.categoria}'>${newQty}</p>`);
+
+  cartSummary();
 };
 
 function increaseCount(value, item) {
   let newQty = value+1;
   let newPrice = parsePrice(item.precio) * newQty;
-  
-  $(`#item-price-${item.id}`).replaceWith(`
-  <p id='item-price-${item.id}' class='cart-item-price'>${newPrice} galeones</p>
-  `)
 
-  $(`#cart-item-counter-${item.id}`)
-  .replaceWith(`<p id='cart-item-counter-${item.id}'>${newQty}</p>`);
+  $(`#item-price-${item.id}-${item.categoria}`).replaceWith(`
+    <p id='item-price-${item.id}-${item.categoria}' class='cart-item-price'>
+      ${newPrice} galeones
+    </p>
+  `);
+
+  $(`#cart-item-counter-${item.id}-${item.categoria}`)
+    .replaceWith(`<p id='cart-item-counter-${item.id}-${item.categoria}'>${newQty}</p>`);
 
   cartSummary();
 };
 
-function removeFromCartSuccess(id) {
-  $(`#cart-item-id-${id}`).remove();
+function removeFromCartSuccess(item) {
+  let itemToRemove = item.nombre
+  $(`#cart-item-id-${item.id}-${item.categoria}`).remove();
     let currentCart = getUpdatedCart();
-    let newCart = currentCart.filter(item => item.id != id);
+    let newCart = currentCart.filter(item => item.nombre != itemToRemove);
     localStorage.setItem('carrito', JSON.stringify(newCart));
     localStorage.setItem('carritoModificado', JSON.stringify(newCart));
     cartSummary();
 };
 
-function removeFromCartConfirm(id) {
+function removeFromCartConfirm(item) {
   let eliminarItem = confirm('Quieres eliminar el item del carrito?');
-  if (eliminarItem) removeFromCartSuccess(id);
-};
-
-function decreaseCount(value, item) {
-  if(value == 1) return removeFromCartConfirm(item.id);
-  let newQty = value-1;
-  let newPrice = parsePrice(item.precio) * newQty;
-
-  $(`#item-price-${item.id}`).replaceWith(`
-  <p id='item-price-${item.id}' class='cart-item-price'>${newPrice} galeones</p>
-  `);
-
-  $(`#cart-item-counter-${item.id}`)
-      .replaceWith(`<p id='cart-item-counter-${item.id}'>${newQty}</p>`);
-
-  cartSummary();
+  if (eliminarItem) removeFromCartSuccess(item);
 };
 
 function getUpdatedCart() {
+  /* Chequeamos que tengamos un carrito en el LS, en caso de NO, retorna */
   let carrito = JSON.parse(localStorage.getItem('carrito'));
   if(!carrito) return;
+
+  /* Chequeamos que exista un carrito modificado (con nuevas cantidades) */
   let modifiedCart = JSON.parse(localStorage.getItem('carritoModificado'));
   if(!!modifiedCart) {
+    /* Si existe, verificamos si tenemos items en el carrito que no esten en
+       carrito modificado
+     */
     carrito.map(element => {
-      let checkIfItemExists = modifiedCart.findIndex(item => item.id == element.id);
+      let checkIfItemExists = modifiedCart.findIndex(item => item.nombre == element.nombre);
       if(checkIfItemExists === -1) modifiedCart.push(element);
     });
     localStorage.setItem('carritoModificado', JSON.stringify(modifiedCart));
@@ -87,10 +96,9 @@ function cartSummary() {
   let precioTotal = 0;
   const carritoModificado = []
   let currentCart = getUpdatedCart();
-  
   currentCart.map(item => {
-    let currentPrice = parsePrice($(`#item-price-${item.id}`).text());
-    let currentQty = parseInt($(`#cart-item-counter-${item.id}`).text());
+    let currentPrice = parsePrice($(`#item-price-${item.id}-${item.categoria}`).text());
+    let currentQty = parseInt($(`#cart-item-counter-${item.id}-${item.categoria}`).text());
     let modifiedCart = Object.assign({}, item, { cantidad: currentQty || 1});
     carritoModificado.push(modifiedCart);
     localStorage.setItem('carritoModificado', JSON.stringify(carritoModificado));
@@ -123,7 +131,7 @@ function deleteCartItems() {
 
   if(confirmDelete) {
     currentCart.forEach(item => {
-      removeFromCartSuccess(item.id);
+      removeFromCartSuccess(item);
     });
     location.reload();
   };
@@ -133,37 +141,37 @@ function getItemsFromCartSuccess(currentCart) {
   for (const item of currentCart) {
     let currentPrice = parsePrice(item.precio) * item.cantidad;
     $('.cart-items-container').append(`
-      <div id='cart-item-id-${item.id}' class='cart-item'>
+      <div id='cart-item-id-${item.id}-${item.categoria}' class='cart-item'>
         <div class='cart-item-info'>
           <p class='cart-item-name'>${item.nombre}</p>
-          <p id='item-price-${item.id}' class='cart-item-price'>${currentPrice} galeones</p>
+          <p id='item-price-${item.id}-${item.categoria}' class='cart-item-price'>${currentPrice} galeones</p>
           <div class='cart-item-modifier'>
-            <button id='cart-minus-btn-${item.id}' type='button'>-</button>
-            <p id='cart-item-counter-${item.id}'>${item.cantidad}</p>
-            <button id='cart-plus-btn-${item.id}' type='button'>+</button>
+            <button id='cart-minus-btn-${item.id}-${item.categoria}' type='button'>-</button>
+            <p id='cart-item-counter-${item.id}-${item.categoria}'>${item.cantidad}</p>
+            <button id='cart-plus-btn-${item.id}-${item.categoria}' type='button'>+</button>
           </div>
         </div>
         <div class='cart-item-img-container'>
           <img src=${item.thumbnail} class='cart-item-img'>
         </div>
-        <span id='cart-remove-btn-${item.id}' class="cart-remove-btn"></span>
+        <span id='cart-remove-btn-${item.id}-${item.categoria}' class="cart-remove-btn"></span>
       </div>
     `);
 
     cartSummary();
 
     // MODIFIERS FUNCTIONALITY
-    $(`#cart-plus-btn-${item.id}`).on('click', function () {
-      let currentQty = parseInt($(`#cart-item-counter-${item.id}`).text());
+    $(`#cart-plus-btn-${item.id}-${item.categoria}`).on('click', function () {
+      let currentQty = parseInt($(`#cart-item-counter-${item.id}-${item.categoria}`).text());
       increaseCount(currentQty, item);
     });
-    $(`#cart-minus-btn-${item.id}`).on('click', function () {
-      let currentQty = parseInt($(`#cart-item-counter-${item.id}`).text());
+    $(`#cart-minus-btn-${item.id}-${item.categoria}`).on('click', function () {
+      let currentQty = parseInt($(`#cart-item-counter-${item.id}-${item.categoria}`).text());
       decreaseCount(currentQty, item);
     });
 
-    $(`#cart-remove-btn-${item.id}`).on('click', function () {
-      removeFromCartConfirm(item.id);
+    $(`#cart-remove-btn-${item.id}-${item.categoria}`).on('click', function () {
+      removeFromCartConfirm(item);
     });
     
     // Google Chrome render
@@ -214,7 +222,7 @@ function confirmarCompraModal() {
   $('#confirmar-compra-modal').append(`
   <section class='confirmar-compra-container'>
   <div class='confirmar-compra-converter'>
-  <p>El total de tu compra es: ${cartSummary()} galeones</p>
+  <p>El total de tu compra es: ${cartSummary().toLocaleString('es-ES')} galeones</p>
  
     <div class='coin-converter'>
       <img class='coin' src='../media/misc/Galleon_coin.png'>

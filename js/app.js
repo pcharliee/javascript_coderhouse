@@ -52,8 +52,8 @@ cards.addClass('cards-section');
 
 // FUNCTIONS
 
-function goToStore() {
-  location.href = '../store.html';
+function goToStore(categoria) {
+  location.href = './store.html';
 };
 
 function crearTarjetas (sectionCards) {
@@ -65,7 +65,7 @@ function crearTarjetas (sectionCards) {
       <div class="info">
         <div class="card-title-section"><h3>${card.nombre}</h3></div>
         <p>${card.descripcion}</p>
-        <input type='button' class='card-btn' value='Ver'>
+        <input type='button' id='${card.categoria}' class='card-btn' value='Ver'>
       </div>
     </div>`)
   });
@@ -76,7 +76,10 @@ function crearTarjetas (sectionCards) {
     'filter': 'invert(0.9)'
   });
 
-  $(`.card-btn`).on('click', goToStore)
+  $(`.card-btn`).on('click', function (e) {
+    localStorage.setItem('categoria', e.target.id);
+    location.href = './store.html';
+  });
 };
 
 // DOM INTERACTIONS
@@ -86,6 +89,8 @@ welcome.append(`<p class='welcome-information-cta'>
 Da un paseo por nuestro sitio y no olvides visitar la tienda exclusiva para magos
 </p>`);
 $('.welcome-information-cta').delay(3000).slideDown(1000);
+
+
 
 $('.landing-bg').hover(function () {
   scrolled = false;

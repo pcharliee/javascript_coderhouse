@@ -14,6 +14,14 @@
     overflow: auto;
     margin-right: 10px;
   }
+  .switch-stores-container {
+    @include glass;
+    width: 150px;
+    height: 100px;
+    background-color: rgba(1, 9, 14, 0.692);
+    border-radius: 5px;
+    color: $light-gray;
+  }
   section {
     width: 60vw;
   }

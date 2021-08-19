@@ -1,4 +1,3 @@
-
 localStorage.setItem('usuario', JSON.stringify({ nombre: 'Muggle sin nombre'}));
 
 class Usuario {
@@ -23,7 +22,7 @@ function loginSuccess(completion) {
     return alert('Completa el formulario');
     return;
   }
-  location.href = '../landing.html';
+  location.href = './landing.html';
 };
 
 function ingresarUsuario(e) {

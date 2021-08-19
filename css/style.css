@@ -330,6 +330,15 @@ p {
     max-height: 530px;
     overflow: auto;
     margin-right: 10px; }
+  .store .switch-stores-container {
+    box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    width: 150px;
+    height: 100px;
+    background-color: rgba(1, 9, 14, 0.692);
+    border-radius: 5px;
+    color: #e7e7e7; }
   .store section {
     width: 60vw; }
 

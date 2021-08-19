@@ -1,8 +1,10 @@
 /* INFORMACION INICIAL PARA FUNCIONAR */
 const cart = [];
 const storeItems = [];
+let currentItemsForCategory = [];
+let currentCategory = '';
+let newCategory = '';
 let cartOpened = false;
-
 
 $('document').ready(() => {
   const ITEMS_JSON = "data/items.json";
@@ -10,12 +12,28 @@ $('document').ready(() => {
     if(res == 'success') {
       req.map(el => storeItems.push(el));
       localStorage.setItem('storeItems', JSON.stringify(storeItems));
-      crearTarjetaItem(Math.floor(Math.random() * storeItems.length));
     };
+    currentCategory = localStorage.getItem('categoria');
+  })
+  .then(function () {
+    setStore(currentCategory);
   });
 });
 
 // DOM MANIPULATION
+
+function setStore(category) {
+  let index = 0;
+  storeItems.map(el => {
+    if(el.categoria != category) return;
+    else if(el.categoria == category) {
+      el.id = index;
+      index++;
+      currentItemsForCategory.push(el);
+    };
+  });
+  crearTarjetaItem(currentItemsForCategory[0]);
+};
 
 $('body').append(`
 <div id='cart-display' class='cart-details'></div>
@@ -26,21 +44,45 @@ $('#cart-display').css({ 'display': 'none' });
 
 // FUNCTIONS 
 
+function getFilteredItem(id) {
+  /* Buscamos en el array la carta que matchee con el id 'anterior' a la carta
+    que esta actualmente en pantalla
+  */
+  let filteredItem = '';
+    currentItemsForCategory.filter(item => {
+    if(item.id != id) return
+    if (item.id == id) filteredItem = item;
+  });
+  return filteredItem;
+};
+
 function previousCard() {
-  let limit = storeItems.length -1;
-  let currentSelection = $(':input.add-to-cart')[0].id;
-  if (currentSelection == 0) crearTarjetaItem(limit);
+  /* id de la carta en la pantalla */
+  let currentSelection = parseInt($(':input.add-to-cart')[0].id);
+
+  /* Validamos que el id de la carta actual no sea la primera posicion del array 
+     1. de ser verdadero, el 'id' va a ser la ultima posicion del array
+  */
+  let idAnterior = currentSelection == 0
+    ? currentItemsForCategory.length -1
+    : Number(currentSelection) -1;
+
+  let previousItem = getFilteredItem(idAnterior);
   $("#item-card").remove();
-  let prevSelection = Number(currentSelection)-1;
-  crearTarjetaItem(prevSelection);
+  crearTarjetaItem(previousItem);
 };
 
 function nextCard() {
-  let currentSelection = $(':input.add-to-cart')[0].id;
-  if (currentSelection == storeItems.length -1) crearTarjetaItem(0);
+  /* id de la carta en la pantalla */
+  let currentSelection = parseInt($('input.add-to-cart')[0].id);
+
+  let idSiguiente = currentSelection == currentItemsForCategory.length -1
+    ? 0
+    : Number(currentSelection) +1;
+
+  let nextItem = getFilteredItem(idSiguiente);
   $("#item-card").remove();
-  let nextSelection = Number(currentSelection)+1;
-  crearTarjetaItem(nextSelection);
+  crearTarjetaItem(nextItem);
 };
 
 function createCardButtons (item) {
@@ -50,16 +92,16 @@ function createCardButtons (item) {
       <input type="button" id="previous" value="<">
       <input 
         type="button"
-        id="${item.id}" 
+        id="${item.id}-${item.categoria}" 
         class="add-to-cart" value="Agregar al carrito">
       <input type="button" id="next" value=">">
     </div>
   `);
   alreadyInCart(item);
 
-  $(`#${item.id}`).on('click', function (e) {
-    let itemId = e.target.id
-    const newItem = storeItems.find(el => el.id == itemId);
+  $(`#${item.id}-${item.categoria}`).on('click', function (e) {
+    let itemId = e.target.id.split('-')[0]
+    const newItem = currentItemsForCategory.find(el => el.id == itemId);
     inCartValidation(newItem);
   });
   $('#previous').on('click', previousCard)
@@ -67,10 +109,13 @@ function createCardButtons (item) {
 };
 
 function alreadyInCart(item) {
+  /* Traemos el carrito actualizado */
   let currentCart = getUpdatedCart() || cart;
-  let exists = currentCart.find(el => el.id == item.id);
+
+  /* Verificamos que el item que queremos agregar no este ya en el carrito */
+  let exists = currentCart.find(el => el.nombre == item.nombre);
   if(!!exists) {
-    $(`#${item.id}`)
+    $(`#${item.id}-${item.categoria}`)
       .val('Agregado')
       .prop('disabled', true)
       .css(
@@ -98,7 +143,8 @@ function addToCartSuccess(newItem) {
     nombre: newItem.nombre,
     precio: newItem.precio,
     cantidad: 1,
-    thumbnail: newItem.img
+    thumbnail: newItem.img,
+    categoria: newItem.categoria
   };
   currentCart.push(objeto);
   localStorage.setItem('carrito', JSON.stringify(currentCart));
@@ -107,15 +153,10 @@ function addToCartSuccess(newItem) {
   getItemsFromCart();
 };
 
-function crearTarjetaItem(id) {
-  if(id == storeItems.length || id == -1) return;
-  const selected = storeItems.filter(el => el.id === id)
-  selected[0].categoria == 'escobas' 
-    ? crearTarjetaEscobas(selected[0])
-    : crearTarjetaVaritas(selected[0])
-
-  /* Funcion para crear botones especificos de la carta */
-  createCardButtons(selected[0]);
+function crearTarjetaItem(item) {
+  item.categoria == 'escobas' 
+    ? crearTarjetaEscobas(item)
+    : crearTarjetaVaritas(item);
 };
 
 function crearTarjetaEscobas(item) {
@@ -133,6 +174,7 @@ function crearTarjetaEscobas(item) {
     </img>
     </main>
   `);
+  createCardButtons(item)
 };
 
 function crearTarjetaVaritas(item) {
@@ -163,7 +205,15 @@ function crearTarjetaVaritas(item) {
       </article>
     </main>
   `);
+  createCardButtons(item);
 };
+
+$('#switch-stores').on('click', function () {
+  console.log('tamo acaaa')
+  let currentCategory = localStorage.getItem('categoria');
+  newCategory = currentCategory == 'varitas' ? 'escobas' : 'varitas';
+  // setStore(newCategory);
+});
 
 $('body').keydown(function (e) {
   /* carta actual siendo mostrada */

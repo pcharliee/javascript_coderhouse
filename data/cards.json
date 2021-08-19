@@ -1,14 +1,16 @@
 [
   {
     "id": "ollivanders",
+    "categoria": "varitas",
     "nombre": "Ollivanders",
     "descripcion": "Todo mago necesita una varita mágica. Visita la tienda de Ollivander´s y consigue la tuya.",
-    "img": "../media/ollivanders-t.png"
+    "img": "./media/ollivanders-t.png"
   },
   {
     "id": "quidditch-supplies",
+    "categoria": "escobas",
     "nombre": "Quality Quidditch Supplies",
     "descripcion": "Ya sea que juegues al Quidditch o la uses para hacer las compras, en Articulos de Calidad para Quidditch tenemos la escoba que se adapta a tus necesidades" ,
-    "img": "../media/qqs.png"
+    "img": "./media/qqs.png"
   }
 ]

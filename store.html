@@ -16,15 +16,17 @@
 <body>
   <nav id='navbar-landing' class="navbar navbar-expand-lg navbar-light navbar-bg">
     <div class="navbar-hp">
-      <a class="navbar-brand" href="#">Tienda de árticulos mágicos</a>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="./index.html">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./landing.html">Home</a>
-          </li>
-        </ul>
+      <ul class="navbar-navig">
+        <li class="nav-item">
+          <a class="text-dark" href="./index.html">Login</a>
+        </li>
+        <li>
+          <p class="navbar-title text-dark">Diagon Alley - Online</p>
+        </li>
+        <li class="nav-item">
+          <a id="store-home-btn" class='text-dark' href="">Tienda</a>
+        </li>
+      </ul>
     </div>
   </nav>
   <main class='store'>
@@ -42,6 +44,7 @@
       </ul>
       <p class='text-center'>¿Qué esperas para gastar todos tus ahorros?</p>
     </aside>
+    <div id='switch-stores' class='switch-stores-container'>Cambiar tienda</div>
     <section id="store-items">
       <div id="store-items-section" class='store-items-cards'></div>
     </section>
