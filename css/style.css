@@ -625,7 +625,7 @@ p {
         font-size: 13px;
         font-weight: 600;
         right: -5px;
-        top: -5px;
+        top: -8px;
         border-radius: 50%;
         cursor: pointer; }
         .cart-container .cart-items-container .cart-item .cart-remove-btn::before {

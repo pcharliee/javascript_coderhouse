@@ -50,7 +50,7 @@ $('body').prepend(`
 `);
 cards.addClass('cards-section');
 
-// FUNCTIONS //
+/* FUNCTIONS */
 
 function crearTarjetas (sectionCards) {
   sectionCards.map((card, index) => {

@@ -20,7 +20,16 @@ $('document').ready(() => {
   });
 });
 
-// DOM MANIPULATION
+/* DOM MANIPULATION */
+
+$('body').append(`
+<div id='cart-display' class='cart-details'></div>
+<span id='trolley' class='trolley-cart'></span>
+`);
+
+$('#cart-display').css({ 'display': 'none' });
+
+/* FUNCTIONS */
 
 function setStore(category) {
   let index = 0;
@@ -35,18 +44,10 @@ function setStore(category) {
   crearTarjetaItem(currentItemsForCategory[0]);
 };
 
-$('body').append(`
-<div id='cart-display' class='cart-details'></div>
-<span id='trolley' class='trolley-cart'></span>
-`);
-
-$('#cart-display').css({ 'display': 'none' });
-
-// FUNCTIONS 
-
 function getFilteredItem(id) {
-  /* Buscamos en el array la carta que matchee con el id 'anterior' a la carta
-    que esta actualmente en pantalla
+  /*
+   Buscamos en el array la carta que matchee con el id 'anterior' a la carta
+   que esta actualmente en pantalla
   */
   let filteredItem = '';
     currentItemsForCategory.filter(item => {
@@ -60,8 +61,9 @@ function previousCard() {
   /* id de la carta en la pantalla */
   let currentSelection = parseInt($(':input.add-to-cart')[0].id);
 
-  /* Validamos que el id de la carta actual no sea la primera posicion del array 
-     1. de ser verdadero, el 'id' va a ser la ultima posicion del array
+  /*
+   Validamos que el id de la carta actual no sea la primera posicion del array 
+   De ser verdadero, el 'id' va a ser la ultima posicion del array
   */
   let idAnterior = currentSelection == 0
     ? currentItemsForCategory.length -1
@@ -112,7 +114,7 @@ function alreadyInCart(item) {
   /* Traemos el carrito actualizado */
   let currentCart = getUpdatedCart() || cart;
 
-  /* Verificamos que el item que queremos agregar no este ya en el carrito */
+  /* Verificamos si el item que queremos agregar ya esta en el carrito */
   let exists = currentCart.find(el => el.nombre == item.nombre);
   if(!!exists) {
     $(`#${item.id}-${item.categoria}`)
@@ -133,9 +135,9 @@ function inCartValidation(item) {
 };
 
 function addToCartSuccess(newItem) {
-  /* 
-  Si el carro tiene items, aplicamos getUpdatedCart para 
-  actualizarlo 
+  /*
+   Si el carro tiene items, aplicamos getUpdatedCart para 
+   actualizarlo
   */
   let currentCart = !cart.length ? cart : getUpdatedCart();
   let objeto = { 
@@ -149,7 +151,7 @@ function addToCartSuccess(newItem) {
   currentCart.push(objeto);
   localStorage.setItem('carrito', JSON.stringify(currentCart));
   alreadyInCart(newItem);
-  getUpdatedCart();
+  // getUpdatedCart();
   getItemsFromCart();
 };
 
@@ -162,7 +164,7 @@ function crearTarjetaItem(item) {
 function crearTarjetaEscobas(item) {
   $('#store-items-section').append(`
     <main id="item-card" class="broom-option">
-    <img class='card-bg' src='../media/qqs.png'>
+    <img class='card-bg' src='./media/qqs.png'>
     <article id="option-article" class="option-stage">
     <img class="item-img" src=${item.img}>
       <div class="option-information">
@@ -171,16 +173,15 @@ function crearTarjetaEscobas(item) {
         <p class="option-description">${item.description}</p>
       </div>
     </article>
-    </img>
     </main>
   `);
-  createCardButtons(item)
+  createCardButtons(item);
 };
 
 function crearTarjetaVaritas(item) {
   $('#store-items-section').append(`
     <main id="item-card" class="wand-option">
-    <img class='card-bg' src='../media/ollivanders-t.png'>
+    <img class='card-bg' src='./media/ollivanders-t.png'>
       <article id="option-article" class="option-stage">
       <img class="item-img" src=${item.img}>
         <div class="option-information">
@@ -211,14 +212,14 @@ function crearTarjetaVaritas(item) {
 $('#switch-stores').on('click', function () {
   let currentCategory = localStorage.getItem('categoria');
 
-  /* Seteamos la nueva categoria a la contraria  a la actual */
+  /* Seteamos la nueva categoria a la contraria a la actual */
   newCategory = currentCategory == 'varitas' ? 'escobas' : 'varitas';
   localStorage.setItem('categoria', newCategory);
   location.reload();
 });
 
 $('body').keydown(function (e) {
-  /* carta actual siendo mostrada */
+  /* Tarjeta actual siendo mostrada */
   let current = $(':input.add-to-cart')[0].id;
 
   switch (e.which) {
@@ -226,14 +227,17 @@ $('body').keydown(function (e) {
       $(`#${current}`).trigger('click');
       break;
     case 37:
-      $('#previous').trigger('click')
+      $('#previous').trigger('click');
       break; 
     case 39:
-      $('#next').trigger('click')
+      $('#next').trigger('click');
       break;
-    case 38:  
+    case 38:
+      $('#trolley').trigger('click');
+      break;
     case 40:
-      $('#trolley').trigger('click')
+      $('#switch-stores').trigger('click');
+      break
       break;
     default:
       break;
