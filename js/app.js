@@ -108,7 +108,7 @@ $(window).on('scroll', function (e) {
     $('#scroll-to').fadeIn()
     pageSections = false;
   } else if(this.scrollY > 570) {
-    $('#scroll-to').fadeOut()
+    $('#scroll-to').fadeOut();
     $('#store-home-btn').text('Home');
     pageSections = true;
   }

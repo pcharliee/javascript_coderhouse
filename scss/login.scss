@@ -1,9 +1,5 @@
 @import 'utils';
 
-*{
-  // border: 1px red dotted;
-}
-
 // IMAGENES //
 .index-bg {
   @include bg-img-cover;
