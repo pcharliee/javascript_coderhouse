@@ -6,7 +6,7 @@ const usuario = localStorage.getItem('usuario');
 let pageSections = false;
 
 $('document').ready(() => {
-  // HECHIZOS //
+  /* HECHIZOS */
   const API_URL = "https://fedeperin-harry-potter-api.herokuapp.com/db";
   $.get(API_URL, (req, res) => {
     if(res == 'success') {
@@ -16,15 +16,15 @@ $('document').ready(() => {
       localStorage.setItem('characters', JSON.stringify(characters))
     };
   });
-  
-  // CARDS //
-  const CARDS_JSON = "data/cards.json"
+
+  /* CARDS */
+  const CARDS_JSON = "data/cards.json";
   $.getJSON(CARDS_JSON, (req, res) => {
     if(res == 'success') {
       let cards = req;
       cards.map(el => sectionCards.push(el));
       localStorage.setItem('section-cards', JSON.stringify(sectionCards));
-      crearTarjetas(cards)
+      crearTarjetas(cards);
     };
   });
 });
@@ -33,7 +33,7 @@ const user = JSON.parse(localStorage.getItem('usuario'));
 const Hechizos = JSON.parse(localStorage.getItem('spells'));
 const Personajes = JSON.parse(localStorage.getItem('characters'));
 
-// VARIABLES
+/* VARIABLES */
 
 let welcome = $('#welcome');
 let sections = $('#sections');
@@ -43,18 +43,14 @@ let scrolled = false;
 let onSections = false;
 let userName = !user.nombre ? 'Muggle sin nombre' : user.nombre
 
-// DOM MANIPULATION
+/* DOM GENERATION */
 
 $('body').prepend(`
 <div id='scroll-to' class='scroll-to'></div>
 `);
 cards.addClass('cards-section');
 
-// FUNCTIONS
-
-function goToStore(categoria) {
-  location.href = './store.html';
-};
+// FUNCTIONS //
 
 function crearTarjetas (sectionCards) {
   sectionCards.map((card, index) => {
@@ -82,15 +78,15 @@ function crearTarjetas (sectionCards) {
   });
 };
 
-// DOM INTERACTIONS
+/* DOM GENERATION */
 
-welcome.append(`<h2 class='welcome-information-titulo'>Bienvenido, ${userName}!<h2>`);
-welcome.append(`<p class='welcome-information-cta'>
-Da un paseo por nuestro sitio y no olvides visitar la tienda exclusiva para magos
-</p>`);
+welcome.append(`<h2 class='welcome-information-titulo'>Bienvenido, ${userName}!</h2>`);
+welcome.append(`
+  <p class='welcome-information-cta'>
+    Da un paseo por nuestro sitio y no olvides visitar la tienda exclusiva para magos
+  </p>
+`);
 $('.welcome-information-cta').delay(3000).slideDown(1000);
-
-
 
 $('.landing-bg').hover(function () {
   scrolled = false;
@@ -100,9 +96,6 @@ $('.landing-bg').hover(function () {
 
 $('#scroll-to').on('click', function (e) {
   e.preventDefault;
-  // $('html, body').animate({
-  //   scrollTop: $('.sections-bg').offset().top
-  // }, 50);
   location.href = '#section'
   $('#store-home-btn').text('Home');
   pageSections = true;
@@ -110,7 +103,7 @@ $('#scroll-to').on('click', function (e) {
 
 $(window).on('scroll', function (e) {
   scrolled = true;
-  /* Condicion para ocular o mostrar el boton */
+  /* Condicion para ocultar o mostrar el boton */
   if(this.scrollY < 570) {
     $('#scroll-to').fadeIn()
     pageSections = false;
@@ -119,9 +112,8 @@ $(window).on('scroll', function (e) {
     $('#store-home-btn').text('Home');
     pageSections = true;
   }
-  
-  
-  // Validating user is scrolling down
+
+  /* Validando que el usuario este scrolleando para abajo */
   let scrollingUp = this.oldScroll > this.scrollY
   this.oldScroll = this.scrollY
   let scrollTop = $(this).scrollTop();
@@ -130,7 +122,7 @@ $(window).on('scroll', function (e) {
   onSections = true;
 });
 
-// ANIME JS //
+// ANIME JS LIBRARY //
 
 var textWrapper = document.querySelector('.welcome-information-titulo');
 textWrapper.innerHTML = textWrapper.textContent
@@ -154,5 +146,5 @@ $('#store-home-btn').on('click', function (e) {
   } else {
     $('#store-home-btn').text('Tienda')
     location.href = '#landing'
-  }
-})
+  };
+});

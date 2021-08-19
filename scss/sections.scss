@@ -81,13 +81,12 @@
     h3 {
       font-family: 'HarryPotter';
       font-size: 2.5rem;
-
+      margin: 0;
     }
     p {
       @include regular-font;
       letter-spacing: 1px;
       font-size: 15px;
-      margin-top: 8px;
     }
     input {
       @include regular-font;

@@ -209,10 +209,12 @@ function crearTarjetaVaritas(item) {
 };
 
 $('#switch-stores').on('click', function () {
-  console.log('tamo acaaa')
   let currentCategory = localStorage.getItem('categoria');
+
+  /* Seteamos la nueva categoria a la contraria  a la actual */
   newCategory = currentCategory == 'varitas' ? 'escobas' : 'varitas';
-  // setStore(newCategory);
+  localStorage.setItem('categoria', newCategory);
+  location.reload();
 });
 
 $('body').keydown(function (e) {
