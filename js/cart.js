@@ -225,15 +225,15 @@ function confirmarCompraModal() {
   <p>El total de tu compra es: ${cartSummary().toLocaleString('es-ES')} galeones</p>
  
     <div class='coin-converter'>
-      <img class='coin' src='../media/misc/Galleon_coin.png'>
+      <img class='coin' src='media/misc/Galleon_coin.png'>
       <p>USD$ ${(cartSummary() * 25).toLocaleString('es-ES')} dolares</p>
     </div>
     <div class='coin-converter'>
-      <img class='coin' src='../media/misc/Sickle_coin.png'>
+      <img class='coin' src='media/misc/Sickle_coin.png'>
       <p>${(cartSummary() * 17).toLocaleString('es-ES')} Sickles</p>
     </div>
     <div class='coin-converter'>
-      <img class='coin-knut' src='../media/misc/Knut_coin.png'>
+      <img class='coin-knut' src='media/misc/Knut_coin.png'>
       <p>${(cartSummary() * 493).toLocaleString('es-ES')} Knuts</p>
     </div>
     <input id='volver-compra-btn' type='button' value='Volver'>
