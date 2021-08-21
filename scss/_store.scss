@@ -5,6 +5,7 @@
 .store {
   @include fl-row;
   @include fl-center;
+  align-items: center;
   justify-content: space-evenly;
   background-color: rgb(2, 21, 32);
   background-size: cover;
@@ -13,25 +14,28 @@
   aside {
     width: 400px;
     max-height: 530px;
-    margin-right: 10px;
   }
   .switch-stores-container {
     @include hp;
+    position: relative;
     font-size: 1.4rem;
     text-align: center;
     border-radius: 5px;
     color: $light-gray;
     padding: 10px;
-    .switch-logo{
+    .switch-logo {
+      position: absolute;
+      @include glass;
+      background-color: #0e1a40c2;
+      width: 170px;
+      border-radius: 5px;
+      left: 31%;
       transform: translateY(50px);
       p {
        color: $light-gray;   
        transform: translateY(10px);
       }
-      .next-store-logo {
-        height: 120px;
-        // filter: invert(0.5);
-      }
+
     }
   }
 }
@@ -40,7 +44,6 @@
   @include regular-font;
   position: relative;
   box-sizing: border-box;
-  // height: 65vh;
   .navigation-container {
     @include fl-col;
     align-items: center;
@@ -51,10 +54,11 @@
     padding: 5px;
     text-align: center;
     border-radius: 5px;
-    img {
+    .cloud {
       width: auto;
       height: 120px;
-      transform: translate(65px, -60px);
+      transform: translate(50px, -60px);
+      z-index: 9999;
     }
     .navigation {
       @include fl-col;
@@ -93,7 +97,7 @@
     h5 {
       @include hp;
       font-size: 2.5rem;
-      margin: 20px;
+      margin: 10px;
       text-align: center;
     }
     p { text-align: center };

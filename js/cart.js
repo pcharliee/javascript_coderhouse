@@ -1,4 +1,6 @@
 let cartOwner = JSON.parse(localStorage.getItem('usuario'));
+let cartPurchased = false;
+
 /* DOM MANIPULATION */ 
 
 $('#cart-display').append(`
@@ -8,9 +10,9 @@ $('#cart-display').append(`
 `);
 
 $('body').append(`
-<div id='confirmar-compra-modal' class='confirmar-compra'>
-  <h6>¿Ya tienes todo lo que necesitas?</h6>
-</div>
+  <div id='confirmar-compra-modal' class='confirmar-compra'>
+    <h6>¿Ya tienes todo lo que necesitas?</h6>
+  </div>
 `);
 
 $('#confirmar-compra-modal').css({ 'display': 'none' });
@@ -19,6 +21,21 @@ $('#confirmar-compra-modal').css({ 'display': 'none' });
 
 function parsePrice(itemPrice) {
   return parseFloat(itemPrice.split()[0]);
+};
+
+function removeFromCartSuccess(item) {
+  let itemToRemove = item.nombre
+  $(`#cart-item-id-${item.id}-${item.categoria}`).remove();
+    let currentCart = getUpdatedCart();
+    let newCart = currentCart.filter(item => item.nombre != itemToRemove);
+    localStorage.setItem('carrito', JSON.stringify(newCart));
+    localStorage.setItem('carritoModificado', JSON.stringify(newCart));
+    cartSummary();
+};
+
+function removeFromCartConfirm(item) {
+  let eliminarItem = confirm('Quieres eliminar el item del carrito?');
+  if (eliminarItem) removeFromCartSuccess(item);
 };
 
 function decreaseCount(value, item) {
@@ -56,21 +73,6 @@ function increaseCount(value, item) {
   cartSummary();
 };
 
-function removeFromCartSuccess(item) {
-  let itemToRemove = item.nombre
-  $(`#cart-item-id-${item.id}-${item.categoria}`).remove();
-    let currentCart = getUpdatedCart();
-    let newCart = currentCart.filter(item => item.nombre != itemToRemove);
-    localStorage.setItem('carrito', JSON.stringify(newCart));
-    localStorage.setItem('carritoModificado', JSON.stringify(newCart));
-    cartSummary();
-};
-
-function removeFromCartConfirm(item) {
-  let eliminarItem = confirm('Quieres eliminar el item del carrito?');
-  if (eliminarItem) removeFromCartSuccess(item);
-};
-
 function getUpdatedCart() {
   /* Chequeamos que tengamos un carrito en el LS, en caso de NO, retorna */
   let carrito = JSON.parse(localStorage.getItem('carrito'));
@@ -96,7 +98,7 @@ function getUpdatedCart() {
 function cartSummary() { 
   $('.cart-summary-container').remove();
   let precioTotal = 0;
-  const carritoModificado = []
+  const carritoModificado = [];
   let currentCart = getUpdatedCart();
   currentCart.map(item => {
     let currentPrice = parsePrice($(`#item-price-${item.id}-${item.categoria}`).text());
@@ -122,14 +124,17 @@ function cartSummary() {
 
   $('#cart-eliminar').on('click', deleteCartItems);
   $('#cart-comprar').on('click', confirmarCompraModal);
-  
+
   return precioTotal;
 };
 
 function deleteCartItems() {
   let currentCart = getUpdatedCart();
   if (!currentCart.length) return;
-  let confirmDelete = confirm('Se van a eliminar todos los items del carrito. Esto no se puede revertir');
+  
+  let confirmDelete = cartPurchased
+    ? cartPurchased
+    : confirm('Se van a eliminar todos los items del carrito. Esto no se puede revertir');
 
   if(confirmDelete) {
     currentCart.forEach(item => {
@@ -222,26 +227,26 @@ function confirmarCompraModal() {
   $('.confirmar-compra-container').remove();
   $('#confirmar-compra-modal').show(200);
   $('#confirmar-compra-modal').append(`
-  <section class='confirmar-compra-container'>
-  <div class='confirmar-compra-converter'>
-  <p>El total de tu compra es: ${cartSummary().toLocaleString('es-ES')} galeones</p>
- 
-    <div class='coin-converter'>
-      <img class='coin' src='media/misc/Galleon_coin.png'>
-      <p>USD$ ${(cartSummary() * 25).toLocaleString('es-ES')} dolares</p>
+    <section class='confirmar-compra-container'>
+    <div class='confirmar-compra-converter'>
+    <p>El total de tu compra es: ${cartSummary().toLocaleString('es-ES')} galeones</p>
+  
+      <div class='coin-converter'>
+        <img class='coin' src='media/misc/Galleon_coin.png'>
+        <p>USD$ ${(cartSummary() * 25).toLocaleString('es-ES')} dolares</p>
+      </div>
+      <div class='coin-converter'>
+        <img class='coin' src='media/misc/Sickle_coin.png'>
+        <p>${(cartSummary() * 17).toLocaleString('es-ES')} Sickles</p>
+      </div>
+      <div class='coin-converter'>
+        <img class='coin-knut' src='media/misc/Knut_coin.png'>
+        <p>${(cartSummary() * 493).toLocaleString('es-ES')} Knuts</p>
+      </div>
+      <input id='volver-compra-btn' type='button' value='Volver'>
+      <input id='confirmar-compra-btn' type='button' value='Confirmar compra'>
     </div>
-    <div class='coin-converter'>
-      <img class='coin' src='media/misc/Sickle_coin.png'>
-      <p>${(cartSummary() * 17).toLocaleString('es-ES')} Sickles</p>
-    </div>
-    <div class='coin-converter'>
-      <img class='coin-knut' src='media/misc/Knut_coin.png'>
-      <p>${(cartSummary() * 493).toLocaleString('es-ES')} Knuts</p>
-    </div>
-    <input id='volver-compra-btn' type='button' value='Volver'>
-    <input id='confirmar-compra-btn' type='button' value='Confirmar compra'>
-  </div>
-  </section>
+    </section>
   `);
 
   $('#volver-compra-btn').on('click', cerrarCompraModal);
@@ -250,11 +255,18 @@ function confirmarCompraModal() {
 
 function cerrarCompraModal() {
   $('#confirmar-compra-modal').fadeOut(150);
-  $('.store').css({ 'opacity': '1' })
-}
+  $('.store').css({ 'opacity': '1' });
+};
+
 function compraSuccess() {
-  alert('Tu compra será enviada con una de nuestras lechuzas a tu casillero de Hogwarts.');
-  deleteCartItems();
+  Swal.fire({
+    title: 'Tu compra sera enviada a tu casillero en Hogwards. ¡Travesura Realizada!',
+    imageUrl: './media/misc/owl.png',
+    confirmButtonColor: '#1b2e6e',
+  }).then(() => {
+    cartPurchased = true;
+    deleteCartItems();
+  });
 };
 
 // DOM FUNCTIONALITIES

@@ -14,7 +14,7 @@ p {
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
-  background-image: url("../media/fondos/sky-bg.jpeg");
+  background-image: url("../media/fondos/bricks.jpeg");
   background-position: center left;
   height: 100vh; }
   .index-bg img {
@@ -124,6 +124,7 @@ p {
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
+  position: relative;
   width: 100%; }
   .navbar-hp .navbar-title {
     font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
@@ -139,6 +140,19 @@ p {
       font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
       text-decoration: none;
       margin: 0 5px; }
+    .navbar-hp .navbar-navig li.logo {
+      display: flex;
+      flex-flow: row nowrap;
+      position: absolute;
+      width: 150px;
+      top: -7px;
+      right: 10px;
+      align-items: center;
+      cursor: pointer; }
+      .navbar-hp .navbar-navig li.logo p {
+        margin: 0 10px; }
+      .navbar-hp .navbar-navig li.logo img {
+        height: 60px; }
     .navbar-hp .navbar-navig li:nth-child(odd) {
       display: flex;
       flex-flow: column nowrap;
@@ -319,6 +333,7 @@ p {
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
+  align-items: center;
   justify-content: space-evenly;
   background-color: #021520;
   background-size: cover;
@@ -326,22 +341,28 @@ p {
   background-position: bottom; }
   .store aside {
     width: 400px;
-    max-height: 530px;
-    margin-right: 10px; }
+    max-height: 530px; }
   .store .switch-stores-container {
     font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    position: relative;
     font-size: 1.4rem;
     text-align: center;
     border-radius: 5px;
     color: #e7e7e7;
     padding: 10px; }
     .store .switch-stores-container .switch-logo {
+      position: absolute;
+      box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      background-color: #0e1a40c2;
+      width: 170px;
+      border-radius: 5px;
+      left: 31%;
       transform: translateY(50px); }
       .store .switch-stores-container .switch-logo p {
         color: #e7e7e7;
         transform: translateY(10px); }
-      .store .switch-stores-container .switch-logo .next-store-logo {
-        height: 120px; }
 
 .store-information-container {
   font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
@@ -358,10 +379,11 @@ p {
     padding: 5px;
     text-align: center;
     border-radius: 5px; }
-    .store-information-container .navigation-container img {
+    .store-information-container .navigation-container .cloud {
       width: auto;
       height: 120px;
-      transform: translate(65px, -60px); }
+      transform: translate(50px, -60px);
+      z-index: 9999; }
     .store-information-container .navigation-container .navigation {
       display: flex;
       flex-flow: column nowrap;
@@ -400,7 +422,7 @@ p {
     .store-information-container .store-information h5 {
       font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
       font-size: 2.5rem;
-      margin: 20px;
+      margin: 10px;
       text-align: center; }
     .store-information-container .store-information p {
       text-align: center; }

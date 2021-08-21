@@ -23,16 +23,13 @@ $('document').ready(() => {
 /* DOM MANIPULATION */
 
 $('body').append(`
-<div id='cart-display' class='cart-details'></div>
-<span id='trolley' class='trolley-cart'></span>
+  <div id='cart-display' class='cart-details'></div>
+  <span id='trolley' class='trolley-cart'></span>
 `);
 
 $('.navigation-container>img').hover(function () {
-    $('.navigation').slideDown(300);
-  }, function () {
-    $('.navigation').slideUp(300);
-  }
-);
+  $('.navigation').toggle(300);
+});
 
 $('#cart-display').css({ 'display': 'none' });
 
@@ -53,12 +50,7 @@ function setStore(category) {
     };
   });
   $('.store-information>h5').text(`${currentItemsForCategory[0].tienda}`);
-  $('#switch-stores').append(`
-    <div class='switch-logo'>
-      <p>Cambiar tienda</p>
-      <img class='next-store-logo' src=${nextLogo}>
-    </div>
-  `)
+  $('.nav-item.logo').append(`<img class='next-store-logo' src=${nextLogo}>`);
   crearTarjetaItem(currentItemsForCategory[0]);
 };
 
@@ -106,7 +98,7 @@ function nextCard() {
 };
 
 function createCardButtons (item) {
-  $('.card-nav-buttons').remove()
+  $('.card-nav-buttons').remove();
   $('#store-items-section').append(`
     <div class='card-nav-buttons'>
       <input type="button" id="previous" value="<">
@@ -138,12 +130,10 @@ function alreadyInCart(item) {
     $(`#${item.id}-${item.categoria}`)
       .val('Agregado')
       .prop('disabled', true)
-      .css(
-      { 
+      .css({ 
         'cursor': 'not-allowed',
         'background-color': '#b33019c7',
-      }
-    );
+      });
   };
 };
 

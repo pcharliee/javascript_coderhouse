@@ -10,6 +10,7 @@
 .navbar-hp {
   @include fl-row;
   @include fl-center;
+  position: relative;
   width: 100%;
   .navbar-title {
     @include hp;
@@ -25,6 +26,22 @@
       @include regular-font;
       text-decoration: none;
       margin: 0 5px;
+    }
+    li.logo {
+      @include fl-row;
+      position: absolute;
+      width: 150px;
+      top: -7px;
+      right: 10px;
+      align-items: center;
+      cursor: pointer;
+      p {
+        margin: 0 10px;
+      }
+      img {
+        height: 60px;
+
+      }
     }
     li:nth-child(odd) {
       @include fl-col;

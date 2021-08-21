@@ -21,7 +21,10 @@ function loginValidation() {
 
 function loginSuccess(completion) {
   if(completion > 0) {
-    return alert('Completa el formulario');
+    return Swal.fire({
+      title: '¿Juras solemnemente que tus intenciones no son buenas?',
+      confirmButtonColor: '#1b2e6e',
+    });
   }
   location.href = './landing.html';
 };
@@ -39,26 +42,28 @@ function ingresarUsuario(e) {
 
 $('#button').on('click', ingresarUsuario);
 
+
+/* ANIME JS LIBRARY */
 var textWrapper = document.querySelector('.welcome-title');
 textWrapper.innerHTML = textWrapper.textContent
-.replace(/\S/g, "<span class='letter'>$&</span>");
+  .replace(/\S/g, "<span class='letter'>$&</span>");
 anime.timeline({loop: true})
-.add({
-  targets: '.welcome-title .letter',
-  opacity: [0,1],
-  easing: 'easeInOutQuad',
-  duration: 1150,
-  delay: (el, i) => 150 * (i+1)
+  .add({
+    targets: '.welcome-title .letter',
+    opacity: [0,1],
+    easing: 'easeInOutQuad',
+    duration: 1150,
+    delay: (el, i) => 150 * (i+1)
 });
 
 var textWrapper = document.querySelector('.welcome-title-span');
 textWrapper.innerHTML = textWrapper.textContent
-.replace(/\S/g, "<span class='letter'>$&</span>");
+  .replace(/\S/g, "<span class='letter'>$&</span>");
 anime.timeline({loop: true})
-.add({
-  targets: '.welcome-title-span .letter',
-  opacity: [0,1],
-  easing: 'easeInOutQuad',
-  duration: 1600,
-  delay: (el, i) => 150 * (i+1)
+  .add({
+    targets: '.welcome-title-span .letter',
+    opacity: [0,1],
+    easing: 'easeInOutQuad',
+    duration: 1600,
+    delay: (el, i) => 150 * (i+1)
 });
