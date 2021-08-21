@@ -10,6 +10,8 @@ class Usuario {
 
 function loginValidation() {
   let user = JSON.parse(localStorage.getItem('usuario'));
+  localStorage.removeItem('carrito');
+  localStorage.removeItem('carritoModificado');
   let loginValidation = 0;
   Object.keys(user).map((keyValue) => {
     if(!user[keyValue]) loginValidation++;
@@ -20,7 +22,6 @@ function loginValidation() {
 function loginSuccess(completion) {
   if(completion > 0) {
     return alert('Completa el formulario');
-    return;
   }
   location.href = './landing.html';
 };

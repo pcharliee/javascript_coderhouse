@@ -65,12 +65,6 @@ function crearTarjetas (sectionCards) {
       </div>
     </div>`)
   });
-  $('#ollivanders').css({
-    'filter': 'invert(0.75)'
-  });
-  $('#flourish-blotts').css({
-    'filter': 'invert(0.9)'
-  });
 
   $(`.card-btn`).on('click', function (e) {
     localStorage.setItem('categoria', e.target.id);

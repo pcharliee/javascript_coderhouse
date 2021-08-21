@@ -1,5 +1,5 @@
-let cartOwner = JSON.parse(localStorage.getItem('usuario')) || 'Muggle';
-// DOM MANIPULATION
+let cartOwner = JSON.parse(localStorage.getItem('usuario'));
+/* DOM MANIPULATION */ 
 
 $('#cart-display').append(`
   <div class='cart-container'>
@@ -15,10 +15,10 @@ $('body').append(`
 
 $('#confirmar-compra-modal').css({ 'display': 'none' });
 
-// FUNCTIONS
+/* FUNCTIONS */
 
 function parsePrice(itemPrice) {
-  return parseFloat(itemPrice.split( )[0]);
+  return parseFloat(itemPrice.split()[0]);
 };
 
 function decreaseCount(value, item) {
@@ -32,8 +32,9 @@ function decreaseCount(value, item) {
     </p>
   `);
 
-  $(`#cart-item-counter-${item.id}-${item.categoria}`)
-      .replaceWith(`<p id='cart-item-counter-${item.id}-${item.categoria}'>${newQty}</p>`);
+  $(`#cart-item-counter-${item.id}-${item.categoria}`).replaceWith(`
+    <p id='cart-item-counter-${item.id}-${item.categoria}'>${newQty}</p>
+  `);
 
   cartSummary();
 };
@@ -48,8 +49,9 @@ function increaseCount(value, item) {
     </p>
   `);
 
-  $(`#cart-item-counter-${item.id}-${item.categoria}`)
-    .replaceWith(`<p id='cart-item-counter-${item.id}-${item.categoria}'>${newQty}</p>`);
+  $(`#cart-item-counter-${item.id}-${item.categoria}`).replaceWith(`
+    <p id='cart-item-counter-${item.id}-${item.categoria}'>${newQty}</p>
+  `);
 
   cartSummary();
 };
@@ -160,7 +162,7 @@ function getItemsFromCartSuccess(currentCart) {
 
     cartSummary();
 
-    // MODIFIERS FUNCTIONALITY
+    /* MODIFIERS FUNCTIONALITY */ 
     $(`#cart-plus-btn-${item.id}-${item.categoria}`).on('click', function () {
       let currentQty = parseInt($(`#cart-item-counter-${item.id}-${item.categoria}`).text());
       increaseCount(currentQty, item);
@@ -199,12 +201,12 @@ function getItemsFromCart() {
     <div class='cart-items-container'></div>
   `);
 
-  getItemsFromCartSuccess(currentCart)
+  getItemsFromCartSuccess(currentCart);
 };
 
 function cartOpenedSuccess() {
   $('#cart-display').toggle(400);
-  getItemsFromCart()
+  getItemsFromCart();
   cartSummary();
 };
 

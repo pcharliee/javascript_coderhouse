@@ -27,20 +27,38 @@ $('body').append(`
 <span id='trolley' class='trolley-cart'></span>
 `);
 
+$('.navigation-container>img').hover(function () {
+    $('.navigation').slideDown(300);
+  }, function () {
+    $('.navigation').slideUp(300);
+  }
+);
+
 $('#cart-display').css({ 'display': 'none' });
 
 /* FUNCTIONS */
 
 function setStore(category) {
   let index = 0;
+  let nextLogo;
   storeItems.map(el => {
-    if(el.categoria != category) return;
+    if(el.categoria != category) {
+      nextLogo = el.logo;
+      return;
+    }
     else if(el.categoria == category) {
       el.id = index;
       index++;
       currentItemsForCategory.push(el);
     };
   });
+  $('.store-information>h5').text(`${currentItemsForCategory[0].tienda}`);
+  $('#switch-stores').append(`
+    <div class='switch-logo'>
+      <p>Cambiar tienda</p>
+      <img class='next-store-logo' src=${nextLogo}>
+    </div>
+  `)
   crearTarjetaItem(currentItemsForCategory[0]);
 };
 
@@ -51,7 +69,7 @@ function getFilteredItem(id) {
   */
   let filteredItem = '';
     currentItemsForCategory.filter(item => {
-    if(item.id != id) return
+    if(item.id != id) return;
     if (item.id == id) filteredItem = item;
   });
   return filteredItem;
@@ -151,7 +169,6 @@ function addToCartSuccess(newItem) {
   currentCart.push(objeto);
   localStorage.setItem('carrito', JSON.stringify(currentCart));
   alreadyInCart(newItem);
-  // getUpdatedCart();
   getItemsFromCart();
 };
 
@@ -164,7 +181,7 @@ function crearTarjetaItem(item) {
 function crearTarjetaEscobas(item) {
   $('#store-items-section').append(`
     <main id="item-card" class="broom-option">
-    <img class='card-bg' src='./media/qqs.png'>
+    <img class='card-bg broom' src='./media/qqs.png'>
     <article id="option-article" class="option-stage">
     <img class="item-img" src=${item.img}>
       <div class="option-information">
@@ -181,16 +198,16 @@ function crearTarjetaEscobas(item) {
 function crearTarjetaVaritas(item) {
   $('#store-items-section').append(`
     <main id="item-card" class="wand-option">
-    <img class='card-bg' src='./media/ollivanders-t.png'>
+    <img class='card-bg wand' src='./media/ollivanders-t.png'>
       <article id="option-article" class="option-stage">
-      <img class="item-img" src=${item.img}>
+      <img class="item-img varitas" src=${item.img}>
         <div class="option-information">
           <h4 class="option-title text-center">${item.nombre}</h4>
           <span>${item.precio}</span>
           <p class="option-description">${item.description}</p>
           <section class="option-details">
             <div class="options-details-item">
-              <p class="option-details-title">Nucleo</p>
+              <p class="option-details-title">Núcleo</p>
               <p class="option-details-info">${item.nucleo}</p>
             </div>
             <div class="options-details-item">
@@ -212,7 +229,7 @@ function crearTarjetaVaritas(item) {
 $('#switch-stores').on('click', function () {
   let currentCategory = localStorage.getItem('categoria');
 
-  /* Seteamos la nueva categoria a la contraria a la actual */
+  /* Seteamos la nueva categoria contraria a la actual */
   newCategory = currentCategory == 'varitas' ? 'escobas' : 'varitas';
   localStorage.setItem('categoria', newCategory);
   location.reload();
