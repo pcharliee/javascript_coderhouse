@@ -1,0 +1,84 @@
+[
+  {
+    "id": 0,
+    "categoria": "varitas",
+    "tienda": "Ollivanders",
+    "nombre": "Varita de Sauco",
+    "nucleo": "Pelo de cola de thestral",
+    "madera": "Saúco",
+    "longitud": "38,1 cm",
+    "description":"También conocida como el Palo de la Muerte y la Varita del Destino. Tiene la reputación de ser la varita más poderosa de todas.",
+    "precio": "100 galeones",
+    "img": "./media/varitas/elder-wand.png",
+    "logo": "./media/ollivanders-t.png"
+  },
+  {
+    "id": 1,
+    "categoria": "varitas",
+    "tienda": "Ollivanders",
+    "nombre": "Varita de Cedric",
+    "nucleo": "Pelo de unicornio (macho)",
+    "madera": "Fresno",
+    "longitud": "30,5 cm",
+    "description":"Agradablemente flexible: pelo de un unicornio macho particularmente fino (diecisiete palmos), que casi apuñala al Sr. Ollivander con su cuerno después de que arrancar el pelo de la cola.",
+    "precio": "6 galeones",
+    "img": "./media/varitas/cedric-wand.png",
+    "logo": "./media/ollivanders-t.png"
+  },
+  {
+    "id": 2,
+    "categoria": "varitas",
+    "tienda": "Ollivanders",
+    "nombre": "Varita de Harry",
+    "nucleo": "Pluma de fénix",
+    "madera": "Acebo",
+    "longitud": "28 cm",
+    "description":"Hermana de la varita de Voldemort: las plumas de fénix en el núcleo son ambas de Fawkes",
+    "precio": "7 galeones",
+    "img": "./media/varitas/hp-wand.png",
+    "logo": "./media/ollivanders-t.png"
+  },
+  {
+    "id": 3,
+    "categoria": "varitas",
+    "tienda": "Ollivanders",
+    "nombre": "Varita de Voldemort",
+    "nucleo": "Pluma de fénix",
+    "madera": "Tejo",
+    "longitud": "34 cm",
+    "description":"Hermana de la varita de Harry: las plumas de fénix en el núcleo son ambas de Fawkes",
+    "precio": "120 galeones",
+    "img": "./media/varitas/voldemort-wand.png",
+    "logo": "./media/ollivanders-t.png"
+  },
+  {
+    "id": 4,
+    "categoria": "escobas",
+    "tienda": "Quality Quidditch Supplies",
+    "nombre": "Barredora 11",
+    "description":"Creada en 1995, es la más novedosa de la serie de las Barredoras. Acelera de 0 a 110 kilómetros en tan solo 10 segundos. Está hecha de roble español. Es la escoba que le regalan a Ron Weasley por convertirse en Prefecto.",
+    "precio": "20 galeones",
+    "img": "./media/escobas/cleansweeper.png",
+    "logo": "./media/qqs.png"
+  },
+  {
+    "id": 5,
+    "categoria": "escobas",
+    "tienda": "Quality Quidditch Supplies",
+    "nombre": "Nimbus 2001",
+    "description": "Producida por la Compañía de Escobas de Carreras Nimbus como parte de su exitosa línea de escobas de carreras. Lanzado en agosto de 1992, era más rápida que su predecesora, la Nimbus 2000. Se convirtió oficialmente en la escoba más rápida que existía, hasta el lanzamiento de la Saeta de Fuego",
+    "precio": "230 galeones",
+    "img": "./media/escobas/nimbus2001.png",
+    "logo": "./media/qqs.png"
+  },
+  {
+    "id": 6,
+    "categoria": "escobas",
+    "tienda": "Quality Quidditch Supplies",
+    "nombre": "Saeta de Fuego",
+    "description":"Posee un palo de fresno, ultra fino y aerodinámico y está numerado con su propia matrícula. También posee ramitas de abedul, que fueron cuidadosamente seleccionadas hasta conseguir una perfección aerodinámica. Posee un equilibrio insuperable. Con Accio incorporado para menores de IV. Y anti-maleficios. Con una alarma antirrobos.",
+    "precio": "350 galeones",
+    "img": "./media/escobas/firebolt.png",
+    "logo": "./media/qqs.png"
+  }
+]

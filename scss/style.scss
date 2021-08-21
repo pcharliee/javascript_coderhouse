@@ -3,11 +3,16 @@ $gr-g: #740002b4;
 $sl: #1a472a;
 $ra: #0e1a40;
 $hu: #ffdb00;
+$hp-blue: #1b2e6e;
 $dark-gray: #5d5d5d;
 $light-gray: #e7e7e7;
 
 html {
   scroll-behavior: smooth;
+}
+
+p {
+  margin: 0;
 }
 
 @import 'fonts';
@@ -16,7 +21,6 @@ html {
 @import 'landing';
 @import 'sections';
 @import 'store';
-
 // @import 'producto';
 // @import 'index';
 // @import 'imagenes';

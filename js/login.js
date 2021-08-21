@@ -1,35 +1,69 @@
-
 localStorage.setItem('usuario', JSON.stringify({ nombre: 'Muggle sin nombre'}));
 
 class Usuario {
-  constructor(username, nombre, email, bio) {
-    this.username = username;
+  constructor(nombre, email, bio) {
     this.nombre = nombre;
     this.email = email;
     this.bio = bio;
   };
 };
 
-let button = $('#button');
-
-function loginSuccess() {
-  let user = localStorage.getItem('usuario');
-  if(!user.nombre)
-  // localStorage.setItem('usuario', JSON.stringify({ nombre: 'Muggle sin nombre'}));
-  
-  location.href = 'landing.html';
+function loginValidation() {
+  let user = JSON.parse(localStorage.getItem('usuario'));
+  localStorage.removeItem('carrito');
+  localStorage.removeItem('carritoModificado');
+  let loginValidation = 0;
+  Object.keys(user).map((keyValue) => {
+    if(!user[keyValue]) loginValidation++;
+  })
+  loginSuccess(loginValidation);
 }
+
+function loginSuccess(completion) {
+  if(completion > 0) {
+    return Swal.fire({
+      title: '¿Juras solemnemente que tus intenciones no son buenas?',
+      confirmButtonColor: '#1b2e6e',
+    });
+  }
+  location.href = './landing.html';
+};
 
 function ingresarUsuario(e) {
   e.preventDefault();
-  let username = $('#username-login').val();
   let nombre = $('#nombre-login').val();
   let email = $('#email-login').val();
   let bio = $('#bio-login').val();
-  let nuevoUsuario = new Usuario (username, nombre, email, bio);
+  let nuevoUsuario = new Usuario (nombre, email, bio);
   
   localStorage.setItem('usuario', JSON.stringify(nuevoUsuario));
-  loginSuccess();
+  loginValidation();
 };
 
-button.on('click', ingresarUsuario);
+$('#button').on('click', ingresarUsuario);
+
+
+/* ANIME JS LIBRARY */
+var textWrapper = document.querySelector('.welcome-title');
+textWrapper.innerHTML = textWrapper.textContent
+  .replace(/\S/g, "<span class='letter'>$&</span>");
+anime.timeline({loop: true})
+  .add({
+    targets: '.welcome-title .letter',
+    opacity: [0,1],
+    easing: 'easeInOutQuad',
+    duration: 1150,
+    delay: (el, i) => 150 * (i+1)
+});
+
+var textWrapper = document.querySelector('.welcome-title-span');
+textWrapper.innerHTML = textWrapper.textContent
+  .replace(/\S/g, "<span class='letter'>$&</span>");
+anime.timeline({loop: true})
+  .add({
+    targets: '.welcome-title-span .letter',
+    opacity: [0,1],
+    easing: 'easeInOutQuad',
+    duration: 1600,
+    delay: (el, i) => 150 * (i+1)
+});

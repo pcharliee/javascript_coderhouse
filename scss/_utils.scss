@@ -32,5 +32,9 @@
 }
 
 @mixin hp {
-  font-family: 'HarryPotter';
+  font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+}
+
+@mixin regular-font {
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
 }

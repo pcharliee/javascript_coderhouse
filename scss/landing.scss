@@ -7,6 +7,62 @@
   height: 100vh;
 }
 
+.navbar-hp {
+  @include fl-row;
+  @include fl-center;
+  position: relative;
+  width: 100%;
+  .navbar-title {
+    @include hp;
+    font-size: 2rem;
+    color: $light-gray;
+    margin: 0 20px;
+  }
+  .navbar-navig {
+    @include fl-row;
+    list-style: none;
+    margin: 0;
+    li {
+      @include regular-font;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+    li.logo {
+      @include fl-row;
+      position: absolute;
+      width: 150px;
+      top: -7px;
+      right: 10px;
+      align-items: center;
+      cursor: pointer;
+      p {
+        margin: 0 10px;
+      }
+      img {
+        height: 60px;
+
+      }
+    }
+    li:nth-child(odd) {
+      @include fl-col;
+      @include fl-center;
+      border-radius: 5px;
+      a{
+        padding: 0 10px;
+        text-decoration: none;
+        color: $light-gray;
+      }
+    }
+    li:nth-child(odd):hover {
+      border-radius: 5px;
+      background-color: white;
+      a{
+        color: $hp-blue;
+      }
+    }
+  }
+}
+
 .navbar-bg {
  @include glass;
  position: fixed;
@@ -24,18 +80,20 @@
 .welcome-information-titulo {
   @include hp;
   font-size: 6rem;
-  color: $light-gray
+  color: $light-gray;
 }
 
 .welcome-information-cta {
+  @include regular-font;
   color: $light-gray;
   display: none;
+  font-weight: 300;
+  font-size: 18px;
+  filter: drop-shadow(0.5px 4px 2px black);
 }
 
 .scroll-to {
-  @include glass;
-  background-color: #f8f4f4a1;
-  border-radius: 50px;
+  filter: drop-shadow(0.5px 10px 2px white);
   height: 70px;
   width: 70px;
   position:fixed;
@@ -45,7 +103,23 @@
   z-index: 4;
   padding: 10px;
   cursor: pointer;
+  animation: pulsate 2s ease-in-out infinite;
+  &::before, &::after {
+    content: '\007C';
+    display: inline-block;
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+    transform:rotate(317deg)
+  }
+  &::after {
+    transform:rotate(43deg);
+    margin-left: 10px;
+  }
 }
 
-
-
+@keyframes pulsate {
+  0% { transform: scale(1.1)}
+  50% { transform: scale(0.8) }
+  100% { transform: scale(1.1) }
+}

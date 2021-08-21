@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;400;500;600&display=swap");
 html {
   scroll-behavior: smooth; }
+
+p {
+  margin: 0; }
 
 @font-face {
   font-family: 'HarryPotter';
@@ -10,26 +14,41 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
-  background-image: url("../media/fondos/mist.jpg");
+  background-image: url("../media/fondos/bricks.jpeg");
   background-position: center left;
   height: 100vh; }
   .index-bg img {
     filter: invert(0.9); }
 
 .index-cta {
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: block;
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  background-image: url("../media/marca_tenebrosa.svg");
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(1, 9, 14, 0.692);
   height: 75vh;
   width: 50vw;
   border-radius: 0 5px 5px 0; }
+  .index-cta .welcome-title-container {
+    font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    color: #f0f0f0; }
+  .index-cta .welcome-title {
+    font-size: 6rem; }
+  .index-cta .welcome-title-span {
+    font-size: 3rem; }
+  .index-cta p {
+    transform: translateY(130px);
+    color: #5d5d5d;
+    font-size: 12px; }
 
 .form-container {
   display: flex;
@@ -39,15 +58,15 @@ html {
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  background-color: #740002b4;
+  background-color: rgba(1, 9, 14, 0.692);
   margin: 0 30px 0 0;
   height: 400px;
   width: 300px;
   border-radius: 5px; }
   .form-container p {
-    font-family: 'HarryPotter';
-    color: #ffdb00;
-    font-size: 2rem;
+    font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    color: #e7e7e7;
+    font-size: 2.4rem;
     padding: 0;
     margin: 0; }
 
@@ -67,21 +86,27 @@ html {
 .form label {
   display: flex;
   flex-flow: column nowrap;
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
   color: #5d5d5d;
   width: 100%;
   margin: 0 0 10px 0; }
   .form label input {
+    font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
     border: none;
     background-color: #f0f0f0;
-    border-bottom: 1px #740002b4 solid; }
+    border-bottom: 1px #1b2e6e solid; }
   .form label input:focus, .form label input:visited {
     outline: none; }
 
 .btn-login {
-  transform: translate(95px, 10px);
-  background: none;
+  transform: translate(80px, 2px);
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+  background: #1b2e6e;
+  color: #e7e7e7;
   border: none;
-  padding: 10px; }
+  border-radius: 5px;
+  padding: 5px 10px; }
 
 .bio-login {
   height: 50px; }
@@ -93,6 +118,56 @@ html {
   background-image: url("../media/fondos/hg-bg.jpg");
   background-position: left center;
   height: 100vh; }
+
+.navbar-hp {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%; }
+  .navbar-hp .navbar-title {
+    font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    color: #e7e7e7;
+    margin: 0 20px; }
+  .navbar-hp .navbar-navig {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style: none;
+    margin: 0; }
+    .navbar-hp .navbar-navig li {
+      font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+      text-decoration: none;
+      margin: 0 5px; }
+    .navbar-hp .navbar-navig li.logo {
+      display: flex;
+      flex-flow: row nowrap;
+      position: absolute;
+      width: 150px;
+      top: -7px;
+      right: 10px;
+      align-items: center;
+      cursor: pointer; }
+      .navbar-hp .navbar-navig li.logo p {
+        margin: 0 10px; }
+      .navbar-hp .navbar-navig li.logo img {
+        height: 60px; }
+    .navbar-hp .navbar-navig li:nth-child(odd) {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px; }
+      .navbar-hp .navbar-navig li:nth-child(odd) a {
+        padding: 0 10px;
+        text-decoration: none;
+        color: #e7e7e7; }
+    .navbar-hp .navbar-navig li:nth-child(odd):hover {
+      border-radius: 5px;
+      background-color: white; }
+      .navbar-hp .navbar-navig li:nth-child(odd):hover a {
+        color: #1b2e6e; }
 
 .navbar-bg {
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
@@ -111,20 +186,20 @@ html {
   height: 100vh; }
 
 .welcome-information-titulo {
-  font-family: 'HarryPotter';
+  font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
   font-size: 6rem;
   color: #e7e7e7; }
 
 .welcome-information-cta {
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
   color: #e7e7e7;
-  display: none; }
+  display: none;
+  font-weight: 300;
+  font-size: 18px;
+  filter: drop-shadow(0.5px 4px 2px black); }
 
 .scroll-to {
-  box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  background-color: #f8f4f4a1;
-  border-radius: 50px;
+  filter: drop-shadow(0.5px 10px 2px white);
   height: 70px;
   width: 70px;
   position: fixed;
@@ -133,14 +208,33 @@ html {
   left: 47vw;
   z-index: 4;
   padding: 10px;
-  cursor: pointer; }
+  cursor: pointer;
+  animation: pulsate 2s ease-in-out infinite; }
+  .scroll-to::before, .scroll-to::after {
+    content: '\007C';
+    display: inline-block;
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+    transform: rotate(317deg); }
+  .scroll-to::after {
+    transform: rotate(43deg);
+    margin-left: 10px; }
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1.1); }
+  50% {
+    transform: scale(0.8); }
+  100% {
+    transform: scale(1.1); } }
 
 .sections-bg {
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
   background-image: url("../media/fondos/diagon.jpg");
-  background-position: center bottom;
+  background-position-y: -110px;
   height: 100vh;
   display: flex;
   flex-flow: row nowrap;
@@ -151,7 +245,7 @@ html {
   display: flex;
   flex-flow: row nowrap;
   flex-wrap: wrap;
-  justify-content: space-around; }
+  justify-content: space-evenly; }
 
 .card {
   box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
@@ -161,7 +255,7 @@ html {
   height: 360px;
   border-radius: 10px;
   padding: 1.5rem;
-  background: #0e1a409c;
+  background: #0e1a40d6;
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -215,12 +309,14 @@ html {
   margin: auto; }
   .card .info h3 {
     font-family: 'HarryPotter';
-    font-size: 2.5rem; }
+    font-size: 2.5rem;
+    margin: 0; }
   .card .info p {
+    font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
     letter-spacing: 1px;
-    font-size: 15px;
-    margin-top: 8px; }
+    font-size: 15px; }
   .card .info input {
+    font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
     padding: 0.6rem;
     outline: none;
     border: none;
@@ -229,71 +325,462 @@ html {
     color: black;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.4s ease; }
+    transition: 0.4s ease;
+    margin-top: 10px; }
 
-.ollivanders-section {
+.store {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #021520;
   background-size: cover;
-  background-repeat: no-repeat;
-  display: block;
-  background-image: url("../media/fondos/Ollivanders-bg.png");
-  height: 100vh;
-  background-position: center bottom; }
+  background-image: url("../media/fondos/d-alley.jpg");
+  background-position: bottom; }
+  .store aside {
+    width: 400px;
+    max-height: 530px; }
+  .store .switch-stores-container {
+    font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    position: relative;
+    font-size: 1.4rem;
+    text-align: center;
+    border-radius: 5px;
+    color: #e7e7e7;
+    padding: 10px; }
+    .store .switch-stores-container .switch-logo {
+      position: absolute;
+      box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      background-color: #0e1a40c2;
+      width: 170px;
+      border-radius: 5px;
+      left: 31%;
+      transform: translateY(50px); }
+      .store .switch-stores-container .switch-logo p {
+        color: #e7e7e7;
+        transform: translateY(10px); }
 
-.ollivander-cards {
+.store-information-container {
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+  position: relative;
+  box-sizing: border-box; }
+  .store-information-container .navigation-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    height: 200px;
+    position: absolute;
+    color: #e7e7e7;
+    margin: 10px 0;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px; }
+    .store-information-container .navigation-container .cloud {
+      width: auto;
+      height: 120px;
+      transform: translate(50px, -60px);
+      z-index: 9999; }
+    .store-information-container .navigation-container .navigation {
+      display: flex;
+      flex-flow: column nowrap;
+      box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      background-color: #5d5d5db7;
+      border-radius: 5px;
+      padding: 10px 0;
+      display: none;
+      margin: 0;
+      z-index: 999;
+      width: 190px;
+      transform: translate(70px, -85px); }
+      .store-information-container .navigation-container .navigation li {
+        color: #e7e7e7;
+        padding: 5px; }
+      .store-information-container .navigation-container .navigation li:last-child::before {
+        content: 'space';
+        text-transform: uppercase;
+        line-height: 10px;
+        font-weight: 800;
+        letter-spacing: 0px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 14px; }
+  .store-information-container .store-information {
+    box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    position: relative;
+    background-color: #0e1a40c2;
+    color: #e7e7e7;
+    padding: 20px;
+    border-radius: 5px; }
+    .store-information-container .store-information h5 {
+      font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+      font-size: 2.5rem;
+      margin: 10px;
+      text-align: center; }
+    .store-information-container .store-information p {
+      text-align: center; }
+    .store-information-container .store-information p:nth-child(2) {
+      margin: 10px 0px;
+      color: #e7e7e7; }
+    .store-information-container .store-information .atajos {
+      font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+      color: #e7e7e7;
+      font-size: 1.4rem;
+      margin-top: 20px; }
+
+#item-card {
+  position: relative;
+  transform: translateY(15px);
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif; }
+
+.store-items-cards {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  background-color: #021520; }
+  height: 100vh; }
+  .store-items-cards .card-nav-buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 30%;
+    justify-content: space-around; }
+    .store-items-cards .card-nav-buttons input {
+      box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 50%;
+      width: 30px;
+      border: none;
+      height: 30px;
+      color: #e7e7e7;
+      background-color: #1e771e; }
+    .store-items-cards .card-nav-buttons .add-to-cart {
+      box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+      font-size: 14px;
+      border: none;
+      border-radius: 10px;
+      background-color: #19b33ac7;
+      min-width: 150px;
+      height: 30px;
+      color: #ffff;
+      width: 50%; }
 
-.wand-option {
+.broom-option .card-bg {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  filter: invert(0.5); }
+
+.broom-option .option-stage {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  width: 400px;
+  min-height: 610px;
+  max-height: 610px;
+  background-color: #e7e7e7; }
+  .broom-option .option-stage .option-information {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center; }
+    .broom-option .option-stage .option-information .option-title {
+      font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+      width: 100%;
+      font-size: 3rem;
+      margin: auto; }
+    .broom-option .option-stage .option-information .option-description {
+      text-align: center;
+      font-size: 15px;
+      padding: 20px; }
+    .broom-option .option-stage .option-information span {
+      color: #5d5d5d;
+      font-weight: 500;
+      margin: 0px; }
+
+.broom-option img.item-img {
+  height: 300px;
+  width: auto; }
+
+.wand-option .card-bg.wand {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  width: 150px;
+  height: auto;
+  filter: invert(0.5); }
+
+.wand-option .card-bg.broom {
+  top: 0;
+  left: 0; }
+
+.wand-option .option-stage {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  justify-content: center; }
-  .wand-option .add-to-cart {
-    width: 50%; }
-
-.option-stage {
-  opacity: 0;
-  display: flex;
-  justify-content: flex-end;
-  border: 1px white dotted;
-  height: 300px;
-  width: 550px;
-  background-color: #e7e7e7;
-  box-sizing: border-box;
+  justify-content: space-evenly;
   border-radius: 5px;
-  padding: 10px; }
-  .option-stage .option-information {
+  width: 400px;
+  min-height: 610px;
+  max-height: 610px;
+  background-color: #e7e7e7; }
+  .wand-option .option-stage .option-information {
     display: flex;
     flex-flow: column nowrap;
-    width: 100%; }
-    .option-stage .option-information .option-title {
-      font-family: 'HarryPotter';
+    align-items: center;
+    justify-content: center; }
+    .wand-option .option-stage .option-information .option-title {
+      font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+      width: 100%;
       font-size: 3rem;
       margin: auto; }
-    .option-stage .option-information .option-description {
-      padding: 10px; }
-    .option-stage .option-information .option-details {
+    .wand-option .option-stage .option-information .option-description {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      text-align: center;
+      min-height: 110px;
+      padding: 10px;
+      font-size: 15px;
+      padding: 10px 20px; }
+    .wand-option .option-stage .option-information span {
+      color: #5d5d5d;
+      font-weight: 500;
+      margin: 0px; }
+    .wand-option .option-stage .option-information .option-details {
+      padding: 10px;
       display: flex;
       flex-flow: row nowrap;
       text-align: center;
       width: 100%; }
-      .option-stage .option-information .option-details p {
+      .wand-option .option-stage .option-information .option-details p {
         margin: 0; }
-      .option-stage .option-information .option-details .options-details-item {
-        width: 33.3%; }
-        .option-stage .option-information .option-details .options-details-item .option-details-title {
-          margin: 10px 0;
+      .wand-option .option-stage .option-information .option-details .options-details-item {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-evenly;
+        width: 33.3%;
+        min-height: 118px; }
+        .wand-option .option-stage .option-information .option-details .options-details-item .option-details-title {
           font-weight: bold; }
-        .option-stage .option-information .option-details .options-details-item .option-details-info {
-          padding: 0 10px 10px 10px;
+        .wand-option .option-stage .option-information .option-details .options-details-item .option-details-info {
           font-size: 0.9rem; }
-  .option-stage img.varita {
-    height: 100%;
-    width: auto;
-    filter: drop-shadow(2px 4px 6px black); }
+        .wand-option .option-stage .option-information .option-details .options-details-item:nth-child(odd) {
+          box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+          backdrop-filter: blur(4px);
+          -webkit-backdrop-filter: blur(4px);
+          color: #e7e7e7;
+          background: #0e1a40da; }
+  .wand-option .option-stage img.item-img.varitas {
+    height: 250px;
+    transform: translate(-30px, 8px) rotate(350deg); }
 
-.selected {
-  opacity: 1; }
+.trolley-cart {
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: block;
+  background-image: url("../media/misc/trolley.png");
+  position: fixed;
+  bottom: 5vh;
+  right: 5vw;
+  height: 60px;
+  width: 54px;
+  border-radius: 35%;
+  animation: pulsate 4s ease-in-out infinite; }
+
+.cart-details {
+  box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #bddffdc2;
+  padding: 10px;
+  max-height: 500px;
+  width: 330px;
+  position: absolute;
+  bottom: 15vh;
+  right: 2vw;
+  border-radius: 5px; }
+
+.cart-container {
+  display: flex;
+  flex-flow: column nowrap;
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+  align-items: center;
+  width: 100%;
+  height: 100%; }
+  .cart-container .cart-title {
+    font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    margin-top: 10px;
+    font-size: 2rem;
+    color: #0e1a40; }
+  .cart-container .cart-items-container {
+    width: 95%;
+    max-height: 320px;
+    overflow: auto;
+    border-radius: 5px; }
+    .cart-container .cart-items-container .cart-item {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      background-color: rgba(2, 21, 32, 0.74);
+      font-size: 0.9rem;
+      border-radius: 5px;
+      margin: 20px 10px;
+      height: auto; }
+      .cart-container .cart-items-container .cart-item .cart-item-info {
+        margin: 10px 0 0 10px;
+        width: 70%; }
+        .cart-container .cart-items-container .cart-item .cart-item-info .cart-item-name {
+          color: #FFF;
+          font-size: 15px;
+          font-weight: 600; }
+        .cart-container .cart-items-container .cart-item .cart-item-info .cart-item-price {
+          color: #e7e7e7;
+          font-weight: 300; }
+        .cart-container .cart-items-container .cart-item .cart-item-info .cart-item-modifier {
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          align-items: center;
+          width: 80px;
+          background-color: whitesmoke;
+          border-radius: 5px;
+          transform: translate(-3px, 10px); }
+          .cart-container .cart-items-container .cart-item .cart-item-info .cart-item-modifier button {
+            width: 30%;
+            font-size: 16px;
+            font-weight: 700;
+            border: none; }
+          .cart-container .cart-items-container .cart-item .cart-item-info .cart-item-modifier #cart-minus-btn {
+            border-radius: 5px 0 0 5px;
+            border-right: 1px #5d5d5d solid; }
+          .cart-container .cart-items-container .cart-item .cart-item-info .cart-item-modifier #cart-plus-btn {
+            border-radius: 0px 5px 5px 0;
+            border-left: 1px #5d5d5d solid; }
+      .cart-container .cart-items-container .cart-item .cart-item-img-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #e7e7e7;
+        border-radius: 0 5px 5px 0;
+        box-sizing: border-box;
+        width: 30%; }
+        .cart-container .cart-items-container .cart-item .cart-item-img-container .cart-item-img {
+          max-width: 72px;
+          height: 80px; }
+      .cart-container .cart-items-container .cart-item .cart-remove-btn {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        border: 2px #740002 solid;
+        background: #fc5a3dd7;
+        text-align: center;
+        color: #e7e7e7;
+        font-size: 13px;
+        font-weight: 600;
+        right: -5px;
+        top: -8px;
+        border-radius: 50%;
+        cursor: pointer; }
+        .cart-container .cart-items-container .cart-item .cart-remove-btn::before {
+          content: 'x'; }
+  .cart-container .cart-summary {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+    margin-top: 10px; }
+    .cart-container .cart-summary p {
+      font-size: 30px;
+      font-family: 'HarryPotter', sans-serif; }
+    .cart-container .cart-summary span {
+      font-size: 16px;
+      color: #1a472a; }
+  .cart-container .cart-action-btn-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center; }
+    .cart-container .cart-action-btn-container .eliminar-btn {
+      border: none;
+      color: #740002;
+      background-color: transparent; }
+    .cart-container .cart-action-btn-container .comprar-btn {
+      box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      width: 100px;
+      background: rgba(4, 102, 4, 0.65);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #e7e7e7;
+      margin: 10px; }
+
+.confirmar-compra {
+  box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  position: fixed;
+  top: 30vh;
+  right: 35vw;
+  width: 360px;
+  background-color: #070707c4;
+  color: #e7e7e7;
+  border-radius: 5px; }
+  .confirmar-compra h6 {
+    font-family: 'HarryPotter', 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    margin: 20px 20px 0;
+    text-align: center; }
+  .confirmar-compra .confirmar-compra-converter {
+    display: flex;
+    flex-flow: column nowrap;
+    font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    padding: 20px; }
+    .confirmar-compra .confirmar-compra-converter p:first-child {
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #e7e7e7; }
+    .confirmar-compra .confirmar-compra-converter .coin-converter {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      margin: 10px; }
+      .confirmar-compra .confirmar-compra-converter .coin-converter .coin {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px; }
+      .confirmar-compra .confirmar-compra-converter .coin-converter .coin-knut {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px; }
+    .confirmar-compra .confirmar-compra-converter #confirmar-compra-btn {
+      border: none;
+      margin-top: 20px;
+      background-color: transparent;
+      color: #68cc75; }
+    .confirmar-compra .confirmar-compra-converter #volver-compra-btn {
+      border: none;
+      margin-top: 20px;
+      background-color: transparent;
+      color: #fc5a3dd7; }

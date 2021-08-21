@@ -7,7 +7,7 @@
 .sections-bg {
   @include bg-img-cover;
   background-image: url('../media/fondos/diagon.jpg');
-  background-position: center bottom;
+  background-position-y: -110px;
   height: 100vh;
   @include fl-row;
   @include fl-center;
@@ -16,7 +16,7 @@
 .cards-section {
   @include fl-row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .card {
@@ -25,7 +25,7 @@
   height: 360px;
   border-radius: 10px;
   padding: 1.5rem;
-  background:#0e1a409c;
+  background:#0e1a40d6;
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -81,14 +81,15 @@
     h3 {
       font-family: 'HarryPotter';
       font-size: 2.5rem;
-
+      margin: 0;
     }
     p {
+      @include regular-font;
       letter-spacing: 1px;
       font-size: 15px;
-      margin-top: 8px;
     }
     input {
+      @include regular-font;
       padding: 0.6rem;
       outline: none;
       border: none;
@@ -98,6 +99,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: 0.4s ease;
+      margin-top: 10px;
     }
   }
 }

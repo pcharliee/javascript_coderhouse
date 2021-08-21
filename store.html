@@ -8,46 +8,60 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./css/style.css">
-  <title>Desafios Javascript</title>
+  <title>Tienda Mágica - Harry Potter</title>
 </head>
 <body>
   <nav id='navbar-landing' class="navbar navbar-expand-lg navbar-light navbar-bg">
-    <div class="container-fluid">
-      <a class="navbar-brand text-white" href="#">Hogwarts</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link text-white" aria-current="page" href="./index.html">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white disabled" href="./hechizos.html">Link</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn text-white" type="submit">Search</button>
-        </form>
-      </div>
+    <div class="navbar-hp">
+      <ul class="navbar-navig">
+        <li class="nav-item">
+          <a class="text-dark" href="./index.html">Login</a>
+        </li>
+        <li>
+          <p class="navbar-title text-dark">Diagon Alley - Online</p>
+        </li>
+        <li class="nav-item">
+          <a id="store-home-btn" class='text-dark' href="./landing.html">Home</a>
+        </li>
+        <li id='switch-stores' class="nav-item logo">
+          <p class='text-white'>Ir a </p>
+        </li>
+      </ul>
     </div>
   </nav>
-  <div class=''>
-    <div class="container-fluid">
-      <div class="row" id='varitas'>
-        <div id="ollivander-section"class='ollivander-cards col-7'>
-          <input type="button" id="prev" value="anterior">
-          <input type="button" id="next" value="siguiente">
-        </div>
+  <main class='store'>
+    <div class='store-information-container'>
+      <aside class='store-information'>
+        <h5></h5>
+        <p>
+          Aventúrate a comprar las varitas más famosas del mundo mágico.
+          También conseguirás una colección exclusiva de escobas.
+        </p>
+        <p class='text-center'>¿Qué esperas para gastar todos tus galeones?</p>
+        <p class='atajos text-center'>Atajos</p>
+      </aside>
+      <div class='navigation-container'>
+        <img class='cloud' src='./media/misc/cloud.png'>
+        <ul class='navigation'>
+          <li class='fa fa-arrow-left'> - Artículo anterior</li>
+          <li class='fa fa-arrow-right'> - Artículo siguiente</li>
+          <li class='fa fa-arrow-down'> - Cambiar tienda</li>
+          <li class='fa fa-arrow-up'> - Abrir / Cerrar carrito</li>
+          <li class='fa'> - Agregar al carrito</li>
+        </ul>
       </div>
     </div>
-  </div>
+    <section id="store-items">
+      <div id="store-items-section" class='store-items-cards'></div>
+    </section>
+  </main>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src='./js/tienda.js'></script>
+<script src='./js/cart.js'></script>
 </body>
 </html>
